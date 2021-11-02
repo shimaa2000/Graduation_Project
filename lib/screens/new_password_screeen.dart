@@ -1,0 +1,113 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graduation_project/layout/password_reset_widget.dart';
+import 'package:graduation_project/screens/login_screen.dart';
+import 'package:graduation_project/shared/defaultButton.dart';
+import '../shared/boxtextfield.dart';
+
+class NewPassword extends StatelessWidget {
+  static const routeName = 'new_password';
+
+  const NewPassword({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final _controller1 = TextEditingController();
+    final _controller2 = TextEditingController();
+    BoxTextField boxTextField = BoxTextField(
+      onTap: (){},
+      obsecure: true,
+      controller: _controller1,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter some text';
+        }
+        return null;
+      },
+      hint: '',
+      icon: Icon(
+        Icons.lock,
+        color: Colors.black54,
+      ),
+      label: 'New Password',
+    );
+    String emojiUrl = '';
+    String smallText = 'Reset';
+    String bigText = 'Password';
+    Widget inContainer = Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: boxTextField,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: BoxTextField(
+            onTap: (){},
+            obsecure: true,
+            controller: _controller2,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+            hint: '',
+            icon: Icon(
+              Icons.lock,
+              color: Colors.black54,
+            ),
+            label: 'Confirm Password',
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        DefaultButton(
+            onPressedFun: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    title: Container(
+                      width: 150,
+                      height: 150,
+                      child: SvgPicture.asset('images/check.svg',
+                          fit: BoxFit.contain),
+                    ),
+                    content: Container(
+                        width: double.infinity,
+                        height: 50,
+                        child: Center(
+                          child: Text(
+                            'You can login to your account now!',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        )),
+                    actions: <Widget>[
+                      Center(
+                        child: DefaultButton(
+                          onPressedFun: () {
+                            Navigator.pushNamed(context, LoginScreen.routeName);
+                          },
+                          text: 'Login',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            text: 'Save'),
+      ],
+    );
+    String fistLineAfterEmoji = 'You can have a new password';
+    String secondLine = 'for your account now!';
+
+    return PasswordResetWidget(
+        emojiUrl: emojiUrl,
+        inContainer: inContainer,
+        smallText: smallText,
+        bigText: bigText,
+        fistLineAfterEmoji: fistLineAfterEmoji,
+        secondLine: secondLine);
+  }
+}
