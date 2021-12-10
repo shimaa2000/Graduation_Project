@@ -3,9 +3,11 @@ import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/profile.dart';
 import '../dummy_data.dart';
-import '../layout/card_widget.dart'; int index=0;
-class HomeScreen extends StatelessWidget {
+import '../layout/card_widget.dart';
 
+int index = 0;
+
+class HomeScreen extends StatelessWidget {
   static const routeName = 'home_screen';
 
   // List<PostModel> posts = [
@@ -28,11 +30,12 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 10.0),
+              const EdgeInsets.symmetric(vertical: 16.0, horizontal: 10.0),
               child: Container(
                 width: double.infinity,
                 height: 36.0,
@@ -69,15 +72,10 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 'Top Ads',
-                style: TextStyle(
-                  fontSize: 26.0,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.headline3,
               ),
             ),
-            SizedBox(
-              height: 10.0,
-            ),
+
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -85,70 +83,108 @@ class HomeScreen extends StatelessWidget {
                   ...DUMMY_DATA
                       .map(
                         (data) => InkWell(
-                          onTap: () {
-                            Navigator.of(context).pushNamed(
-                              DetailsScreen.routeName,
-                              arguments: data.id,
-                            );
-                            index=data.id-1;
-                          },
-                          child: Column(
-                            children: [
-                              CardWidget(
-                                name: data.name,
-                                date: data.date,
-                                imgUrl: data.ImgUrl,
-                                title: data.title,
-                                price: data.price,
-                                size: data.size,
-                                isFav: data.isFav,
-                              ),
-                            ],
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          DetailsScreen.routeName,
+                          arguments: data.id,
+                        );
+                        index = data.id - 1;
+                      },
+                      child: Column(
+                        children: [
+                          CardWidget(
+                            name: data.name,
+                            date: data.date,
+                            imgUrl: data.ImgUrl,
+                            title: data.title,
+                            price: data.price,
+                            size: data.size,
+                            isFav: data.isFav,
                           ),
-                        ),
-                      )
+                        ],
+                      ),
+                    ),
+                  )
                       .toList(),
                 ],
               ),
             ),
+
             SizedBox(
               height: 10.0,
             ),
             Text(
               'Available Items',
-              style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.headline3,
             ),
             SizedBox(
               height: 10.0,
             ),
-            // GridView(
-            //   padding: EdgeInsets.all(25),
-            //   children: DUMMY_DATA
-            //       .map(
-            //         (data) => Column(
-            //           children: [
-            //             CardWidget(
-            //               width: 175,
-            //               height: 300,
-            //               name: data.name,
-            //               date: '',
-            //               imgUrl: data.ImgUrl,
-            //               title: data.title,
-            //               price: data.price,
-            //               size: data.size,
-            //               isFav: data.isFav,
-            //             ),
-            //           ],
-            //         ),
-            //       )
-            //       .toList(),
-            //   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            //     maxCrossAxisExtent: 200,
-            //     childAspectRatio: 3 / 2,
-            //     crossAxisSpacing: 20,
-            //     mainAxisSpacing: 20,
-            //   ),
-            // ),
+            FittedBox(
+              fit: BoxFit.contain,
+              child: Row(
+                children: [
+                  Column(children: [
+                    ...DUMMY_DATA
+                        .map(
+                          (data) => InkWell(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            DetailsScreen.routeName,
+                            arguments: data.id,
+                          );
+                          index = data.id - 1;
+                        },
+                        child: Column(
+                          children: [
+                            CardWidget(
+                              name: data.name,
+                              date: data.date,
+                              imgUrl: data.ImgUrl,
+                              title: data.title,
+                              price: data.price,
+                              size: data.size,
+                              isFav: data.isFav,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                        .toList(),
+
+                  ],),
+                  Column(children: [
+                    ...DUMMY_DATA
+                        .map(
+                          (data) => InkWell(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            DetailsScreen.routeName,
+                            arguments: data.id,
+                          );
+                          index = data.id - 1;
+                        },
+                        child: Column(
+                          children: [
+                            CardWidget(
+                              name: data.name,
+                              date: data.date,
+                              imgUrl: data.ImgUrl,
+                              title: data.title,
+                              price: data.price,
+                              size: data.size,
+                              isFav: data.isFav,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                        .toList(),
+
+                  ],),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -161,7 +197,9 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: (){Navigator.pushNamed(context, Profile.routeName);},
+                      onTap: () {
+                        Navigator.pushNamed(context, Profile.routeName);
+                      },
                       child: CircleAvatar(
                         backgroundColor: Colors.blue,
                         radius: 30.0,
@@ -181,7 +219,11 @@ class HomeScreen extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.edit),
-              title: InkWell(onTap:(){Navigator.pushNamed(context, EditProfile.routeName);},child: Text('Edit Profile')),
+              title: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, EditProfile.routeName);
+                  },
+                  child: Text('Edit Profile')),
             ),
             Container(
               width: double.infinity,
