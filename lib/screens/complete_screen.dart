@@ -202,6 +202,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
                               Center(
                               child: DefaultButton(
                                   onPressedFun: () {
+
                             Navigator.pushNamed(context,HomeScreen.routeName);
                             },
                               text: 'Login',
