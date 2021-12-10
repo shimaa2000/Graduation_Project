@@ -4,6 +4,7 @@ import 'package:graduation_project/shared/boxtextfield.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 import 'package:intl/intl.dart';
 
+import 'homeScreen.dart';
 import 'login_screen.dart';
 class CompleteScreen extends StatefulWidget {
   @override
@@ -201,7 +202,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
                               Center(
                               child: DefaultButton(
                                   onPressedFun: () {
-                            Navigator.pushNamed(context, LoginScreen.routeName);
+                            Navigator.pushNamed(context,HomeScreen.routeName);
                             },
                               text: 'Login',
                             ),
