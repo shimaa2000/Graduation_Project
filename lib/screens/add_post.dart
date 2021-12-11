@@ -4,7 +4,6 @@ import 'package:graduation_project/shared/defaultButton.dart';
 
 import 'image_screen.dart';
 
-enum BestTutorSite { javatpoint, w3schools, tutorialandexample }
 
 class AddPost extends StatefulWidget {
   static const routeName = 'add_post';
