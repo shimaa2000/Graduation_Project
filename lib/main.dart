@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/account_verification.dart';
-import 'package:graduation_project/screens/add_post.dart';
 import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
@@ -10,6 +9,7 @@ import 'package:graduation_project/screens/profile.dart';
 import 'package:graduation_project/screens/reset_password_screen.dart';
 import 'package:graduation_project/screens/sign_up.dart';
 import 'package:graduation_project/screens/splash_screen.dart';
+import 'package:graduation_project/screens/startApp.dart';
 
 void main() {
   runApp(MyApp());
@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
         SignUp.routeName :(context)=>SignUp(),
         Profile.routeName :(context)=>Profile(),
         EditProfile.routeName :(context)=>EditProfile(),
-        AddPost.routeName :(context)=>AddPost()
+        StartApp.routeName:(context)=>StartApp(),
       },
       // home: SplashScreen(),
       debugShowCheckedModeBanner: false,
