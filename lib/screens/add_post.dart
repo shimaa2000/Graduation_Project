@@ -24,7 +24,8 @@ class _AddPostState extends State<AddPost> {
   }
 
   final userController = TextEditingController();
-
+  String dropdownValue = 'One';
+  String dropdownsize = 'L';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,36 +150,64 @@ class _AddPostState extends State<AddPost> {
                               icon: Icon(Icons.color_lens_outlined),
                               label: '',
                               onTap: () {}),
-                        ),Container(
+                        ),
+                        Container(
                           width: MediaQuery.of(context).size.width / 1.5,
                           height: 50,
-                          child: BoxTextField(
-                              controller: userController,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'please confirm your color';
-                                }
-                                return null;
+                          child:Padding(
+                            padding: const EdgeInsets.symmetric(horizontal  : 28.0),
+                            child: DropdownButton<String>(
+                              value: dropdownsize,
+                              icon: const Icon(Icons.arrow_drop_down_sharp),
+                              elevation: 16,
+                              style: const TextStyle(color: Colors.deepPurple),
+                              underline: Container(
+                                height: 2,
+                                color: Colors.deepPurpleAccent,
+                              ),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownsize = newValue!;
+                                });
                               },
-                              hint: '',
-                              icon: Icon(Icons.color_lens_outlined),
-                              label: '',
-                              onTap: () {}),
-                        ),Container(
+                              items: <String>['S', 'L', 'XL', 'XXL']
+                                  .map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                        Container(
                           width: MediaQuery.of(context).size.width / 1.5,
                           height: 50,
-                          child: BoxTextField(
-                              controller: userController,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'please confirm your color';
-                                }
-                                return null;
+                          child:Padding(
+                            padding: const EdgeInsets.symmetric(horizontal  : 28.0),
+                            child: DropdownButton<String>(
+                              value: dropdownValue,
+                              icon: const Icon(Icons.arrow_downward),
+                              elevation: 16,
+                              style: const TextStyle(color: Colors.deepPurple),
+                              underline: Container(
+                                height: 2,
+                                color: Colors.deepPurpleAccent,
+                              ),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownValue = newValue!;
+                                });
                               },
-                              hint: '',
-                              icon: Icon(Icons.color_lens_outlined),
-                              label: '',
-                              onTap: () {}),
+                              items: <String>['One', 'Two', 'Free', 'Four']
+                                  .map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
                         ),
                       ],
                     )
