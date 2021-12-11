@@ -4,6 +4,7 @@ import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/profile.dart';
 import '../dummy_data.dart';
 import '../layout/card_widget.dart';
+import 'add_post.dart';
 
 int index = 0;
 
@@ -248,7 +249,9 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepPurple,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AddPost.routeName);
+        },
         child: Icon(Icons.add),
       ),
     );
