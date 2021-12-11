@@ -160,10 +160,10 @@ class _AddPostState extends State<AddPost> {
                               value: dropdownsize,
                               icon: const Icon(Icons.arrow_drop_down_sharp),
                               elevation: 16,
-                              style: const TextStyle(color: Colors.deepPurple),
+                              style: const TextStyle(color: Colors.black),
                               underline: Container(
                                 height: 2,
-                                color: Colors.deepPurpleAccent,
+                                color: Colors.black26,
                               ),
                               onChanged: (String? newValue) {
                                 setState(() {
@@ -174,7 +174,10 @@ class _AddPostState extends State<AddPost> {
                                   .map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  child: Text(value),
+                                  child: SizedBox(width:190,child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                                    child: Text(value),
+                                  )),
                                 );
                               }).toList(),
                             ),
@@ -187,12 +190,13 @@ class _AddPostState extends State<AddPost> {
                             padding: const EdgeInsets.symmetric(horizontal  : 28.0),
                             child: DropdownButton<String>(
                               value: dropdownValue,
-                              icon: const Icon(Icons.arrow_drop_down_sharp),
+                              icon: const Icon(Icons.arrow_drop_down_sharp,),
                               elevation: 16,
-                              style: const TextStyle(color: Colors.deepPurple),
+                              style: const TextStyle(color: Colors.black,),
                               underline: Container(
                                 height: 2,
-                                color: Colors.deepPurpleAccent,
+                                width: MediaQuery.of(context).size.width / 1.5,
+                                color: Colors.black26,
                               ),
                               onChanged: (String? newValue) {
                                 setState(() {
@@ -203,7 +207,10 @@ class _AddPostState extends State<AddPost> {
                                   .map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  child: Text(value),
+                                  child:  SizedBox(width:190,child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                                    child: Text(value),
+                                  )),
                                 );
                               }).toList(),
                             ),
