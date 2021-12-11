@@ -187,7 +187,7 @@ class _AddPostState extends State<AddPost> {
                             padding: const EdgeInsets.symmetric(horizontal  : 28.0),
                             child: DropdownButton<String>(
                               value: dropdownValue,
-                              icon: const Icon(Icons.arrow_downward),
+                              icon: const Icon(Icons.arrow_drop_down_sharp),
                               elevation: 16,
                               style: const TextStyle(color: Colors.deepPurple),
                               underline: Container(
