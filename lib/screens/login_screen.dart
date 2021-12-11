@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/screens/reset_password_screen.dart';
+import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 
@@ -93,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                         fontSize: 15, color: Theme.of(context).primaryColor),
                   ),
                 ),),
-                DefaultButton(onPressedFun: (){Navigator.pushNamed(context, HomeScreen.routeName);}, text: 'Login'),
+                DefaultButton(onPressedFun: (){Navigator.pushNamed(context, StartApp.routeName);}, text: 'Login'),
           ],
         ),
       ),
