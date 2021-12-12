@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/dummy_data.dart';
 import 'package:graduation_project/layout/message_widget.dart';
+import 'package:graduation_project/models/chat_model.dart';
 
 class Message extends StatefulWidget {
   const Message({Key? key}) : super(key: key);
@@ -19,12 +19,12 @@ class _MessageState extends State<Message> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              ...DUMMY_MESSAGES
+              ...chats
                   .map(
                     (data) => InkWell(
                   onTap: () {
                   },
-                  child:MessageWidget(message: data.message, date: data.date, userName: data.username, imageUrl: data.imageUrl,),
+                  child:MessageWidget(message: data.text, date: data.time, userName: data.sender.name, imageUrl: data.sender.imageUrl,),
                 ),
               )
                   .toList()
