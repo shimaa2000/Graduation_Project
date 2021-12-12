@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
+import 'package:graduation_project/screens/notifications_screen.dart';
 import 'package:graduation_project/screens/profile.dart';
 import '../dummy_data.dart';
 import '../layout/card_widget.dart';
@@ -23,9 +24,14 @@ class HomeScreen extends StatelessWidget {
         // title: Text('test'),
         centerTitle: true,
         actions: [
-          Icon(
-            Icons.notifications,
-            size: 28.0,
+          InkWell(
+            onTap: (){
+              Navigator.pushNamed(context, NotificationScreen.routeName);
+            },
+            child: Icon(
+              Icons.notifications,
+              size: 28.0,
+            ),
           ),
         ],
       ),

@@ -5,6 +5,7 @@ import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/screens/login_screen.dart';
 import 'package:graduation_project/screens/new_password_screeen.dart';
+import 'package:graduation_project/screens/notifications_screen.dart';
 import 'package:graduation_project/screens/profile.dart';
 import 'package:graduation_project/screens/reset_password_screen.dart';
 import 'package:graduation_project/screens/sign_up.dart';
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
         Profile.routeName :(context)=>Profile(),
         EditProfile.routeName :(context)=>EditProfile(),
         StartApp.routeName:(context)=>StartApp(),
+        NotificationScreen.routeName:(context)=>NotificationScreen(),
       },
       // home: SplashScreen(),
       debugShowCheckedModeBanner: false,
