@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/account_verification.dart';
+import 'package:graduation_project/screens/add_post.dart';
+import 'package:graduation_project/screens/chat_screen.dart';
 import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
@@ -12,11 +14,14 @@ import 'package:graduation_project/screens/sign_up.dart';
 import 'package:graduation_project/screens/splash_screen.dart';
 import 'package:graduation_project/screens/startApp.dart';
 
+import 'models/user_model.dart';
+
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  late User user;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -74,6 +79,7 @@ class MyApp extends StatelessWidget {
         EditProfile.routeName :(context)=>EditProfile(),
         StartApp.routeName:(context)=>StartApp(),
         NotificationScreen.routeName:(context)=>NotificationScreen(),
+        AddPost.routeName:(context)=>AddPost(),
       },
       // home: SplashScreen(),
       debugShowCheckedModeBanner: false,

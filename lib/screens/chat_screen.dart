@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/models/chat_model.dart';
 import 'package:graduation_project/models/user_model.dart';
+import 'package:graduation_project/screens/homeScreen.dart';
+import 'package:graduation_project/screens/massege_screen.dart';
 
 class ChatScreen extends StatefulWidget {
+  static const routeName='chat_screen';
   final User user;
 
   ChatScreen({required this.user});
@@ -48,7 +51,7 @@ class _ChatScreenState extends State<ChatScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Text(
-                '',
+                message.time,
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.black45,
@@ -126,14 +129,14 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 child: CircleAvatar(
                   radius: 15,
-                  backgroundImage: AssetImage(message.sender.imageUrl),
+                  backgroundImage: NetworkImage(message.sender.imageUrl),
                 ),
               ),
               SizedBox(
                 width: 10,
               ),
               Text(
-                '',
+                message.time,
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.black45,
@@ -232,7 +235,7 @@ class _ChatScreenState extends State<ChatScreen> {
             child: ListView.builder(
               reverse: true,
               padding: EdgeInsets.all(20),
-              itemCount: chats.length,
+              itemCount:indexM,
               itemBuilder: (BuildContext context, int index) {
                 final MessageChat message = chats[index];
                 final bool isMe = message.sender.id == currentUser.id;

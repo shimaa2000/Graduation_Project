@@ -32,37 +32,40 @@ class MessageWidget extends StatelessWidget {
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                textBaseline: TextBaseline.alphabetic,
+                mainAxisSize: MainAxisSize.max,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(userName,
-                          style: Theme.of(context).textTheme.headline5),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 4,
+                      Text(
+                        userName,
+                        style: Theme.of(context).textTheme.headline5,
+                        textAlign: TextAlign.start,
                       ),
+
+                      SizedBox(width: MediaQuery.of(context).size.width/3.8,),
                       Text(
                         date,
+                        textDirection: TextDirection.ltr,
+                        textAlign: TextAlign.end,
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ],
                   ),
-                  FittedBox(
-                    fit: BoxFit.contain,
-                    child: SizedBox(
-                      child: Expanded(
-                        child: Text(
-                          message,
-                          overflow: TextOverflow.clip,
-                          softWrap: false,
-                          style: Theme.of(context).textTheme.bodyText1,
-                          maxLines: 1,
-                        ),
-                      ),
+                  Container(
+                    width: 280,
+                    padding: new EdgeInsets.only(right: 13.0),
+                    child: Text(
+                      message,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: false,
+                      style: Theme.of(context).textTheme.bodyText1,
+                      maxLines: 1,
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
@@ -70,7 +73,7 @@ class MessageWidget extends StatelessWidget {
           width: double.infinity,
           height: 5,
           color: Colors.black26,
-        )
+        ),
       ],
     );
   }
