@@ -1,6 +1,42 @@
-import 'package:flutter/material.dart';
+import 'package:graduation_project/models/message_model.dart';
 import 'package:graduation_project/models/postsModel.dart';
 
+const DUMMY_MESSAGES = const[
+  MessageModel(id: 1,
+      username: 'username1',
+      message: 'message1',
+      date: '10-11-2021',
+      imageUrl: 'https://miro.medium.com/max/554/1*Ld1KM2WSfJ9YQ4oeRf7q4Q.jpeg'),
+  MessageModel(id: 2,
+      username: 'username2',
+      message: 'message2',
+      date: '10-11-2021',
+      imageUrl: 'https://miro.medium.com/max/554/1*Ld1KM2WSfJ9YQ4oeRf7q4Q.jpeg'),
+  MessageModel(id: 3,
+      username: 'username3',
+      message: 'message3',
+      date: '10-11-2021',
+      imageUrl: 'https://miro.medium.com/max/554/1*Ld1KM2WSfJ9YQ4oeRf7q4Q.jpeg'),
+      MessageModel
+      (
+      id
+      :
+      4,
+      username: 'username4',
+      message: 'message4',
+      date: '10-11-2021',
+      imageUrl: 'https://miro.medium.com/max/554/1*Ld1KM2WSfJ9YQ4oeRf7q4Q.jpeg'),
+  MessageModel(id: 5,
+      username: 'username5',
+      message: 'message5',
+      date: '10-11-2021',
+      imageUrl: 'https://miro.medium.com/max/554/1*Ld1KM2WSfJ9YQ4oeRf7q4Q.jpeg'),
+  MessageModel(id: 6,
+      username: 'username6',
+      message: 'message6',
+      date: '10-11-2021',
+      imageUrl: 'https://miro.medium.com/max/554/1*Ld1KM2WSfJ9YQ4oeRf7q4Q.jpeg'),
+];
 const DUMMY_DATA = const [
   PostModel(
     id: 1,
@@ -17,7 +53,7 @@ const DUMMY_DATA = const [
     height: '',
   ),
   PostModel(
-    id:  2,
+    id: 2,
     name: 'username2',
     date: '',
     ImgUrl: 'images/photourl.jpg',
@@ -40,7 +76,7 @@ const DUMMY_DATA = const [
     gender: '',
     size: 'xL',
     type: '',
-    description:"Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
+    description: "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
     width: '',
     height: '',
   ),
@@ -58,7 +94,8 @@ const DUMMY_DATA = const [
     width: '',
     height: '',
   ),
-  PostModel(id: 5,
+  PostModel(
+    id: 5,
     name: 'username5',
     date: '',
     ImgUrl: 'images/photo.jpg',

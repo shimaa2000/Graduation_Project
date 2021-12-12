@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/activity_taps.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
-import 'package:graduation_project/screens/messages.dart';
 import 'package:graduation_project/screens/profile.dart';
+import 'massege_screen.dart';
 class StartApp extends StatefulWidget {
   static const routeName='start_app';
   const StartApp({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class StartApp extends StatefulWidget {
 
 class _StartAppState extends State<StartApp> {
   int currentIndex= 0;
- List <Widget> pages =[HomeScreen(), Profile(),ActivityTaps(), Messages() ];
+ List <Widget> pages =[HomeScreen(), Profile(),ActivityTaps(), Message() ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,3 +49,5 @@ class _StartAppState extends State<StartApp> {
     );
   }
 }
+
+
