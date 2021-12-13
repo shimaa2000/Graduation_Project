@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/screens/add%20post%202.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 
@@ -226,7 +227,9 @@ class _AddPostState extends State<AddPost> {
 
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15.0),
-                  child: DefaultButton(onPressedFun: (){}, text: 'Next'),
+                  child: DefaultButton(onPressedFun: (){
+                      Navigator.pushNamed(context, AddPost2.routeName);
+                  }, text: 'Next'),
                 )
               ],
             ),
