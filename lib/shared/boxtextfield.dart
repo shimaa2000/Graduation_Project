@@ -19,6 +19,7 @@ class BoxTextField extends StatelessWidget {
   // final String errorText;
   final String label;
   final double padding;
+  final double margin;
 
   const BoxTextField({
     Key? key,
@@ -35,13 +36,13 @@ class BoxTextField extends StatelessWidget {
     required this.icon,
     required this.label,
     required this.onTap,
-    this.padding = 30.0,
+    this.padding = 30.0, this.margin=10.0,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.symmetric(vertical: margin),
       padding: EdgeInsets.symmetric(horizontal: padding),
       child: TextFormField(
         // onChanged: onChanged,
