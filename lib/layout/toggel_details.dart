@@ -4,6 +4,7 @@ import 'package:graduation_project/shared/defaultButton.dart';
 
 class ToggleDetails {
   static Widget item(
+      Function function,
     BuildContext ctx,
     String type,
     String size,
@@ -71,7 +72,7 @@ class ToggleDetails {
             ],
           ),
           SizedBox(height: 30,),
-          DefaultButton(onPressedFun: (){}, text: 'Order'),
+          DefaultButton(onPressedFun: function, text: 'Order'),
         ],
       ),
     );

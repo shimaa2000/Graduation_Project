@@ -52,7 +52,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
   Widget build(BuildContext context) {
     List<Widget> toggle = [
       ToggleDetails.item(
-          context, widget.type, widget.size, widget.gender, widget.date),
+          (){},context, widget.type, widget.size, widget.gender, widget.date),
       ToggleDetails.detail(
           context, widget.description, widget.height, widget.width),
       ToggleDetails.review(context)

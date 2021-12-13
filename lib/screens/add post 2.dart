@@ -18,7 +18,8 @@ class _AddPost2State extends State<AddPost2> {
   final forWeight = TextEditingController();
   final dateController = TextEditingController();
   final priceController = TextEditingController();
-  gender? genderType=gender.male;donation? donationV=donation.No;
+  gender? genderType=gender.male;
+  donation? donationV=donation.No;
   DateTime date = DateTime.now();
 
 
@@ -247,25 +248,19 @@ class _AddPost2State extends State<AddPost2> {
                           Row(
                             textBaseline: TextBaseline.ideographic,
                             children: [
-                              InkWell(
-                                onTap:(){
-                                  setState(() {
-                                    donationV = donation.No;
-                                  });
-                                },
-                                child: Container(
+                               Container(
                                   width: 25,
                                   child: ListTile(
-                                    leading: Radio(
+                                    leading: Radio<donation>(
                                       value: donation.Yes,
                                       groupValue: donationV,
-                                      onChanged: ( donation? value) { setState(() {
+                                      onChanged: (value) { setState(() {
                                         donationV = value;
                                       }); },
                                     ),
                                   ),
                                 ),
-                              ),
+
                               SizedBox(width: 10,),
                               Text('Yes',style: Theme.of(context).textTheme.headline5,),
                             ],
