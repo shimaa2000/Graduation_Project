@@ -3,6 +3,7 @@ import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/notifications_screen.dart';
 import 'package:graduation_project/screens/profile.dart';
+import 'package:graduation_project/screens/search_screen.dart';
 import '../dummy_data.dart';
 import '../layout/card_widget.dart';
 import 'add_post.dart';
@@ -43,7 +44,11 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding:
               const EdgeInsets.symmetric(vertical: 16.0, horizontal: 10.0),
-              child: Container(
+              child:InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SearchScreen()));
+                  },
+                  child: Container(
                 width: double.infinity,
                 height: 36.0,
                 decoration: BoxDecoration(
@@ -70,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
+              )),
             ),
             SizedBox(
               height: 10.0,

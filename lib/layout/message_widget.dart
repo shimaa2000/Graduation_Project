@@ -19,7 +19,8 @@ class MessageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
+        Container(
+          width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
@@ -30,12 +31,12 @@ class MessageWidget extends StatelessWidget {
               SizedBox(
                 width: 7,
               ),
-              Column(
+              Expanded(child:Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
@@ -43,8 +44,6 @@ class MessageWidget extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline5,
                         textAlign: TextAlign.start,
                       ),
-
-                      SizedBox(width: MediaQuery.of(context).size.width/3.8,),
                       Text(
                         date,
                         textDirection: TextDirection.ltr,
@@ -65,7 +64,7 @@ class MessageWidget extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
+              )),
             ],
           ),
         ),

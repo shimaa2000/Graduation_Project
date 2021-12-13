@@ -5,12 +5,11 @@ class SearchScreen extends StatefulWidget {
   @override
   State<SearchScreen> createState() => _SearchScreenState();
 }
-enum productFor {Sell,Buy}
-
+enum productFor {Sell,Rent}
+productFor? typeFor=productFor.Rent;
 class _SearchScreenState extends State<SearchScreen> {
   var ScaffoldKey = GlobalKey<ScaffoldState>();
   var formKey = GlobalKey<FormState>();
-  productFor? typeFor = productFor.Buy;
   String dropdownValue = 'Red';
   List <String> colorList = ['Red', 'Blue', 'Gray'];
 
@@ -81,6 +80,7 @@ class _SearchScreenState extends State<SearchScreen> {
           showModalBottomSheet<void>(context: context, builder: (BuildContext ctx){
             return Container(
               height: 400,
+              width: MediaQuery.of(context).size.width,
               child: Container(
                 height: 400,
               child: Column (children: [
@@ -105,11 +105,12 @@ class _SearchScreenState extends State<SearchScreen> {
                            Container(
                              width: 20,
                              child: ListTile(
-                               leading: Radio(
+                               leading: Radio<productFor>(
                                  value: productFor.Sell,
                                  groupValue: typeFor,
-                                 onChanged: ( productFor? value) { setState(() {
-                                   typeFor = value ;
+                                 onChanged: (value) { setState(() {
+                                   typeFor=value ;
+                                   print(value);
                                  }); },
                                ),
                              ),
@@ -123,25 +124,20 @@ class _SearchScreenState extends State<SearchScreen> {
                        Row(
                          textBaseline: TextBaseline.ideographic,
                          children: [
-                           InkWell(
-                             onTap:(){
-                               setState(() {
-                                 typeFor = productFor.Sell;
-                               });
-                             },
-                             child: Container(
+                           Container(
                                width: 25,
-                               child: ListTile(
-                                 leading: Radio(
-                                   value: productFor.Buy,
+                               child:
+                               ListTile(
+                                 leading: Radio<productFor>(
+                                   value: productFor.Rent,
                                    groupValue: typeFor,
-                                   onChanged: ( productFor? value) { setState(() {
-                                     typeFor = value;
+                                   onChanged: (value) { setState(() {
+                                     typeFor=value ;
+                                     print(value);
                                    }); },
                                  ),
                                ),
                              ),
-                           ),
                            SizedBox(width: 10,),
                            Text('Sell',style: Theme.of(context).textTheme.headline5,),
                          ],
@@ -155,10 +151,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   children: [
                     Text('Colour', style: Theme.of(context).textTheme.headline3,),
                     SizedBox(width: 20,),
-                    Container(
-                      width: 50,
-                      height: 20,
-                      child: DropdownButton(
+                    Expanded(
+                        child:DropdownButton(
                         value: dropdownValue,
                         icon: Icon(Icons.arrow_drop_down),
                         elevation: 16,
@@ -179,8 +173,8 @@ class _SearchScreenState extends State<SearchScreen> {
                             value: value,
                             child: Text(value!),);
                         }).toList(),
-                      ),
-                    )
+                      )),
+
 
                   ],
                 ),
