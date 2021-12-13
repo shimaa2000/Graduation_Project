@@ -8,14 +8,17 @@ class BoxTextField extends StatelessWidget {
   final String hint;
   final bool readOnly;
   final TextInputType keyboardType;
+
   // final ValueChanged<String> onChanged;
   final bool isMulti;
   final bool autofocus;
   final Icon icon;
   final bool enabled;
   final Function onTap;
+
   // final String errorText;
   final String label;
+  final double padding;
 
   const BoxTextField({
     Key? key,
@@ -28,14 +31,18 @@ class BoxTextField extends StatelessWidget {
     this.autofocus = false,
     this.enabled = true,
     // required this.onChanged,
-    required this.hint, required this.icon, required this.label, required this.onTap,
+    required this.hint,
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    this.padding = 30.0,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      padding: EdgeInsets.symmetric(horizontal: padding),
       child: TextFormField(
         // onChanged: onChanged,
         autofocus: autofocus,
@@ -58,11 +65,7 @@ class BoxTextField extends StatelessWidget {
           hintStyle: TextStyle(color: Colors.blueGrey, fontSize: 15),
           contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
         ),
-        style: TextStyle(
-            fontSize: 18.0,
-            height: 2.0,
-            color: Colors.black
-        ),
+        style: TextStyle(fontSize: 18.0, height: 2.0, color: Colors.black),
         // validator: validator,
       ),
     );
