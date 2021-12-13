@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 import 'package:intl/intl.dart';
@@ -39,7 +40,9 @@ class _AddPost2State extends State<AddPost2> {
                 style: Theme.of(context).textTheme.headline5,
               ),
             ),
-            Row(
+            Padding(
+            padding: EdgeInsets.all(20)
+            ,child:Row(
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -66,7 +69,7 @@ class _AddPost2State extends State<AddPost2> {
                 Column(
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width / 1.5,
+                      width: MediaQuery.of(context).size.width / 1.8,
                       height: 50,
                       child: BoxTextField(
                           controller: forHeight,
@@ -84,7 +87,7 @@ class _AddPost2State extends State<AddPost2> {
                     ),
 
                     Container(
-                      width: MediaQuery.of(context).size.width / 1.5,
+                      width: MediaQuery.of(context).size.width / 1.8,
                       height: 50,
                       child: BoxTextField(
                           controller: forWeight,
@@ -102,7 +105,7 @@ class _AddPost2State extends State<AddPost2> {
                     ),
 
                     Container(
-                      width: MediaQuery.of(context).size.width / 1.5,
+                      width: MediaQuery.of(context).size.width / 1.8,
                       height: 50,
                       child: BoxTextField(
                           controller: forWeight,
@@ -120,7 +123,7 @@ class _AddPost2State extends State<AddPost2> {
                     ),
 
                     Container(
-                      width: MediaQuery.of(context).size.width / 1.5,
+                      width: MediaQuery.of(context).size.width / 1.8,
                       height: 50,
                       child: BoxTextField(
                           controller: dateController ,
@@ -148,7 +151,7 @@ class _AddPost2State extends State<AddPost2> {
                     ),
 
                     Container(
-                      width: MediaQuery.of(context).size.width / 1.5,
+                      width: MediaQuery.of(context).size.width / 1.8,
                       height: 50,
                       child: BoxTextField(
                           controller: priceController,
@@ -224,6 +227,7 @@ class _AddPost2State extends State<AddPost2> {
 
 
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
@@ -271,11 +275,11 @@ class _AddPost2State extends State<AddPost2> {
                   ],
                 ),
               ],
-            ),
+            ),),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15.0),
               child: DefaultButton(onPressedFun: (){
-                Navigator.pushNamed(context, AddPost2.routeName);
+                Navigator.pushNamed(context, StartApp.routeName);
               }, text: 'Next'),
             ),
           ],

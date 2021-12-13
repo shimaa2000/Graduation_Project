@@ -46,31 +46,7 @@ class _AddPostState extends State<AddPost> {
                     style: Theme.of(context).textTheme.headline5,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: MaterialButton(
-                    color: Colors.deepPurple,
-                    child: Text(
-                      "Pick Image from Gallery",
-                      style: TextStyle(
-                          color: Colors.white70, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {
-                      _handleURLButtonPress(context, ImageSourceType.gallery);
-                    },
-                  ),
-                ),
-                MaterialButton(
-                  color: Colors.deepPurple,
-                  child: Text(
-                    "Pick Image from Camera",
-                    style: TextStyle(
-                        color: Colors.white70, fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () {
-                    _handleURLButtonPress(context, ImageSourceType.camera);
-                  },
-                ),
+
 
                 SizedBox(
                   height: 20,
@@ -85,6 +61,13 @@ class _AddPostState extends State<AddPost> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         textBaseline: TextBaseline.alphabetic,
                         children: [
+                          SizedBox(height: 18),
+                          Text('Upload photo',
+                              style: Theme.of(context).textTheme.headline5),
+                          SizedBox(height: 35,),
+                          Text('Take a photo',
+                              style: Theme.of(context).textTheme.headline5),
+                          SizedBox(height: 32,),
                           Text('Title',
                               style: Theme.of(context).textTheme.headline5),
                           SizedBox(height: 27,),
@@ -106,8 +89,33 @@ class _AddPostState extends State<AddPost> {
                       ),
                       Column(
                         children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
+                            child: MaterialButton(
+                              color: Colors.deepPurple,
+                              child: Text(
+                                "Pick Image from Gallery",
+                                style: TextStyle(
+                                    color: Colors.white70, fontWeight: FontWeight.bold),
+                              ),
+                              onPressed: () {
+                                _handleURLButtonPress(context, ImageSourceType.gallery);
+                              },
+                            ),
+                          ),
+                          MaterialButton(
+                            color: Colors.deepPurple,
+                            child: Text(
+                              "Pick Image from Camera",
+                              style: TextStyle(
+                                  color: Colors.white70, fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: () {
+                              _handleURLButtonPress(context, ImageSourceType.camera);
+                            },
+                          ),
                           Container(
-                            width: MediaQuery.of(context).size.width / 1.5,
+                            width: MediaQuery.of(context).size.width / 1.8,
                             height: 50,
                             child: BoxTextField(
                                 controller: titleController,
@@ -123,7 +131,7 @@ class _AddPostState extends State<AddPost> {
                                 onTap: () {}),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width / 1.5,
+                            width: MediaQuery.of(context).size.width / 1.8,
                             height: 50,
                             child: BoxTextField(
                                 controller: descriptionController,
@@ -139,7 +147,7 @@ class _AddPostState extends State<AddPost> {
                                 onTap: () {}),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width / 1.5,
+                            width: MediaQuery.of(context).size.width / 1.8,
                             height: 50,
                             child: BoxTextField(
                                 controller: colorController,
@@ -155,7 +163,7 @@ class _AddPostState extends State<AddPost> {
                                 onTap: () {}),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width / 1.5,
+                            width: MediaQuery.of(context).size.width / 1.8,
                             height: 50,
                             child:Padding(
                               padding: const EdgeInsets.symmetric(horizontal  : 28.0),
@@ -177,7 +185,7 @@ class _AddPostState extends State<AddPost> {
                                     .map<DropdownMenuItem<String>>((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
-                                    child: SizedBox(width:190,child: Padding(
+                                    child: SizedBox(width:140,child: Padding(
                                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                                       child: Text(value),
                                     )),
@@ -187,7 +195,7 @@ class _AddPostState extends State<AddPost> {
                             ),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width / 1.5,
+                            width: MediaQuery.of(context).size.width / 1.8,
                             height: 50,
                             child:Padding(
                               padding: const EdgeInsets.symmetric(horizontal  : 28.0),
@@ -210,7 +218,7 @@ class _AddPostState extends State<AddPost> {
                                     .map<DropdownMenuItem<String>>((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
-                                    child:  SizedBox(width:190,child: Padding(
+                                    child:  SizedBox(width:140,child: Padding(
                                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                                       child: Text(value),
                                     )),
