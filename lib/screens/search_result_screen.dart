@@ -3,6 +3,7 @@ import 'package:graduation_project/dummy_data.dart';
 import 'package:graduation_project/layout/card_widget.dart';
 import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
+import 'package:graduation_project/screens/search_screen.dart';
 
 class SearchResult extends StatefulWidget {
   const SearchResult({Key? key}) : super(key: key);
@@ -19,45 +20,48 @@ class _SearchResultState extends State<SearchResult> {
         leading: Icon(Icons.arrow_back),
         backgroundColor: Colors.deepPurple,
       ),
-      body: Column(
-        children: [
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: 16.0, horizontal: 10.0),
-              child: Container(
-                width: double.infinity,
-                height: 36.0,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black,
-                  ),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              child: GestureDetector(
+                onTap: ()  {Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen()));},
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.search,
-                        color: Colors.grey,
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 16.0, horizontal: 10.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 36.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
                       ),
-                      SizedBox(
-                        width: 6.0,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            width: 6.0,
+                          ),
+                          Text(
+                            'Search',
+                            style:
+                            TextStyle(color: Colors.grey, fontSize: 16.0),
+                          )
+                        ],
                       ),
-                      Text(
-                        'Search',
-                        style:
-                        TextStyle(color: Colors.grey, fontSize: 16.0),
-                      )
-                    ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Center(child: Container(child: SingleChildScrollView(
-            child: Column(
+            Center(child: Container(child: Column(
               children: [
                 FittedBox(
                   fit: BoxFit.contain,
@@ -125,9 +129,9 @@ class _SearchResultState extends State<SearchResult> {
                   ),
                 ),
               ],
-            ),
-          ),),)
-        ],
+            ),),)
+          ],
+        ),
       ),
     );
   }
