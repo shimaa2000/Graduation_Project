@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/account_verification.dart';
+import 'package:graduation_project/screens/add%20post%202.dart';
 import 'package:graduation_project/screens/add_post.dart';
 import 'package:graduation_project/screens/chat_screen.dart';
 import 'package:graduation_project/screens/details_screen.dart';
@@ -80,6 +81,7 @@ class MyApp extends StatelessWidget {
         StartApp.routeName:(context)=>StartApp(),
         NotificationScreen.routeName:(context)=>NotificationScreen(),
         AddPost.routeName:(context)=>AddPost(),
+        AddPost2.routeName:(context)=>AddPost2(),
       },
       // home: SplashScreen(),
       debugShowCheckedModeBanner: false,
