@@ -14,6 +14,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userController = TextEditingController();
+    final passController = TextEditingController();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -67,7 +68,7 @@ class LoginScreen extends StatelessWidget {
             BoxTextField(
               onTap: (){},
               obsecure: true,
-              controller: userController,
+              controller: passController,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter some text';

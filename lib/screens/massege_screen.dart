@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/layout/message_widget.dart';
 import 'package:graduation_project/models/chat_model.dart';
 import 'package:graduation_project/screens/chat_screen.dart';
+import 'package:graduation_project/screens/connection_screen.dart';
 
 class Message extends StatefulWidget {
   Message({Key? key}) : super(key: key);
@@ -16,8 +17,13 @@ class _MessageState extends State<Message> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>ConnectionScreen()));
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.deepPurple,
+      ),
         appBar: AppBar(
           backgroundColor: Colors.deepPurple,
         ),
@@ -51,8 +57,9 @@ class _MessageState extends State<Message> {
                   .toList()
             ],
           ),
+
         ),
-      ),
+
     );
   }
 }

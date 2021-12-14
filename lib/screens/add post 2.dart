@@ -14,12 +14,14 @@ class AddPost2 extends StatefulWidget {
 }
 enum gender{male ,female}
 enum donation{Yes ,No}
+enum postFor{Rent, Sale}
 class _AddPost2State extends State<AddPost2> {
   final forHeight = TextEditingController();
   final forWeight = TextEditingController();
   final dateController = TextEditingController();
   final priceController = TextEditingController();
   gender? genderType=gender.male;
+  postFor? postType=postFor.Rent;
   donation? donationV=donation.No;
   DateTime date = DateTime.now();
 
@@ -48,9 +50,9 @@ class _AddPost2State extends State<AddPost2> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("forHeight", style: Theme.of(context).textTheme.headline5),
+                    Text("for Height", style: Theme.of(context).textTheme.headline5),
                     SizedBox(height: 27,),
-                    Text("forWeight", style: Theme.of(context).textTheme.headline5),
+                    Text("for Weight", style: Theme.of(context).textTheme.headline5),
                     SizedBox(height: 27,),
                     Text("Available form",
                         style: Theme.of(context).textTheme.headline5),
@@ -103,25 +105,6 @@ class _AddPost2State extends State<AddPost2> {
                           label: '',
                           onTap: () {}),
                     ),
-
-                    Container(
-                      width: MediaQuery.of(context).size.width / 1.8,
-                      height: 50,
-                      child: BoxTextField(
-                          controller: forWeight,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return " Enter The Weight";
-                            }
-                          },
-                          hint: "",
-                          icon: Icon(
-                            Icons.monitor_weight,
-                          ),
-                          label: '',
-                          onTap: () {}),
-                    ),
-
                     Container(
                       width: MediaQuery.of(context).size.width / 1.8,
                       height: 50,
@@ -150,11 +133,13 @@ class _AddPost2State extends State<AddPost2> {
                       ),
                     ),
 
+
                     Container(
                       width: MediaQuery.of(context).size.width / 1.8,
                       height: 50,
                       child: BoxTextField(
                           controller: priceController,
+                          keyboardType: TextInputType.number,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return " Enter The price";
@@ -167,11 +152,8 @@ class _AddPost2State extends State<AddPost2> {
                           label: '',
                           onTap: () {}),
                     ),
-
-
+                    SizedBox(width: 40,),
                     Row(children: [
-
-
                       Row(
                         children: [
                           Row(
@@ -218,6 +200,51 @@ class _AddPost2State extends State<AddPost2> {
                               ),
                               SizedBox(width: 10,),
                               Text('Female',style: Theme.of(context).textTheme.headline5,),
+                            ],
+                          ),
+                        ],
+                      )
+                    ],),
+                    Row(children: [
+                      Row(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                width: 20,
+                                child: ListTile(
+                                  leading: Radio<postFor>(
+                                    value: postFor.Rent,
+                                    groupValue: postType,
+                                    onChanged: (value) { setState(() {
+                                      postType = value ;
+                                    }); },
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 10,),
+                              Text('Rent',style: Theme.of(context).textTheme.headline5,),
+                            ],
+                          ),
+                          SizedBox(width: 30,),
+
+                          Row(
+                            textBaseline: TextBaseline.ideographic,
+                            children: [
+                              Container(
+                                width: 25,
+                                child: ListTile(
+                                  leading: Radio<postFor>(
+                                    value: postFor.Sale,
+                                    groupValue: postType,
+                                    onChanged: (value) { setState(() {
+                                      postType = value;
+                                    }); },
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 10,),
+                              Text('Sale',style: Theme.of(context).textTheme.headline5,),
                             ],
                           ),
                         ],

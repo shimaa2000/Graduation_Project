@@ -17,7 +17,6 @@ class _SearchResultState extends State<SearchResult> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
         backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(

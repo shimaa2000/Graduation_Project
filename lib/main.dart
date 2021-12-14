@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/account_verification.dart';
 import 'package:graduation_project/screens/add%20post%202.dart';
 import 'package:graduation_project/screens/add_post.dart';
-import 'package:graduation_project/screens/chat_screen.dart';
 import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/homeScreen.dart';

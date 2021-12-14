@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
+import 'package:graduation_project/screens/get_started.dart';
 import 'package:graduation_project/screens/notifications_screen.dart';
 import 'package:graduation_project/screens/profile.dart';
 import 'package:graduation_project/screens/search_screen.dart';
@@ -26,7 +27,7 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           InkWell(
-            onTap: (){
+            onTap: () {
               Navigator.pushNamed(context, NotificationScreen.routeName);
             },
             child: Icon(
@@ -44,38 +45,40 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding:
               const EdgeInsets.symmetric(vertical: 16.0, horizontal: 10.0),
-              child:InkWell(
-                  onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SearchScreen()));
+              child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => SearchScreen()));
                   },
                   child: Container(
-                width: double.infinity,
-                height: 36.0,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black,
-                  ),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.search,
-                        color: Colors.grey,
+                    width: double.infinity,
+                    height: 36.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
                       ),
-                      SizedBox(
-                        width: 6.0,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            width: 6.0,
+                          ),
+                          Text(
+                            'Search',
+                            style: TextStyle(color: Colors.grey,
+                                fontSize: 16.0),
+                          )
+                        ],
                       ),
-                      Text(
-                        'Search',
-                        style: TextStyle(color: Colors.grey, fontSize: 16.0),
-                      )
-                    ],
-                  ),
-                ),
-              )),
+                    ),
+                  )),
             ),
             SizedBox(
               height: 10.0,
@@ -84,7 +87,10 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 'Top Ads',
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .headline3,
               ),
             ),
 
@@ -94,28 +100,29 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   ...DUMMY_DATA
                       .map(
-                        (data) => InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(
-                          DetailsScreen.routeName,
-                          arguments: data.id,
-                        );
-                        index = data.id - 1;
-                      },
-                      child: Column(
-                        children: [
-                          CardWidget(
-                            name: data.name,
-                            date: data.date,
-                            imgUrl: data.ImgUrl,
-                            title: data.title,
-                            price: data.price,
-                            size: data.size,
-                            isFav: data.isFav,
+                        (data) =>
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                              DetailsScreen.routeName,
+                              arguments: data.id,
+                            );
+                            index = data.id - 1;
+                          },
+                          child: Column(
+                            children: [
+                              CardWidget(
+                                name: data.name,
+                                date: data.date,
+                                imgUrl: data.ImgUrl,
+                                title: data.title,
+                                price: data.price,
+                                size: data.size,
+                                isFav: data.isFav,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
+                        ),
                   )
                       .toList(),
                 ],
@@ -127,7 +134,10 @@ class HomeScreen extends StatelessWidget {
             ),
             Text(
               'Available Items',
-              style: Theme.of(context).textTheme.headline3,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .headline3,
             ),
             SizedBox(
               height: 10.0,
@@ -139,28 +149,29 @@ class HomeScreen extends StatelessWidget {
                   Column(children: [
                     ...DUMMY_DATA
                         .map(
-                          (data) => InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushNamed(
-                            DetailsScreen.routeName,
-                            arguments: data.id,
-                          );
-                          index = data.id - 1;
-                        },
-                        child: Column(
-                          children: [
-                            CardWidget(
-                              name: data.name,
-                              date: data.date,
-                              imgUrl: data.ImgUrl,
-                              title: data.title,
-                              price: data.price,
-                              size: data.size,
-                              isFav: data.isFav,
+                          (data) =>
+                          InkWell(
+                            onTap: () {
+                              Navigator.of(context).pushNamed(
+                                DetailsScreen.routeName,
+                                arguments: data.id,
+                              );
+                              index = data.id - 1;
+                            },
+                            child: Column(
+                              children: [
+                                CardWidget(
+                                  name: data.name,
+                                  date: data.date,
+                                  imgUrl: data.ImgUrl,
+                                  title: data.title,
+                                  price: data.price,
+                                  size: data.size,
+                                  isFav: data.isFav,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
+                          ),
                     )
                         .toList(),
 
@@ -168,28 +179,29 @@ class HomeScreen extends StatelessWidget {
                   Column(children: [
                     ...DUMMY_DATA
                         .map(
-                          (data) => InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushNamed(
-                            DetailsScreen.routeName,
-                            arguments: data.id,
-                          );
-                          index = data.id - 1;
-                        },
-                        child: Column(
-                          children: [
-                            CardWidget(
-                              name: data.name,
-                              date: data.date,
-                              imgUrl: data.ImgUrl,
-                              title: data.title,
-                              price: data.price,
-                              size: data.size,
-                              isFav: data.isFav,
+                          (data) =>
+                          InkWell(
+                            onTap: () {
+                              Navigator.of(context).pushNamed(
+                                DetailsScreen.routeName,
+                                arguments: data.id,
+                              );
+                              index = data.id - 1;
+                            },
+                            child: Column(
+                              children: [
+                                CardWidget(
+                                  name: data.name,
+                                  date: data.date,
+                                  imgUrl: data.ImgUrl,
+                                  title: data.title,
+                                  price: data.price,
+                                  size: data.size,
+                                  isFav: data.isFav,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
+                          ),
                     )
                         .toList(),
 
@@ -251,10 +263,13 @@ class HomeScreen extends StatelessWidget {
               height: 1.0,
               color: Colors.grey[200],
             ),
-            ListTile(
+            InkWell(onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => GetStarted()));
+            }, child: ListTile(
               leading: Icon(Icons.subdirectory_arrow_left_outlined),
               title: Text('SignOut'),
-            ),
+            )),
           ],
         ),
       ),

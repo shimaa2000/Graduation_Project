@@ -36,7 +36,8 @@ class BoxTextField extends StatelessWidget {
     required this.icon,
     required this.label,
     required this.onTap,
-    this.padding = 30.0, this.margin=10.0,
+    this.padding = 30.0,
+    this.margin = 10.0,
   }) : super(key: key);
 
   @override

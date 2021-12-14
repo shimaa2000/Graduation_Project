@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'add_post.dart';
+
 class ImageFromGalleryEx extends StatefulWidget {
   final type;
   ImageFromGalleryEx(this.type);

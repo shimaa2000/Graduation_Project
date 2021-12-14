@@ -13,7 +13,6 @@ class NotificationScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-
             ...DUMMY_NOTIFICATION
                 .map(
                   (data) => InkWell(

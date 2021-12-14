@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/screens/followers_screen.dart';
+import 'package:graduation_project/screens/following_screen.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import '../shared/defaultButton.dart';
 
@@ -114,7 +116,7 @@ class _ProfileState extends State<Profile> {
                         width: 320.0,
                         height: 440.0,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.white.withOpacity(.9),
                           borderRadius: BorderRadius.circular(16.0),
                           border: Border.all(
                             color: Colors.grey.shade500,
@@ -156,12 +158,17 @@ class _ProfileState extends State<Profile> {
                                 children: [
                                   Column(
                                     children: [
-                                      Text(
-                                        'Followers',
-                                        style: TextStyle(
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.black54,
+                                      InkWell(
+                                        onTap: (){
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>FollowersScreen()));
+                                        },
+                                        child: Text(
+                                          'Followers',
+                                          style: TextStyle(
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black54,
+                                          ),
                                         ),
                                       ),
                                       SizedBox(
@@ -182,12 +189,17 @@ class _ProfileState extends State<Profile> {
                                   ),
                                   Column(
                                     children: [
-                                      Text(
-                                        'Following',
-                                        style: TextStyle(
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.black54,
+                                      InkWell(
+                                        onTap: (){
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>FollowingScreen()));
+                                        },
+                                        child: Text(
+                                          'Following',
+                                          style: TextStyle(
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black54,
+                                          ),
                                         ),
                                       ),
                                       SizedBox(
