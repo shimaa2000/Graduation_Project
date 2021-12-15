@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 
 import 'homeScreen.dart';
 import 'login_screen.dart';
+
 class CompleteScreen extends StatefulWidget {
   @override
   _CompleteScreenState createState() => _CompleteScreenState();
@@ -14,12 +15,13 @@ class CompleteScreen extends StatefulWidget {
 
 class _CompleteScreenState extends State<CompleteScreen> {
   var fullNameController = TextEditingController();
-  var addressController =TextEditingController();
-  var phoneController =TextEditingController();
-  var dateController =TextEditingController();
+  var addressController = TextEditingController();
+  var phoneController = TextEditingController();
+  var dateController = TextEditingController();
   var formKey = GlobalKey<FormState>();
-  int val =1;
+  int val = 1;
   DateTime date = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +31,15 @@ class _CompleteScreenState extends State<CompleteScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Stack(
-                children: [Image.asset('images/background.png', height:MediaQuery.of(context).size.height*0.35,
-                  width:MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                ),
+                children: [
+                  Image.asset(
+                    'images/background.png',
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 23,top: 60),
+                    padding: const EdgeInsets.only(left: 23, top: 60),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -51,94 +56,107 @@ class _CompleteScreenState extends State<CompleteScreen> {
                             fontSize: 54,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
-
-
                           ),
                         ),
                       ],
                     ),
                   ),
-                ],),
+                ],
+              ),
               Container(
                 alignment: Alignment.center,
-                width:320,
+                width: 320,
                 child: Form(
-                  key:formKey ,
-                  child:Column(
+                  key: formKey,
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BoxTextField(
-                          controller:fullNameController ,
-                          autofocus: true ,
-                          label: "Full Name" ,
-                          keyboardType: TextInputType.name ,
+                          controller: fullNameController,
+                          autofocus: true,
+                          label: "Full Name",
+                          keyboardType: TextInputType.name,
                           hint: '',
-                          icon: Icon(Icons.person,),
-                          onTap: (){},
+                          icon: Icon(
+                            Icons.person,
+                          ),
+                          onTap: () {},
                           validator: (value) {
-                            if (value ==null || value.isEmpty) {
+                            if (value == null || value.isEmpty) {
                               return 'please confirm your name';
                             }
                             return null;
-                          }
+                          }),
+                      SizedBox(
+                        height: 10,
                       ),
-                      SizedBox(height: 10,),
                       BoxTextField(
-                          controller:addressController ,
+                          controller: addressController,
                           autofocus: true,
-                          label: "Address" ,
-                          onTap: (){},
-                          keyboardType: TextInputType.streetAddress ,
+                          label: "Address",
+                          onTap: () {},
+                          keyboardType: TextInputType.streetAddress,
                           hint: '',
-                          icon: Icon(Icons.home,),
+                          icon: Icon(
+                            Icons.home,
+                          ),
                           validator: (value) {
-                            if (value ==null || value.isEmpty) {
+                            if (value == null || value.isEmpty) {
                               return 'please confirm your address';
                             }
                             return null;
-                          }
+                          }),
+                      SizedBox(
+                        height: 10,
                       ),
-                      SizedBox(height: 10,),
                       BoxTextField(
-                          controller:phoneController ,
+                          controller: phoneController,
                           autofocus: true,
-                          onTap: (){},
-                          label: 'Phone Number' ,
+                          onTap: () {},
+                          label: 'Phone Number',
                           keyboardType: TextInputType.phone,
                           hint: '',
-                          icon: Icon(Icons.phone,),
+                          icon: Icon(
+                            Icons.phone,
+                          ),
                           validator: (value) {
-                            if (value ==null || value.isEmpty) {
+                            if (value == null || value.isEmpty) {
                               return 'please enter your phone';
                             }
                             return null;
-                          }
+                          }),
+                      SizedBox(
+                        height: 10,
                       ),
-                      SizedBox(height: 10,),
                       BoxTextField(
-                          controller: dateController ,
+                          controller: dateController,
                           autofocus: true,
-                          label: "Birth Year" ,
-                          keyboardType: TextInputType.datetime ,
+                          label: "Birth Year",
+                          keyboardType: TextInputType.datetime,
                           hint: ' ',
-                          onTap: (){
+                          onTap: () {
                             showDatePicker(
                               context: context,
                               initialDate: DateTime.now(),
                               firstDate: DateTime.now(),
-                              lastDate: DateTime.utc(2021,12,31),
-                            ).then((value) =>
-                            dateController.text = DateFormat.yMMMd().format(value!),);
+                              lastDate: DateTime.utc(2021, 12, 31),
+                            ).then(
+                              (value) => dateController.text =
+                                  DateFormat.yMMMd().format(value!),
+                            );
                           },
-                          icon: Icon(Icons.date_range,),
+                          icon: Icon(
+                            Icons.date_range,
+                          ),
                           validator: (value) {
-                            if (value ==null || value.isEmpty) {
+                            if (value == null || value.isEmpty) {
                               return 'please enter your date';
                             }
                             return null;
-                          }
+                          }),
+                      SizedBox(
+                        height: 10,
                       ),
-                      SizedBox(height: 10,),
                       Text('Gender'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -146,89 +164,101 @@ class _CompleteScreenState extends State<CompleteScreen> {
                           Radio(
                             value: 1,
                             groupValue: val,
-                            onChanged: (value){
-                              setState(() {
-                                val =1;
-                              });
-                            },
-                            activeColor: Colors.green,
-                          ),
-                          SizedBox(width: 10,),
-                          Text("Male",style: Theme.of(context).textTheme.bodyText1,),
-                          SizedBox(width:70,),
-                          Radio(
-                            value: 2,
-                            groupValue:val,
                             onChanged: (value) {
                               setState(() {
-                                val =2;
+                                val = 1;
                               });
                             },
                             activeColor: Colors.green,
                           ),
-                          SizedBox(width: 10,),
-                          Text("Female",style: Theme.of(context).textTheme.bodyText1,),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Male",
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          SizedBox(
+                            width: 70,
+                          ),
+                          Radio(
+                            value: 2,
+                            groupValue: val,
+                            onChanged: (value) {
+                              setState(() {
+                                val = 2;
+                              });
+                            },
+                            activeColor: Colors.green,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Female",
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
                         ],
                       ),
-                      SizedBox(height: 10,),
-                      DefaultButton(onPressedFun: (){
-                        if(formKey.currentState!.validate()){
-                          print(fullNameController.text);
-                          print(addressController.text);
-                          print(phoneController.text);
-                          print(dateController.text);
-                          showDialog<String>(
-                            context: context,
-                            builder: (BuildContext context) => AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
-                              ),
-                              title: Container(
-                                width: 150,
-                                height: 150,
-                                child: SvgPicture.asset('images/check.svg',
-                                    fit: BoxFit.contain),
-                              ),
-                              content: Container(
-                                width: double.infinity,
-                                height: 50,
-                                child: Center (
-                                  child: Text(
-                                    'You can have an account now.',
-                                    style: Theme.of(context).textTheme.bodyText1,
-                                  ),
-                                ),
-                              ),
-                              actions: <Widget>[
-                                Center(
-                                  child: DefaultButton(
-                                    onPressedFun: () {
-                                      Navigator.pushNamed(context,StartApp.routeName);
-                                    },
-                                    text: 'Login',
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-
-                      },
-                          text: 'Sign up'
+                      SizedBox(
+                        height: 10,
                       ),
-
+                      DefaultButton(
+                          onPressedFun: () {
+                            if (formKey.currentState!.validate()) {
+                              print(fullNameController.text);
+                              print(addressController.text);
+                              print(phoneController.text);
+                              print(dateController.text);
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  title: Container(
+                                    width: 150,
+                                    height: 150,
+                                    child: SvgPicture.asset('images/check.svg',
+                                        fit: BoxFit.contain),
+                                  ),
+                                  content: Container(
+                                    width: double.infinity,
+                                    height: 50,
+                                    child: Center(
+                                      child: Text(
+                                        'You can have an account now.',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1,
+                                      ),
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    Center(
+                                      child: DefaultButton(
+                                        onPressedFun: () {
+                                          Navigator.pushNamed(
+                                              context, StartApp.routeName);
+                                        },
+                                        text: 'Login',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          },
+                          text: 'Sign up'),
                     ],
-                  ) ,
-
+                  ),
                 ),
               ),
-
-
             ],
           ),
         ),
       ),
-
     );
   }
 }
