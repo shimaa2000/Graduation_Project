@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
+import 'package:graduation_project/layout/rating.dart';
 import 'package:graduation_project/layout/toggel_details.dart';
-import 'package:graduation_project/shared/defaultButton.dart';
 
 class DetailsWidget extends StatefulWidget {
   final String type;
@@ -34,6 +35,8 @@ class DetailsWidget extends StatefulWidget {
 }
 
 class _DetailsWidgetState extends State<DetailsWidget> {
+  var rating = 3.5;
+  bool _isVertical = false;
   bool isFav = false;
   Color active = Colors.deepPurple;
   bool isActive1 = true;
@@ -50,9 +53,10 @@ class _DetailsWidgetState extends State<DetailsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double value = 3.5;
     List<Widget> toggle = [
       ToggleDetails.item(
-          (){},context, widget.type, widget.size, widget.gender, widget.date),
+          () {}, context, widget.type, widget.size, widget.gender, widget.date),
       ToggleDetails.detail(
           context, widget.description, widget.height, widget.width),
       ToggleDetails.review(context)
@@ -120,110 +124,23 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                     children: [
                       Text(
                         widget.title,
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
+                        style: Theme.of(context).textTheme.headline1),
                       Row(
                         children: [
                           Text(
                             widget.price,
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
+                            style: Theme.of(context).textTheme.bodyText1),
                           SizedBox(
                             width: 10,
                           ),
                           Text(
                             'EGP',
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                  ),
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            rate[1] = true;
-                            rate[2] = false;
-                            rate[3] = false;
-                            rate[4] = false;
-                            rate[5] = false;
-                          });
-                        },
-                        child: Icon(
-                          rate[1] == true ? Icons.star : Icons.star_border,
-                          color: Colors.deepPurple,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            rate[2] = true;
-                            rate[2] == true ? rate[1] = true : rate[1] = false;
-                            rate[3] = false;
-                            rate[4] = false;
-                            rate[5] = false;
-                          });
-                        },
-                        child: Icon(
-                          rate[2] == true ? Icons.star : Icons.star_border,
-                          color: Colors.deepPurple,
-                        ),
-                      ),
-                      InkWell(
-                          onTap: () {
-                            setState(() {
-                              rate[3] = true;
-                              rate[3] == true
-                                  ? rate[2] = true
-                                  : rate[2] = false;
-                              rate[3] == true
-                                  ? rate[1] = true
-                                  : rate[1] = false;
-                              rate[4] = false;
-                              rate[5] = false;
-                            });
-                          },
-                          child: Icon(
-                            rate[3] == true ? Icons.star : Icons.star_border,
-                            color: Colors.deepPurple,
-                          )),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            rate[4] = true;
-                            rate[4] == true ? rate[1] = true : rate[1] = false;
-                            rate[4] == true ? rate[2] = true : rate[2] = false;
-                            rate[4] == true ? rate[3] = true : rate[3] = false;
-                            rate[5] = false;
-                          });
-                        },
-                        child: Icon(
-                          rate[4] == true ? Icons.star : Icons.star_border,
-                          color: Colors.deepPurple,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            rate[5] = true;
-                            rate[5] == true ? rate[1] = true : rate[1] = false;
-                            rate[5] == true ? rate[2] = true : rate[2] = false;
-                            rate[5] == true ? rate[3] = true : rate[3] = false;
-                            rate[5] == true ? rate[4] = true : rate[4] = false;
-                          });
-                        },
-                        child: Icon(
-                          rate[5] == true ? Icons.star : Icons.star_border,
-                          color: Colors.deepPurple,
-                        ),
-                      ),
-                    ],
-                  ),
+                            style: Theme.of(context).textTheme.bodyText1)])]),
+                  SizedBox(width: MediaQuery.of(context).size.width*(2.5/7),),
+                  new StarRating(
+                    rating: rating,
+                    onRatingChanged: (rating) => setState(() => this.rating = rating), color: Colors.deepPurple,
+                  )
                 ],
               ),
               Container(

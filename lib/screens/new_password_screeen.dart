@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_project/layout/password_reset_widget.dart';
 import 'package:graduation_project/screens/login_screen.dart';
+import 'package:graduation_project/shared/alert.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 import '../shared/boxtextfield.dart';
 
 class NewPassword extends StatelessWidget {
+  bool isTapped = false;
+
   static const routeName = 'new_password';
 
-  const NewPassword({Key? key}) : super(key: key);
+   NewPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,38 +67,8 @@ class NewPassword extends StatelessWidget {
           height: 10,
         ),
         DefaultButton(
-            onPressedFun: () => showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    title: Container(
-                      width: 150,
-                      height: 150,
-                      child: SvgPicture.asset('images/check.svg',
-                          fit: BoxFit.contain),
-                    ),
-                    content: Container(
-                        width: double.infinity,
-                        height: 50,
-                        child: Center(
-                          child: Text(
-                            'You can login to your account now!',
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        )),
-                    actions: <Widget>[
-                      Center(
-                        child: DefaultButton(
-                          onPressedFun: () {
-                            Navigator.pushNamed(context, LoginScreen.routeName);
-                          },
-                          text: 'Login',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+            onPressedFun: () => Dialogs.yesAbortDialog(context, Text('You can login to your account now!'), 'Cancel', 'Login', () { Navigator.pushNamed(context, LoginScreen.routeName);},(){Navigator.of(context).pop(DialogAction.cancle);
+            }, 'images/check.svg', 200 , 200),
             text: 'Save'),
       ],
     );

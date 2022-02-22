@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
+import 'package:graduation_project/shared/imagePicker.dart';
 import 'add post 2.dart';
 
 class EditPost extends StatefulWidget {
@@ -26,8 +27,6 @@ class _EditPostState extends State<EditPost> {
   final postfor = TextEditingController();
   final Donate = TextEditingController();
 
-  donation? donationv = donation.No;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +44,13 @@ class _EditPostState extends State<EditPost> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SizedBox(height: 18),
+                            Text('Upload photo',
+                                style: Theme.of(context).textTheme.headline5),
+                            SizedBox(height: 35,),
+                            Text('Take a photo',
+                                style: Theme.of(context).textTheme.headline5),
+                            SizedBox(height: 32,),
                             Text("Title", style: Theme.of(context).textTheme.headline5),
                             SizedBox(height: 27,),
                             Text("Description", style: Theme.of(context).textTheme.headline5),
@@ -59,6 +65,27 @@ class _EditPostState extends State<EditPost> {
                         ),
                         Column(
                             children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                child: MaterialButton(
+                                    color: Colors.deepPurple,
+                                    child: Text(
+                                      "From Gallery",
+                                      style: TextStyle(
+                                          color: Colors.white70, fontWeight: FontWeight.bold),
+                                    ),
+                                    onPressed: () => Images().uploadImageFromGallery()
+                                ),
+                              ),
+                              MaterialButton(
+                                  color: Colors.deepPurple,
+                                  child: Text(
+                                    "From Camera",
+                                    style: TextStyle(
+                                        color: Colors.white70, fontWeight: FontWeight.bold),
+                                  ),
+                                  onPressed: ()=> Images().uploadImageFromCamera()
+                              ),
                               Container(
                                 width: MediaQuery.of(context).size.width / 1.5,
                                 height: 50,
@@ -113,13 +140,13 @@ class _EditPostState extends State<EditPost> {
                                       children: [
                                         Container(
                                           width: 20,
-                                          child: ListTile(
-                                            leading: Radio(
-                                                value: donation.No,
-                                                groupValue: donationv,
-                                                onChanged: ( donation? value) { setState(() {donationv = value;}); }
-                                            ),
-                                          ),
+                                          // child: ListTile(
+                                          //   leading: Radio(
+                                          //       value: donation.No,
+                                          //       groupValue: donationv,
+                                          //       onChanged: ( donation? value) { setState(() {donationv = value;}); }
+                                          //   ),
+                                          // ),
                                         ),
                                         SizedBox(width: 10,),
                                         Text('No',style: Theme.of(context).textTheme.headline5,),
@@ -129,18 +156,15 @@ class _EditPostState extends State<EditPost> {
                                     Row(
                                       textBaseline: TextBaseline.ideographic,
                                       children: [
-                                        InkWell(
-                                          onTap:(){setState(() {donationv = donation.No;});},
-                                          child: Container(
-                                            width: 20,
-                                            child: ListTile(
-                                              leading: Radio(
-                                                  value: donation.No,
-                                                  groupValue: donationv,
-                                                  onChanged: ( donation? value) { setState(() {donationv = value ;}); }
-                                              ),
-                                            ),
-                                          ),
+                                        Container(
+                                          width: 20,
+                                          // child: ListTile(
+                                          //   leading: Radio(
+                                          //       value: donation.No,
+                                          //       groupValue: donationv,
+                                          //       onChanged: ( donation? value) { setState(() {donationv = value ;}); }
+                                          //   ),
+                                          // ),
                                         ),
                                         SizedBox(width: 10,),
                                         Text('Yes',style: Theme.of(context).textTheme.headline5,),

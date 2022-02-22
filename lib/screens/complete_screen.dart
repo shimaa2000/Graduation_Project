@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_project/screens/startApp.dart';
+import 'package:graduation_project/shared/alert.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
+import 'package:graduation_project/shared/datePicker.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 import 'package:intl/intl.dart';
 
@@ -135,12 +137,8 @@ class _CompleteScreenState extends State<CompleteScreen> {
                           keyboardType: TextInputType.datetime,
                           hint: ' ',
                           onTap: () {
-                            showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime.now(),
-                              lastDate: DateTime.utc(2021, 12, 31),
-                            ).then(
+                            DatePicker.selectDate(context)
+                            .then(
                               (value) => dateController.text =
                                   DateFormat.yMMMd().format(value!),
                             );
@@ -169,7 +167,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
                                 val = 1;
                               });
                             },
-                            activeColor: Colors.green,
+                            activeColor: Colors.deepPurple,
                           ),
                           SizedBox(
                             width: 10,
@@ -189,7 +187,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
                                 val = 2;
                               });
                             },
-                            activeColor: Colors.green,
+                            activeColor: Colors.deepPurple,
                           ),
                           SizedBox(
                             width: 10,
@@ -210,44 +208,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
                               print(addressController.text);
                               print(phoneController.text);
                               print(dateController.text);
-                              showDialog<String>(
-                                context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                  ),
-                                  title: Container(
-                                    width: 150,
-                                    height: 150,
-                                    child: SvgPicture.asset('images/check.svg',
-                                        fit: BoxFit.contain),
-                                  ),
-                                  content: Container(
-                                    width: double.infinity,
-                                    height: 50,
-                                    child: Center(
-                                      child: Text(
-                                        'You can have an account now.',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1,
-                                      ),
-                                    ),
-                                  ),
-                                  actions: <Widget>[
-                                    Center(
-                                      child: DefaultButton(
-                                        onPressedFun: () {
-                                          Navigator.pushNamed(
-                                              context, StartApp.routeName);
-                                        },
-                                        text: 'Login',
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
+                              Dialogs.yesAbortDialog(context, Text('You have an account now!',textAlign: TextAlign.center,), 'Cancel', 'Ok', () {Navigator.pushNamed(context, HomeScreen.routeName); },(){Navigator.of(context).pop(DialogAction.cancle);}, 'images/check.svg', 200, 200);
                             }
                           },
                           text: 'Sign up'),

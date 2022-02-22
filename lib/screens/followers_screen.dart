@@ -95,6 +95,4 @@ class _FollowersScreenState extends State<FollowersScreen> {
       ),
     ],
   );
-
-
 }

@@ -8,9 +8,7 @@ import 'package:graduation_project/shared/defaultButton.dart';
 
 class LoginScreen extends StatelessWidget {
   static const routeName = 'login_screen';
-
   const LoginScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final userController = TextEditingController();
@@ -93,12 +91,7 @@ class LoginScreen extends StatelessWidget {
                     'Forget Password?',
                     style: TextStyle(
                         fontSize: 15, color: Theme.of(context).primaryColor),
-                  ),
-                ),),
+                  ),),),
                 DefaultButton(onPressedFun: (){Navigator.pushNamed(context, StartApp.routeName);}, text: 'Login'),
           ],
-        ),
-      ),
-    );
-  }
-}
+        ),),);}}

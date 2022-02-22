@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/add%20post%202.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
+import 'package:graduation_project/shared/imagePicker.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'image_screen.dart';
 
@@ -94,25 +96,21 @@ class _AddPostState extends State<AddPost> {
                             child: MaterialButton(
                               color: Colors.deepPurple,
                               child: Text(
-                                "Pick Image from Gallery",
+                                "From Gallery",
                                 style: TextStyle(
                                     color: Colors.white70, fontWeight: FontWeight.bold),
                               ),
-                              onPressed: () {
-                                _handleURLButtonPress(context, ImageSourceType.gallery);
-                              },
+                              onPressed: () => Images().uploadImageFromGallery()
                             ),
                           ),
                           MaterialButton(
                             color: Colors.deepPurple,
                             child: Text(
-                              "Pick Image from Camera",
+                              "From Camera",
                               style: TextStyle(
                                   color: Colors.white70, fontWeight: FontWeight.bold),
                             ),
-                            onPressed: () {
-                              _handleURLButtonPress(context, ImageSourceType.camera);
-                            },
+                            onPressed: ()=> Images().uploadImageFromCamera()
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width / 1.8,
@@ -246,4 +244,8 @@ class _AddPostState extends State<AddPost> {
       ),
     );
   }
+}
+
+void pichImage() async{
+  var image = await ImagePicker().pickImage(source: ImageSource.camera);
 }

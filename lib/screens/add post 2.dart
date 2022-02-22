@@ -1,31 +1,28 @@
-
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
+import 'package:graduation_project/shared/datePicker.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
+import 'package:graduation_project/shared/radioButton.dart';
 import 'package:intl/intl.dart';
 
 class AddPost2 extends StatefulWidget {
-  static const routeName='add_post2';
+  static const routeName = 'add_post2';
   const AddPost2({Key? key}) : super(key: key);
 
   @override
   _AddPost2State createState() => _AddPost2State();
 }
-enum gender{male ,female}
-enum donation{Yes ,No}
-enum postFor{Rent, Sale}
+
 class _AddPost2State extends State<AddPost2> {
   final forHeight = TextEditingController();
   final forWeight = TextEditingController();
   final dateController = TextEditingController();
   final priceController = TextEditingController();
-  gender? genderType=gender.male;
-  postFor? postType=postFor.Rent;
-  donation? donationV=donation.No;
+  String genderType = 'male';
+  String postType = 'rent';
+  String donationV = 'yes';
   DateTime date = DateTime.now();
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,38 +33,52 @@ class _AddPost2State extends State<AddPost2> {
           children: [
             Padding(
               padding:
-              const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
+                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
               child: Text(
                 'Enter Your Product data',
                 style: Theme.of(context).textTheme.headline5,
               ),
             ),
-            Padding(
-            padding: EdgeInsets.all(20)
-            ,child:Row(
+            Row(
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("for Height", style: Theme.of(context).textTheme.headline5),
-                    SizedBox(height: 27,),
-                    Text("for Weight", style: Theme.of(context).textTheme.headline5),
-                    SizedBox(height: 27,),
+                    Text("for Height",
+                        style: Theme.of(context).textTheme.headline5),
+                    SizedBox(
+                      height: 27,
+                    ),
+                    Text("for Weight",
+                        style: Theme.of(context).textTheme.headline5),
+                    SizedBox(
+                      height: 27,
+                    ),
                     Text("Available form",
                         style: Theme.of(context).textTheme.headline5),
-                    SizedBox(height: 27,),
-                    Text("Price", style: Theme.of(context).textTheme.headline5),
-                    SizedBox(height: 27,),
-                    Text("Gender", style: Theme.of(context).textTheme.headline5),
-                    SizedBox(height: 27,),
-                    Text("Post for", style: Theme.of(context).textTheme.headline5),
-                    SizedBox(height: 27,),
-                    Text("Donation", style: Theme.of(context).textTheme.headline5),
-
+                    SizedBox(
+                      height: 27,
+                    ),
+                    Text("Price",
+                        style: Theme.of(context).textTheme.headline5),
+                    SizedBox(
+                      height: 27,
+                    ),
+                    Text("Gender",
+                        style: Theme.of(context).textTheme.headline5),
+                    SizedBox(
+                      height: 27,
+                    ),
+                    Text("Post for",
+                        style: Theme.of(context).textTheme.headline5),
+                    SizedBox(
+                      height: 27,
+                    ),
+                    Text("Donation",
+                        style: Theme.of(context).textTheme.headline5),
                   ],
                 ),
-
                 Column(
                   children: [
                     Container(
@@ -87,7 +98,6 @@ class _AddPost2State extends State<AddPost2> {
                           label: '',
                           onTap: () {}),
                     ),
-
                     Container(
                       width: MediaQuery.of(context).size.width / 1.8,
                       height: 50,
@@ -109,31 +119,27 @@ class _AddPost2State extends State<AddPost2> {
                       width: MediaQuery.of(context).size.width / 1.8,
                       height: 50,
                       child: BoxTextField(
-                          controller: dateController ,
+                          controller: dateController,
                           autofocus: true,
-                          label: "" ,
-                          keyboardType: TextInputType.datetime ,
+                          label: "",
+                          keyboardType: TextInputType.datetime,
                           hint: ' ',
-                          onTap: (){
-                            showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime.now(),
-                              lastDate: DateTime.utc(2021,12,31),
-                            ).then((value) =>
-                            dateController.text = DateFormat.yMMMd().format(value!),);
+                          onTap: () {
+                            DatePicker.selectDate(context).then(
+                              (value) => dateController.text =
+                                  DateFormat.yMMMd().format(value!),
+                            );
                           },
-                          icon: Icon(Icons.date_range,),
+                          icon: Icon(
+                            Icons.date_range,
+                          ),
                           validator: (value) {
-                            if (value ==null || value.isEmpty) {
+                            if (value == null || value.isEmpty) {
                               return 'please enter your date';
                             }
                             return null;
-                          }
-                      ),
+                          }),
                     ),
-
-
                     Container(
                       width: MediaQuery.of(context).size.width / 1.8,
                       height: 50,
@@ -152,162 +158,87 @@ class _AddPost2State extends State<AddPost2> {
                           label: '',
                           onTap: () {}),
                     ),
-                    SizedBox(width: 40,),
-                    Row(children: [
-                      Row(
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                width: 20,
-                                child: ListTile(
-                                  leading: Radio(
-                                    value: gender.male,
-                                    groupValue: genderType,
-                                    onChanged: ( gender? value) { setState(() {
-                                      genderType = value ;
-                                    }); },
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 10,),
-                              Text('Male',style: Theme.of(context).textTheme.headline5,),
-                            ],
-                          ),
-                          SizedBox(width: 30,),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 40,
+                      child: RadioButtonClass(
+                        title1: 'male',
+                        title2: 'female',
+                        value1: 'male',
+                        value2: 'female',
+                        groupValue: genderType,
+                        onChange1: (value) {
+                          setState(() {
+                            genderType = 'male';
+                          });},
+                        onChange2: (value) {
+                          setState(() {
+                            genderType = 'female';
+                          });
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 7.5,
+                    ),
+                    Container(
+                      height: 40,
+                      child: RadioButtonClass(
+                        title1: 'Rent',
+                        title2: 'Sale',
+                        value1: 'rent',
+                        value2: 'sale',
+                        groupValue: postType,
+                        onChange1: (value) {
+                          setState(() {
+                            postType = 'rent' ;
+                          });
 
-                          Row(
-                            textBaseline: TextBaseline.ideographic,
-                            children: [
-                              InkWell(
-                                onTap:(){
-                                  setState(() {
-                                    genderType = gender.male;
-                                  });
-                                },
-                                child: Container(
-                                  width: 25,
-                                  child: ListTile(
-                                    leading: Radio(
-                                      value: gender.female,
-                                      groupValue: genderType,
-                                      onChanged: ( gender? value) { setState(() {
-                                        genderType = value;
-                                      }); },
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 10,),
-                              Text('Female',style: Theme.of(context).textTheme.headline5,),
-                            ],
-                          ),
-                        ],
-                      )
-                    ],),
-                    Row(children: [
-                      Row(
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                width: 20,
-                                child: ListTile(
-                                  leading: Radio<postFor>(
-                                    value: postFor.Rent,
-                                    groupValue: postType,
-                                    onChanged: (value) { setState(() {
-                                      postType = value ;
-                                    }); },
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 10,),
-                              Text('Rent',style: Theme.of(context).textTheme.headline5,),
-                            ],
-                          ),
-                          SizedBox(width: 30,),
+                        },
+                        onChange2: (value) {
+                          setState(() {
+                            postType = 'sale';
+                          });
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 7.5,
+                    ),
+                    Container(
+                      height: 40,
+                      child: RadioButtonClass(
+                        title1: 'Yes',
+                        title2: 'No',
+                        value1: 'yes',
+                        value2: 'no',
+                        groupValue: donationV,
+                        onChange1: (value) {
+                          setState(() {
+                            donationV = 'yes';
+                          });
 
-                          Row(
-                            textBaseline: TextBaseline.ideographic,
-                            children: [
-                              Container(
-                                width: 25,
-                                child: ListTile(
-                                  leading: Radio<postFor>(
-                                    value: postFor.Sale,
-                                    groupValue: postType,
-                                    onChanged: (value) { setState(() {
-                                      postType = value;
-                                    }); },
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 10,),
-                              Text('Sale',style: Theme.of(context).textTheme.headline5,),
-                            ],
-                          ),
-                        ],
-                      )
-                    ],),
-                    Row(children: [
-
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                width: 20,
-                                child: ListTile(
-                                  leading: Radio(
-                                    value: donation.No,
-                                    groupValue: donationV,
-                                    onChanged: ( donation? value) { setState(() {
-                                      donationV = value ;
-                                    }); },
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 10,),
-                              Text('No',style: Theme.of(context).textTheme.headline5,),
-                            ],
-                          ),
-                          SizedBox(width: 30,),
-
-                          Row(
-                            textBaseline: TextBaseline.ideographic,
-                            children: [
-                               Container(
-                                  width: 25,
-                                  child: ListTile(
-                                    leading: Radio<donation>(
-                                      value: donation.Yes,
-                                      groupValue: donationV,
-                                      onChanged: (value) { setState(() {
-                                        donationV = value;
-                                      }); },
-                                    ),
-                                  ),
-                                ),
-
-                              SizedBox(width: 10,),
-                              Text('Yes',style: Theme.of(context).textTheme.headline5,),
-                            ],
-                          ),
-                        ],
-                      )
-                    ],),
+                        },
+                        onChange2: (value) {
+                          setState(() {
+                            donationV = 'no';
+                          });
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ],
-            ),),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15.0),
-              child: DefaultButton(onPressedFun: (){
-                Navigator.pushNamed(context, StartApp.routeName);
-              }, text: 'Next'),
+              child: DefaultButton(
+                  onPressedFun: () {
+                    Navigator.pushNamed(context, StartApp.routeName);
+                  },
+                  text: 'Next'),
             ),
           ],
         ),

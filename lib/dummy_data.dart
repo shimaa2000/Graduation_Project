@@ -37,6 +37,16 @@ const DUMMY_NOTIFICATION = const [
     notificationMessage: 'notificationMessage',
   ),
 ];
+const DUMMY_MY_POSTS=const[
+  'images/download.jpg',
+  'images/photourl.jpg',
+  'images/download.jpg',
+  'images/photourl.jpg',
+  'images/photourl.jpg',
+  'images/download.jpg',
+  'images/download.jpg',
+  'images/download.jpg',
+];
 const DUMMY_DATA = const [
   PostModel(
     id: 1,
@@ -128,19 +138,5 @@ const DUMMY_DATA = const [
     width: '',
     height: '',
   ),
-  PostModel(
-    id: 7,
-    name: 'username7',
-    date: '',
-    ImgUrl: 'images/sad.png',
-    title: 'For rent',
-    price: 150,
-    gender: '',
-    type: '',
-    size: 'L',
-    description:
-        "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
-    width: '',
-    height: '',
-  ),
+
 ];

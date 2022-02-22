@@ -13,7 +13,7 @@ class ResetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final userController = TextEditingController();
     BoxTextField boxTextField = BoxTextField(
-      onTap: (){},
+      onTap: () {},
       controller: userController,
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -37,10 +37,16 @@ class ResetPasswordScreen extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           child: boxTextField,
         ),
-        SizedBox(
-          height: 60,
-        ),
-        DefaultButton(onPressedFun: (){Navigator.pushNamed(context, AccountVerification.routeName);}, text: 'Send Code'),
+
+        Expanded(
+            child: Align(
+          alignment: Alignment.bottomCenter,
+          child: DefaultButton(
+              onPressedFun: () {
+                Navigator.pushNamed(context, AccountVerification.routeName);
+              },
+              text: 'Send Code'),
+        ))
       ],
     );
     String fistLineAfterEmoji =

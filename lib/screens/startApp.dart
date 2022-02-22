@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/activity_taps.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/screens/profile.dart';
-import 'massege_screen.dart';
 class StartApp extends StatefulWidget {
   static const routeName='start_app';
   const StartApp({Key? key}) : super(key: key);
@@ -13,7 +12,7 @@ class StartApp extends StatefulWidget {
 
 class _StartAppState extends State<StartApp> {
   int currentIndex= 0;
- List <Widget> pages =[HomeScreen(), Profile(),ActivityTaps(), Message() ];
+ List <Widget> pages =[HomeScreen(), Profile(),ActivityTaps(), ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,10 +39,7 @@ class _StartAppState extends State<StartApp> {
             icon: Icon(Icons.local_activity),
             label: 'Activites',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            label: 'Messages',
-          ),
+
         ],
       ),
     );
