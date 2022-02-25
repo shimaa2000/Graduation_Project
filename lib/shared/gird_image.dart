@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:graduation_project/shared/imageContanier.dart';
+import 'package:graduation_project/shared/imageContainer.dart';
 
 class PhotoGrid extends StatefulWidget {
   final int maxImages;

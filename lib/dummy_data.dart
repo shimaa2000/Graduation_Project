@@ -5,7 +5,7 @@ const DUMMY_NOTIFICATION = const [
   NotificationModel(
     date: '10-11-2021',
     url:
-        'https://www.woolha.com/media/2020/03/flutter-circleavatar-minradius-maxradius.jpg',
+    'https://www.woolha.com/media/2020/03/flutter-circleavatar-minradius-maxradius.jpg',
     notificationMessage: 'notificationMessage',
   ),
 
@@ -47,6 +47,7 @@ const DUMMY_MY_POSTS=const[
   'images/download.jpg',
   'images/download.jpg',
 ];
+
 const DUMMY_DATA = const [
   PostModel(
     id: 1,
@@ -58,7 +59,7 @@ const DUMMY_DATA = const [
     size: 'L',
     type: '',
     description:
-        "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
+    "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
     width: '',
     gender: '',
     height: '',
@@ -74,7 +75,7 @@ const DUMMY_DATA = const [
     gender: 'female',
     type: '',
     description:
-        "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
+    "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
     width: '60',
     height: '160',
   ),
@@ -89,7 +90,7 @@ const DUMMY_DATA = const [
     size: 'xL',
     type: '',
     description:
-        "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
+    "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
     width: '',
     height: '',
   ),
@@ -104,7 +105,7 @@ const DUMMY_DATA = const [
     type: '',
     size: 'L',
     description:
-        "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
+    "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
     width: '',
     height: '',
   ),
@@ -119,7 +120,7 @@ const DUMMY_DATA = const [
     type: '',
     size: 'M',
     description:
-        "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
+    "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
     width: '',
     height: '',
   ),
@@ -134,7 +135,7 @@ const DUMMY_DATA = const [
     size: 'L',
     type: '',
     description:
-        "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
+    "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
     width: '',
     height: '',
   ),

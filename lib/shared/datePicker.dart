@@ -6,6 +6,7 @@ class DatePicker {
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime.now(),
-        lastDate: DateTime.utc(2023, 12, 31));
+        lastDate: DateTime.utc(2024, 12, 31));
   }
+
 }

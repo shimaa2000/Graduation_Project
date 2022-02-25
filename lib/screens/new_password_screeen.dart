@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_project/layout/password_reset_widget.dart';
 import 'package:graduation_project/screens/login_screen.dart';
 import 'package:graduation_project/shared/alert.dart';
@@ -8,40 +7,32 @@ import '../shared/boxtextfield.dart';
 
 class NewPassword extends StatelessWidget {
   bool isTapped = false;
-
   static const routeName = 'new_password';
-
    NewPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final _controller1 = TextEditingController();
     final _controller2 = TextEditingController();
-    BoxTextField boxTextField = BoxTextField(
-      onTap: (){},
-      obsecure: true,
-      controller: _controller1,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter some text';
-        }
-        return null;
-      },
-      hint: '',
-      icon: Icon(
-        Icons.lock,
-        color: Colors.black54,
-      ),
-      label: 'New Password',
-    );
     String emojiUrl = '';
     String smallText = 'Reset';
     String bigText = 'Password';
+    String fistLineAfterEmoji = 'You can have a new password';
+    String secondLine = 'for your account now!';
     Widget inContainer = Column(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: boxTextField,
+          child:  BoxTextField(
+            onTap: (){},
+            obsecure: true,
+            controller: _controller1,
+            validatorText: 'please enter password',
+            icon: Icon(
+              Icons.lock,
+              color: Colors.black54,
+            ),
+          ),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15),
@@ -49,18 +40,11 @@ class NewPassword extends StatelessWidget {
             onTap: (){},
             obsecure: true,
             controller: _controller2,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-            hint: '',
+            validatorText: 'please confirm password',
             icon: Icon(
               Icons.lock,
               color: Colors.black54,
             ),
-            label: 'Confirm Password',
           ),
         ),
         SizedBox(
@@ -72,8 +56,7 @@ class NewPassword extends StatelessWidget {
             text: 'Save'),
       ],
     );
-    String fistLineAfterEmoji = 'You can have a new password';
-    String secondLine = 'for your account now!';
+
 
     return PasswordResetWidget(
         emojiUrl: emojiUrl,

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/screens/reset_password_screen.dart';
 import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
@@ -50,35 +49,21 @@ class LoginScreen extends StatelessWidget {
             BoxTextField(
               onTap: (){},
               controller: userController,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              hint: '',
+              validatorText: 'please enter name',
               icon: Icon(
                 Icons.person,
                 color: Colors.black54,
               ),
-              label: 'Username',
             ),
             BoxTextField(
               onTap: (){},
               obsecure: true,
               controller: passController,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              hint: '',
+              validatorText: 'please enter password',
               icon: Icon(
                 Icons.lock,
                 color: Colors.black54,
               ),
-              label: 'Password',
             ),
             Container(
                 alignment: Alignment.bottomRight,

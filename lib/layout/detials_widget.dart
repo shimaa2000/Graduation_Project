@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:graduation_project/layout/rating.dart';
 import 'package:graduation_project/layout/toggel_details.dart';
 
@@ -42,13 +41,6 @@ class _DetailsWidgetState extends State<DetailsWidget> {
   bool isActive1 = true;
   bool isActive2 = false;
   bool isActive3 = false;
-  Map<int, bool> rate = {
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    5: false,
-  };
   int listIndex = 0;
 
   @override
@@ -56,7 +48,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
     double value = 3.5;
     List<Widget> toggle = [
       ToggleDetails.item(
-          () {}, context, widget.type, widget.size, widget.gender, widget.date),
+              () {}, context, widget.type, widget.size, widget.gender, widget.date),
       ToggleDetails.detail(
           context, widget.description, widget.height, widget.width),
       ToggleDetails.review(context)
@@ -91,27 +83,27 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                     padding: EdgeInsets.all(30),
                     child: isFav
                         ? IconButton(
-                            onPressed: () {
-                              setState(() {
-                                isFav = !isFav;
-                              });
-                            },
-                            icon: Icon(Icons.favorite),
-                            iconSize: 35,
-                            color: Colors.deepPurple,
-                          )
+                      onPressed: () {
+                        setState(() {
+                          isFav = !isFav;
+                        });
+                      },
+                      icon: Icon(Icons.favorite),
+                      iconSize: 35,
+                      color: Colors.deepPurple,
+                    )
                         : IconButton(
-                            onPressed: () {
-                              setState(() {
-                                isFav = !isFav;
-                              });
-                            },
-                            icon: Icon(
-                              Icons.favorite_border,
-                            ),
-                            iconSize: 35,
-                            color: Colors.deepPurple,
-                          ),
+                      onPressed: () {
+                        setState(() {
+                          isFav = !isFav;
+                        });
+                      },
+                      icon: Icon(
+                        Icons.favorite_border,
+                      ),
+                      iconSize: 35,
+                      color: Colors.deepPurple,
+                    ),
                   ),
                 ],
               ),
@@ -121,21 +113,21 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                     width: 15,
                   ),
                   Column(
-                    children: [
-                      Text(
-                        widget.title,
-                        style: Theme.of(context).textTheme.headline1),
-                      Row(
-                        children: [
-                          Text(
-                            widget.price,
-                            style: Theme.of(context).textTheme.bodyText1),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'EGP',
-                            style: Theme.of(context).textTheme.bodyText1)])]),
+                      children: [
+                        Text(
+                            widget.title,
+                            style: Theme.of(context).textTheme.headline1),
+                        Row(
+                            children: [
+                              Text(
+                                  widget.price,
+                                  style: Theme.of(context).textTheme.bodyText1),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                  'EGP',
+                                  style: Theme.of(context).textTheme.bodyText1)])]),
                   SizedBox(width: MediaQuery.of(context).size.width*(2.5/7),),
                   new StarRating(
                     rating: rating,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/shared/defaultButton.dart';
 class FollowersScreen extends StatefulWidget {
   const FollowersScreen({Key? key}) : super(key: key);
   @override
@@ -14,7 +13,6 @@ class _FollowersScreenState extends State<FollowersScreen> {
           padding: const EdgeInsets.all(22.0),
           child: Column(
             children: [
-
               Expanded(
                 child: ListView.separated(
                   itemBuilder: (context , index) => buildConnectionItem(),

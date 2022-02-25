@@ -1,32 +1,24 @@
-
 import 'package:flutter/material.dart';
+import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
+import 'package:graduation_project/shared/defaultButton.dart';
 import 'package:graduation_project/shared/imagePicker.dart';
-import 'add post 2.dart';
+import 'package:graduation_project/shared/radioButton.dart';
 
 class EditPost extends StatefulWidget {
-  static const routeName = 'edit_post';
-
+ static const routeName='edit_post';
   const EditPost({Key? key}) : super(key: key);
-
   @override
-  _EditPostState createstate() => _EditPostState();
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
-
+  _EditPostState createState() => _EditPostState();
 }
-
-class _EditPostState extends State<EditPost> {
+class _EditPostState extends State<EditPost>{
   final Title = TextEditingController();
   final Description = TextEditingController();
   final Price = TextEditingController();
   final postfor = TextEditingController();
   final Donate = TextEditingController();
-
+  String postType = 'rent';
+  String donationV = 'yes';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +32,7 @@ class _EditPostState extends State<EditPost> {
                   ),
                   Row(
                       children: [
+                        Padding(padding: const EdgeInsets.only(left: 10)),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,14 +84,8 @@ class _EditPostState extends State<EditPost> {
                                 height: 50,
                                 child: BoxTextField(
                                     controller: Title,
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return " Enter The Title ";
-                                      }
-                                    },
-                                    hint: "",
+                                    validatorText: 'please enter title',
                                     icon: Icon(Icons.height),
-                                    label: '',
                                     onTap: () {}
                                 ),
                               ),
@@ -107,14 +94,8 @@ class _EditPostState extends State<EditPost> {
                                 height: 50,
                                 child: BoxTextField(
                                     controller: Description,
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return " Enter The Description ";
-                                      }
-                                    } ,
-                                    hint: "",
+                                    validatorText: 'please enter description' ,
                                     icon: Icon(Icons.monitor_weight,),
-                                    label: '',
                                     onTap: () {}
                                 ),
                               ),
@@ -123,62 +104,61 @@ class _EditPostState extends State<EditPost> {
                                 height: 50,
                                 child: BoxTextField(
                                     controller: Price,
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return " Enter The Price";
-                                      }
-                                    } ,
-                                    hint: "",
+                                    validatorText: 'please enter price' ,
                                     icon: Icon(Icons.monitor_weight),
-                                    label: '',
                                     onTap: () {}
                                 ),
                               ),
-                              Row(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 20,
-                                          // child: ListTile(
-                                          //   leading: Radio(
-                                          //       value: donation.No,
-                                          //       groupValue: donationv,
-                                          //       onChanged: ( donation? value) { setState(() {donationv = value;}); }
-                                          //   ),
-                                          // ),
-                                        ),
-                                        SizedBox(width: 10,),
-                                        Text('No',style: Theme.of(context).textTheme.headline5,),
-                                      ],
-                                    ),
-                                    SizedBox(width: 30,),
-                                    Row(
-                                      textBaseline: TextBaseline.ideographic,
-                                      children: [
-                                        Container(
-                                          width: 20,
-                                          // child: ListTile(
-                                          //   leading: Radio(
-                                          //       value: donation.No,
-                                          //       groupValue: donationv,
-                                          //       onChanged: ( donation? value) { setState(() {donationv = value ;}); }
-                                          //   ),
-                                          // ),
-                                        ),
-                                        SizedBox(width: 10,),
-                                        Text('Yes',style: Theme.of(context).textTheme.headline5,),
-                                      ],
-                                    ),
-                                  ]
-                              )
-                            ]
-                        )
-                      ]
-                  )
-                ]
-            )
-        )
+                              Container(
+                                child: RadioButtonClass(value1: 'rent',
+                                  value2: 'sale',
+                                  title1: 'rent',
+                                  title2: 'sale',
+                                  groupValue: postType,
+                                  onChange1: (value){
+                                    setState(() {
+                                      postType='rent';
+                                    });
+                                  } ,
+                                  onChange2: (value){
+                                    setState(() {
+                                      postType='sale';
+                                    });
+                                  },
+                                ),
+
+                              ),
+                              SizedBox(width: 30,),
+                              Container(
+                                child: RadioButtonClass(value1: 'No',
+                                  value2: 'Yes',
+                                  title1: 'No',
+                                  title2: 'Yes',
+                                  groupValue: donationV,
+                                  onChange1: (value){
+                                    setState(() {
+                                      donationV='No';
+                                    });
+                                  } ,
+                                  onChange2: (value){
+                                    setState(() {
+                                      donationV='Yes';
+                                    });
+                                  },
+                                ),
+                              ),
+                            ],
+                        ),
+                      ],
+                  ),
+                  SizedBox(height: 30,),
+                  DefaultButton(onPressedFun: (){
+                    Navigator.of(context).pushNamed(DetailsScreen.routeName);
+                  }, text: 'Save')
+                ],
+            ),
+        ),
     );
   }
 }
+

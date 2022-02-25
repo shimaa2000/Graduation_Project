@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/shared/bottomForDetails.dart';
+import 'package:graduation_project/shared/circular_container.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
+//import 'package:path/path.dart';
 
 class ToggleDetails {
   static Widget item(
-      Function function,
+    Function function,
     BuildContext ctx,
     String type,
     String size,
@@ -25,17 +28,23 @@ class ToggleDetails {
                     style: Theme.of(ctx).textTheme.headline3,
                     textAlign: TextAlign.start,
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     'Size : ',
                     style: Theme.of(ctx).textTheme.headline3,
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     'Gender : ',
                     style: Theme.of(ctx).textTheme.headline3,
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     'Published : ',
                     style: Theme.of(ctx).textTheme.headline3,
@@ -52,17 +61,23 @@ class ToggleDetails {
                     type,
                     style: Theme.of(ctx).textTheme.headline5,
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     size,
                     style: Theme.of(ctx).textTheme.headline5,
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     gender,
                     style: Theme.of(ctx).textTheme.headline5,
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     date,
                     style: Theme.of(ctx).textTheme.headline5,
@@ -71,22 +86,25 @@ class ToggleDetails {
               ),
             ],
           ),
-          SizedBox(height: 30,),
-          DefaultButton(onPressedFun: function, text: 'Order'),
+          SizedBox(
+            height: 30,
+          ),
+          DefaultButton(
+              onPressedFun: () {
+                bottomForDetails(ctx);
+              },
+              text: 'Order'),
         ],
       ),
     );
   }
 
-  static Widget detail(BuildContext context ,String description,String height,String width) {
-    return Container(
+  static Widget detail(
+      BuildContext context, String description, String height, String width) {
+    return CircularContainer(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height/2,
-      margin: const EdgeInsets.all(15.0),
-      padding: const EdgeInsets.all(10.0),
-
-      decoration:
-      BoxDecoration(border: Border.all(width: 2.5,color: Colors.deepPurple),borderRadius: BorderRadius.circular(20)),
+      height: MediaQuery.of(context).size.height / 2,
+      padding: 10,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -107,7 +125,8 @@ class ToggleDetails {
             style: Theme.of(context).textTheme.headline3,
             textAlign: TextAlign.start,
           ),
-          Row(crossAxisAlignment: CrossAxisAlignment.baseline,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.baseline,
             textBaseline: TextBaseline.alphabetic,
             children: [
               Text(
@@ -117,12 +136,17 @@ class ToggleDetails {
               SizedBox(
                 width: MediaQuery.of(context).size.width / 4,
               ),
-              Text(height,style: Theme.of(context).textTheme.bodyText1,)
-          ],),
+              Text(
+                height,
+                style: Theme.of(context).textTheme.bodyText1,
+              )
+            ],
+          ),
           SizedBox(
             height: 10,
           ),
-          Row(crossAxisAlignment: CrossAxisAlignment.baseline,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.baseline,
             textBaseline: TextBaseline.alphabetic,
             children: [
               Text(
@@ -132,14 +156,22 @@ class ToggleDetails {
               SizedBox(
                 width: MediaQuery.of(context).size.width / 4,
               ),
-              Text(width,style: Theme.of(context).textTheme.bodyText1,)
-            ],),
+              Text(
+                width,
+                style: Theme.of(context).textTheme.bodyText1,
+              )
+            ],
+          ),
         ],
       ),
     );
   }
 
   static Widget review(BuildContext context) {
-    return Center(child: Text('No Reviews yet .',style: Theme.of(context).textTheme.headline3,));
+    return Center(
+        child: Text(
+      'No Reviews yet...',
+      style: Theme.of(context).textTheme.headline3,
+    ));
   }
 }

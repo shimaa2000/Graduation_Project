@@ -6,27 +6,18 @@ import '../shared/boxtextfield.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   static const routeName = 'reset_password';
-
   const ResetPasswordScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final userController = TextEditingController();
     BoxTextField boxTextField = BoxTextField(
-      onTap: () {},
+      onTap: (){},
       controller: userController,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter some text';
-        }
-        return null;
-      },
-      hint: '',
+      validatorText: 'please enter code',
       icon: Icon(
         Icons.email,
         color: Colors.black54,
       ),
-      label: 'E-mail',
     );
     String emojiUrl = 'images/sad.png';
     String smallText = 'Forget';
@@ -37,20 +28,13 @@ class ResetPasswordScreen extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           child: boxTextField,
         ),
-
-        Expanded(
-            child: Align(
-          alignment: Alignment.bottomCenter,
-          child: DefaultButton(
-              onPressedFun: () {
-                Navigator.pushNamed(context, AccountVerification.routeName);
-              },
-              text: 'Send Code'),
-        ))
+        SizedBox(
+          height: 60,
+        ),
+        DefaultButton(onPressedFun: (){Navigator.pushNamed(context, AccountVerification.routeName);}, text: 'Send Code'),
       ],
     );
-    String fistLineAfterEmoji =
-        'Enter your email associated with this account ';
+    String fistLineAfterEmoji = 'Enter your email associated with this account ';
     String secondLine = 'for password recovery!';
 
     return PasswordResetWidget(

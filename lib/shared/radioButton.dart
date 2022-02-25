@@ -11,7 +11,6 @@ class RadioButtonClass extends StatelessWidget {
   final ValueChanged<dynamic> onChange1;
   final ValueChanged<dynamic> onChange2;
 
-  //late var para;
 
   RadioButtonClass({
     Key? key,
@@ -22,8 +21,6 @@ class RadioButtonClass extends StatelessWidget {
     required this.groupValue,
     required this.onChange1,
     required this.onChange2,
-
-    // required this.para,
   }) : super(key: key);
 
   @override

@@ -24,7 +24,10 @@ class _SearchResultState extends State<SearchResult> {
           children: [
             Container(
               child: GestureDetector(
-                onTap: ()  {Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen()));},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SearchScreen()));
+                },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 16.0, horizontal: 10.0),
@@ -51,7 +54,7 @@ class _SearchResultState extends State<SearchResult> {
                           Text(
                             'Search',
                             style:
-                            TextStyle(color: Colors.grey, fontSize: 16.0),
+                                TextStyle(color: Colors.grey, fontSize: 16.0),
                           )
                         ],
                       ),
@@ -60,75 +63,81 @@ class _SearchResultState extends State<SearchResult> {
                 ),
               ),
             ),
-            Center(child: Container(child: Column(
-              children: [
-                FittedBox(
-                  fit: BoxFit.contain,
-                  child: Row(
-                    children: [
-                      Column(children: [
-                        ...DUMMY_DATA
-                            .map(
-                              (data) => InkWell(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                DetailsScreen.routeName,
-                                arguments: data.id,
-                              );
-                              index = data.id - 1;
-                            },
-                            child: Column(
-                              children: [
-                                CardWidget(
-                                  name: data.name,
-                                  date: data.date,
-                                  imgUrl: data.ImgUrl,
-                                  title: data.title,
-                                  price: data.price,
-                                  size: data.size,
-                                  isFav: data.isFav,
-                                ),
-                              ],
-                            ),
+            Center(
+              child: Container(
+                child: Column(
+                  children: [
+                    FittedBox(
+                      fit: BoxFit.contain,
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              ...DUMMY_DATA
+                                  .map(
+                                    (data) => InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).pushNamed(
+                                          DetailsScreen.routeName,
+                                          arguments: data.id,
+                                        );
+                                        index = data.id - 1;
+                                      },
+                                      child: Column(
+                                        children: [
+                                          CardWidget(
+                                            name: data.name,
+                                            date: data.date,
+                                            imgUrl: data.ImgUrl,
+                                            title: data.title,
+                                            price: data.price,
+                                            size: data.size,
+                                            isFav: data.isFav,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            ],
                           ),
-                        )
-                            .toList(),
-
-                      ],),
-                      Column(children: [
-                        ...DUMMY_DATA
-                            .map(
-                              (data) => InkWell(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                DetailsScreen.routeName,
-                                arguments: data.id,
-                              );
-                              index = data.id - 1;
-                            },
-                            child: Column(
-                              children: [
-                                CardWidget(
-                                  name: data.name,
-                                  date: data.date,
-                                  imgUrl: data.ImgUrl,
-                                  title: data.title,
-                                  price: data.price,
-                                  size: data.size,
-                                  isFav: data.isFav,
-                                ),
-                              ],
-                            ),
+                          Column(
+                            children: [
+                              ...DUMMY_DATA
+                                  .map(
+                                    (data) => InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).pushNamed(
+                                          DetailsScreen.routeName,
+                                          arguments: data.id,
+                                        );
+                                        index = data.id - 1;
+                                      },
+                                      child: Column(
+                                        children: [
+                                          CardWidget(
+                                            name: data.name,
+                                            date: data.date,
+                                            imgUrl: data.ImgUrl,
+                                            title: data.title,
+                                            price: data.price,
+                                            size: data.size,
+                                            isFav: data.isFav,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            ],
                           ),
-                        )
-                            .toList(),
-
-                      ],),
-                    ],
-                  ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),),)
+              ),
+            )
           ],
         ),
       ),

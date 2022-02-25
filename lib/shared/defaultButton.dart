@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 class DefaultButton extends StatelessWidget {
   final Function onPressedFun;
   final String text;
-
-  // final DecoratedBox decoratedBox;
-  //final bool isUpperCase ;
   const DefaultButton({
     Key? key,
     required this.onPressedFun,

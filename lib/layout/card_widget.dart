@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/shared/circular_container.dart';
+import 'package:graduation_project/shared/imageContainer.dart';
 
 class CardWidget extends StatelessWidget {
   final String name;
@@ -26,14 +28,10 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CircularContainer(
       height: height,
       width: width,
-      margin: const EdgeInsets.all(15.0),
-      padding: const EdgeInsets.all(3.0),
-      decoration: BoxDecoration(
-          border: Border.all(width: 2.5, color: Colors.deepPurple),
-          borderRadius: BorderRadius.circular(20)),
+      padding: 3.0,
       child: Column(
         children: [
           Row(
@@ -57,13 +55,7 @@ class CardWidget extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-              width: 150,
-              height: 150,
-              child: Image.asset(
-                imgUrl,
-                fit: BoxFit.contain,
-              )),
+          ImageContainer(height: 160, width: 150, imgUrl: imgUrl),
           SizedBox(
             height: 10,
           ),

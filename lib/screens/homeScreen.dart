@@ -10,20 +10,13 @@ import '../layout/card_widget.dart';
 import 'add_post.dart';
 
 int index = 0;
-
 class HomeScreen extends StatelessWidget {
   static const routeName = 'home_screen';
-
-  // List<PostModel> posts = [
-  //   PostModel(
-  //
-  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        // title: Text('test'),
         centerTitle: true,
         actions: [
           InkWell(
@@ -39,7 +32,6 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Padding(

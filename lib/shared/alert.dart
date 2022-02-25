@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 
 enum DialogAction { ok, cancle }
-//Future<String> _execute(Function function) async { }
 class Dialogs {
   static Future<DialogAction> yesAbortDialog(
     BuildContext context,
@@ -11,9 +10,8 @@ class Dialogs {
     String? textforText,
     String? textforElevate,
     VoidCallback forElevatedButton,
-      VoidCallback forTextButton,
-
-      String? imageUrl,
+    VoidCallback forTextButton,
+    String? imageUrl,
     double? width,
     double? height,
   ) async {
@@ -72,7 +70,7 @@ class Dialogs {
                       ],
                     ),
                   ],
-                )
+                ),
               ],
             ),
           );

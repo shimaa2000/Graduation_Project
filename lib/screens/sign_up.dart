@@ -19,8 +19,6 @@ class _SignUpState extends State<SignUp> {
   var formKey = GlobalKey<FormState>();
   var agree =false;
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +31,6 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   Image.asset('images/background.png', height: MediaQuery.of(context).size.height*0.35,
                     width:MediaQuery.of(context).size.width,
-
                     fit: BoxFit.cover,
                   ),
                   Padding(
@@ -54,8 +51,6 @@ class _SignUpState extends State<SignUp> {
                             fontSize: 60,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
-
-
                           ),
                         ),
                       ],
@@ -74,67 +69,39 @@ class _SignUpState extends State<SignUp> {
                        BoxTextField(
                          controller:nameController ,
                          autofocus: true ,
-                         label: "Username" ,
                          keyboardType: TextInputType.name ,
-                         hint: '',
                            onTap: (){},
                          icon: Icon(Icons.person,),
-                           validator: (value) {
-                             if (value ==null || value.isEmpty) {
-                               return 'please enter your name';
-                             }
-                             return null;
-                           }
+                          validatorText: 'please enter name',
                        ),
                        SizedBox(height: 10,),
                        BoxTextField(
                          controller:emailController ,
                          autofocus: true,
-                         label: "email" ,
                          keyboardType: TextInputType.emailAddress ,
-                         hint: '',
                            onTap: (){},
                          icon: Icon(Icons.email,),
-                           validator: (value) {
-                             if (value ==null || value.isEmpty) {
-                               return 'please enter your email';
-                             }
-                             return null;
-                           }
+                          validatorText: 'please enter mail',
                        ),
                        SizedBox(height: 10,),
                        BoxTextField(
                          controller:passwordController ,
                          autofocus: true,
-                         label: 'password' ,
                          keyboardType: TextInputType.visiblePassword ,
-                         hint: '',
                            onTap: (){},
                          obsecure: true,
                          icon: Icon(Icons.lock,),
-                           validator: (value) {
-                             if (value ==null || value.isEmpty) {
-                               return 'please enter your password';
-                             }
-                             return null;
-                           }
+                           validatorText: 'please enter password',
                        ),
                        SizedBox(height: 10,),
                        BoxTextField(
                          controller:confirmPassController ,
                          autofocus: true,
-                         label: "confirm password" ,
                          keyboardType: TextInputType.name ,
-                         hint: ' ',
                          onTap: (){},
                          obsecure: true,
                          icon: Icon(Icons.lock,),
-                           validator: (value) {
-                             if (value ==null || value.isEmpty) {
-                               return 'please confirm your password';
-                             }
-                             return null;
-                           }
+                           validatorText: 'please confirm password',
                        ),
                        Row(
                          mainAxisAlignment: MainAxisAlignment.start,
@@ -175,18 +142,15 @@ class _SignUpState extends State<SignUp> {
                          ],
                        ),
                        SizedBox(height: 15,),
-                       DefaultButton(onPressedFun: (){
+                       DefaultButton(
+                           text: 'Next',
+                         onPressedFun: (){
                          if(formKey.currentState!.validate()){
-                           print(nameController.text);
-                           print(emailController.text);
-                           print(passwordController.text);
-                           print(confirmPassController.text);
                            Navigator.push(context,
                              MaterialPageRoute(builder: (context) => CompleteScreen(), ),);
                          }
-
                        },
-                           text: 'Next'),
+                           ),
                        SizedBox(height: 10,),
                        Center(
                          child: RichText(
@@ -213,8 +177,6 @@ class _SignUpState extends State<SignUp> {
                            ),),
                        ),
                        SizedBox(height: 10,),
-
-
                      ],
                    ) ,
                  ),

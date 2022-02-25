@@ -3,6 +3,7 @@ import 'package:graduation_project/screens/account_verification.dart';
 import 'package:graduation_project/screens/add%20post%202.dart';
 import 'package:graduation_project/screens/add_post.dart';
 import 'package:graduation_project/screens/details_screen.dart';
+import 'package:graduation_project/screens/edit_post.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/screens/login_screen.dart';
@@ -13,6 +14,7 @@ import 'package:graduation_project/screens/reset_password_screen.dart';
 import 'package:graduation_project/screens/sign_up.dart';
 import 'package:graduation_project/screens/splash_screen.dart';
 import 'package:graduation_project/screens/startApp.dart';
+import 'package:graduation_project/screens/user_ads_screen.dart';
 
 import 'models/user_model.dart';
 
@@ -81,6 +83,9 @@ class MyApp extends StatelessWidget {
         NotificationScreen.routeName:(context)=>NotificationScreen(),
         AddPost.routeName:(context)=>AddPost(),
         AddPost2.routeName:(context)=>AddPost2(),
+        EditPost.routeName:(context)=>EditPost(),
+        UserAds.routeName:(context)=>UserAds(),
+
       },
       // home: SplashScreen(),
       debugShowCheckedModeBanner: false,

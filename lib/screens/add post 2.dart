@@ -33,7 +33,7 @@ class _AddPost2State extends State<AddPost2> {
           children: [
             Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
+              const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
               child: Text(
                 'Enter Your Product data',
                 style: Theme.of(context).textTheme.headline5,
@@ -86,16 +86,10 @@ class _AddPost2State extends State<AddPost2> {
                       height: 50,
                       child: BoxTextField(
                           controller: forHeight,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return " Enter The Height";
-                            }
-                          },
-                          hint: "",
+                        validatorText: 'please enter height',
                           icon: Icon(
                             Icons.height,
                           ),
-                          label: '',
                           onTap: () {}),
                     ),
                     Container(
@@ -103,16 +97,10 @@ class _AddPost2State extends State<AddPost2> {
                       height: 50,
                       child: BoxTextField(
                           controller: forWeight,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return " Enter The Weight";
-                            }
-                          },
-                          hint: "",
+                          validatorText: 'please choose weight',
                           icon: Icon(
                             Icons.monitor_weight,
                           ),
-                          label: '',
                           onTap: () {}),
                     ),
                     Container(
@@ -121,24 +109,17 @@ class _AddPost2State extends State<AddPost2> {
                       child: BoxTextField(
                           controller: dateController,
                           autofocus: true,
-                          label: "",
                           keyboardType: TextInputType.datetime,
-                          hint: ' ',
                           onTap: () {
                             DatePicker.selectDate(context).then(
-                              (value) => dateController.text =
+                                  (value) => dateController.text =
                                   DateFormat.yMMMd().format(value!),
                             );
                           },
                           icon: Icon(
                             Icons.date_range,
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'please enter your date';
-                            }
-                            return null;
-                          }),
+                          validatorText: 'please enter date',),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width / 1.8,
@@ -146,16 +127,10 @@ class _AddPost2State extends State<AddPost2> {
                       child: BoxTextField(
                           controller: priceController,
                           keyboardType: TextInputType.number,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return " Enter The price";
-                            }
-                          },
-                          hint: "",
+                          validatorText: 'please enter price',
                           icon: Icon(
                             Icons.attach_money,
                           ),
-                          label: '',
                           onTap: () {}),
                     ),
                     SizedBox(

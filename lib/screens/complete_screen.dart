@@ -6,9 +6,7 @@ import 'package:graduation_project/shared/boxtextfield.dart';
 import 'package:graduation_project/shared/datePicker.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 import 'package:intl/intl.dart';
-
 import 'homeScreen.dart';
-import 'login_screen.dart';
 
 class CompleteScreen extends StatefulWidget {
   @override
@@ -76,38 +74,26 @@ class _CompleteScreenState extends State<CompleteScreen> {
                       BoxTextField(
                           controller: fullNameController,
                           autofocus: true,
-                          label: "Full Name",
                           keyboardType: TextInputType.name,
-                          hint: '',
                           icon: Icon(
                             Icons.person,
                           ),
                           onTap: () {},
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'please confirm your name';
-                            }
-                            return null;
-                          }),
+                          validatorText: 'please enter full name',
+                          ),
                       SizedBox(
                         height: 10,
                       ),
                       BoxTextField(
                           controller: addressController,
                           autofocus: true,
-                          label: "Address",
                           onTap: () {},
                           keyboardType: TextInputType.streetAddress,
-                          hint: '',
                           icon: Icon(
                             Icons.home,
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'please confirm your address';
-                            }
-                            return null;
-                          }),
+                      validatorText: 'please enter address',
+                      ),
                       SizedBox(
                         height: 10,
                       ),
@@ -115,27 +101,18 @@ class _CompleteScreenState extends State<CompleteScreen> {
                           controller: phoneController,
                           autofocus: true,
                           onTap: () {},
-                          label: 'Phone Number',
                           keyboardType: TextInputType.phone,
-                          hint: '',
                           icon: Icon(
                             Icons.phone,
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'please enter your phone';
-                            }
-                            return null;
-                          }),
+                         validatorText: 'please enter phone number',),
                       SizedBox(
                         height: 10,
                       ),
                       BoxTextField(
                           controller: dateController,
                           autofocus: true,
-                          label: "Birth Year",
                           keyboardType: TextInputType.datetime,
-                          hint: ' ',
                           onTap: () {
                             DatePicker.selectDate(context)
                             .then(
@@ -146,12 +123,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
                           icon: Icon(
                             Icons.date_range,
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'please enter your date';
-                            }
-                            return null;
-                          }),
+                          validatorText: 'please pick date ',),
                       SizedBox(
                         height: 10,
                       ),
@@ -167,7 +139,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
                                 val = 1;
                               });
                             },
-                            activeColor: Colors.deepPurple,
+                            activeColor: Colors.green,
                           ),
                           SizedBox(
                             width: 10,
@@ -187,7 +159,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
                                 val = 2;
                               });
                             },
-                            activeColor: Colors.deepPurple,
+                            activeColor: Colors.green,
                           ),
                           SizedBox(
                             width: 10,
@@ -204,10 +176,6 @@ class _CompleteScreenState extends State<CompleteScreen> {
                       DefaultButton(
                           onPressedFun: () {
                             if (formKey.currentState!.validate()) {
-                              print(fullNameController.text);
-                              print(addressController.text);
-                              print(phoneController.text);
-                              print(dateController.text);
                               Dialogs.yesAbortDialog(context, Text('You have an account now!',textAlign: TextAlign.center,), 'Cancel', 'Ok', () {Navigator.pushNamed(context, HomeScreen.routeName); },(){Navigator.of(context).pop(DialogAction.cancle);}, 'images/check.svg', 200, 200);
                             }
                           },
