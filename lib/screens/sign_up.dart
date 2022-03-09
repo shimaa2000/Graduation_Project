@@ -133,7 +133,7 @@ class _SignUpState extends State<SignUp> {
                                        recognizer: TapGestureRecognizer()
                                          ..onTap = () {
                                            Navigator.push(context,
-                                             MaterialPageRoute(builder: (context) => policiesScreen(),
+                                             MaterialPageRoute(builder: (context) => PoliciesScreen(),
                                              ),
                                            );
                                          }),

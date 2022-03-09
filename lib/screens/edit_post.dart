@@ -124,7 +124,7 @@ class _EditPostState extends State<EditPost>{
                                     setState(() {
                                       postType='sale';
                                     });
-                                  },
+                                  }, sizedHeight: 0,
                                 ),
 
                               ),
@@ -144,7 +144,7 @@ class _EditPostState extends State<EditPost>{
                                     setState(() {
                                       donationV='Yes';
                                     });
-                                  },
+                                  }, sizedHeight: 0,
                                 ),
                               ),
                             ],

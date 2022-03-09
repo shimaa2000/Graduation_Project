@@ -152,7 +152,7 @@ class _AddPost2State extends State<AddPost2> {
                           setState(() {
                             genderType = 'female';
                           });
-                        },
+                        }, sizedHeight: 0,
                       ),
                     ),
                     SizedBox(
@@ -176,7 +176,7 @@ class _AddPost2State extends State<AddPost2> {
                           setState(() {
                             postType = 'sale';
                           });
-                        },
+                        }, sizedHeight: 0,
                       ),
                     ),
                     SizedBox(
@@ -200,7 +200,7 @@ class _AddPost2State extends State<AddPost2> {
                           setState(() {
                             donationV = 'no';
                           });
-                        },
+                        }, sizedHeight: 0,
                       ),
                     ),
                   ],

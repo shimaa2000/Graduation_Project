@@ -3,6 +3,8 @@ import 'package:graduation_project/dummy_data.dart';
 import 'package:graduation_project/layout/card_widget.dart';
 import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
+import 'package:graduation_project/shared/listView.dart';
+
 class ActivityTaps extends StatefulWidget {
   const ActivityTaps({Key? key}) : super(key: key);
 
@@ -11,236 +13,48 @@ class ActivityTaps extends StatefulWidget {
 }
 
 class _ActivityTapsState extends State<ActivityTaps> {
+  int selectedTab = 0;
+  bool isSelected = true;
+  static const List<Tab> myTabs = [
+    Tab(
+      child: Text(
+        'Ads',
+        style: TextStyle(fontSize: 18.0),
+      ),
+    ),
+    Tab(
+      child: Text('Rent', style: TextStyle(fontSize: 18.0)),
+    ),
+    Tab(
+      child: Text('Favourite', style: TextStyle(fontSize: 18.0)),
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(length: 3, child: Scaffold(
-      appBar: AppBar(
-        bottom: TabBar(
-          tabs: [
-            Tab(text: 'Ads',),
-            Tab(text: 'Rent',),
-            Tab(text: 'Favourite',),
-          ],
-        ),
-        leading: Icon(Icons.arrow_back),
-      ),
-      body: TabBarView(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                FittedBox(
-                  fit: BoxFit.contain,
-                  child: Row(
-                    children: [
-                      Column(children: [
-                        ...DUMMY_DATA
-                            .map(
-                              (data) => InkWell(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                DetailsScreen.routeName,
-                                arguments: data.id,
-                              );
-                              index = data.id - 1;
-                            },
-                            child: Column(
-                              children: [
-                                CardWidget(
-                                  name: data.name,
-                                  date: data.date,
-                                  imgUrl: data.ImgUrl,
-                                  title: data.title,
-                                  price: data.price,
-                                  size: data.size,
-                                  isFav: data.isFav,
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                            .toList(),
-
-                      ],),
-                      Column(children: [
-                        ...DUMMY_DATA
-                            .map(
-                              (data) => InkWell(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                DetailsScreen.routeName,
-                                arguments: data.id,
-                              );
-                              index = data.id - 1;
-                            },
-                            child: Column(
-                              children: [
-                                CardWidget(
-                                  name: data.name,
-                                  date: data.date,
-                                  imgUrl: data.ImgUrl,
-                                  title: data.title,
-                                  price: data.price,
-                                  size: data.size,
-                                  isFav: data.isFav,
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                            .toList(),
-
-                      ],),
-                    ],
-                  ),
-                ),
-              ],
+    return DefaultTabController(
+        length: myTabs.length,
+        child: Scaffold(
+          appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.deepPurple),
+            elevation: 0.0,
+            backgroundColor: Colors.white,
+            bottom: TabBar(
+              enableFeedback: true,
+              labelColor: Colors.deepPurple,
+              unselectedLabelColor: Colors.grey,
+              unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+              tabs: myTabs,
+              indicatorColor: Colors.deepPurple,
             ),
           ),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                FittedBox(
-                  fit: BoxFit.contain,
-                  child: Row(
-                    children: [
-                      Column(children: [
-                        ...DUMMY_DATA
-                            .map(
-                              (data) => InkWell(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                DetailsScreen.routeName,
-                                arguments: data.id,
-                              );
-                              index = data.id - 1;
-                            },
-                            child: Column(
-                              children: [
-                                CardWidget(
-                                  name: data.name,
-                                  date: data.date,
-                                  imgUrl: data.ImgUrl,
-                                  title: data.title,
-                                  price: data.price,
-                                  size: data.size,
-                                  isFav: data.isFav,
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                            .toList(),
-
-                      ],),
-                      Column(children: [
-                        ...DUMMY_DATA
-                            .map(
-                              (data) => InkWell(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                DetailsScreen.routeName,
-                                arguments: data.id,
-                              );
-                              index = data.id - 1;
-                            },
-                            child: Column(
-                              children: [
-                                CardWidget(
-                                  name: data.name,
-                                  date: data.date,
-                                  imgUrl: data.ImgUrl,
-                                  title: data.title,
-                                  price: data.price,
-                                  size: data.size,
-                                  isFav: data.isFav,
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                            .toList(),
-
-                      ],),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+          body: TabBarView(
+            physics: BouncingScrollPhysics(),
+            children: [
+              ListViewBuilderData(),
+              ListViewBuilderData(),
+              ListViewBuilderData(),
+            ],
           ),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                FittedBox(
-                  fit: BoxFit.contain,
-                  child: Row(
-                    children: [
-                      Column(children: [
-                        ...DUMMY_DATA
-                            .map(
-                              (data) => InkWell(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                DetailsScreen.routeName,
-                                arguments: data.id,
-                              );
-                              index = data.id - 1;
-                            },
-                            child: Column(
-                              children: [
-                                CardWidget(
-                                  name: data.name,
-                                  date: data.date,
-                                  imgUrl: data.ImgUrl,
-                                  title: data.title,
-                                  price: data.price,
-                                  size: data.size,
-                                  isFav: data.isFav,
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                            .toList(),
-
-                      ],),
-                      Column(children: [
-                        ...DUMMY_DATA
-                            .map(
-                              (data) => InkWell(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                DetailsScreen.routeName,
-                                arguments: data.id,
-                              );
-                              index = data.id - 1;
-                            },
-                            child: Column(
-                              children: [
-                                CardWidget(
-                                  name: data.name,
-                                  date: data.date,
-                                  imgUrl: data.ImgUrl,
-                                  title: data.title,
-                                  price: data.price,
-                                  size: data.size,
-                                  isFav: data.isFav,
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                            .toList(),
-
-                      ],),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ));
+        ));
   }
 }

@@ -31,7 +31,7 @@ class _RadioShortcutState extends State<RadioShortcut> {
 
               payment = 'full';
             });
-          },
+          }, sizedHeight: 0,
         ),
         SizedBox(
           height: 5,
@@ -51,7 +51,7 @@ class _RadioShortcutState extends State<RadioShortcut> {
               setState(() {
                 rentFor = 'buy';
               });
-            })
+            }, sizedHeight: 0,)
       ],
     );
   }

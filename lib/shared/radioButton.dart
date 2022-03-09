@@ -6,6 +6,7 @@ class RadioButtonClass extends StatelessWidget {
   final String title1;
   var value1;
   final String title2;
+  final double sizedHeight;
   var value2;
   var groupValue;
   final ValueChanged<dynamic> onChange1;
@@ -20,7 +21,7 @@ class RadioButtonClass extends StatelessWidget {
     required this.value2,
     required this.groupValue,
     required this.onChange1,
-    required this.onChange2,
+    required this.onChange2, required this.sizedHeight,
   }) : super(key: key);
 
   @override
@@ -32,6 +33,7 @@ class RadioButtonClass extends StatelessWidget {
         children: [
           Row(
             children: [
+              SizedBox(width: sizedHeight,),
               Container(
                   width: 25,
                   child: Radio(

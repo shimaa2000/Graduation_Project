@@ -23,6 +23,6 @@ class _RadioForSheetState extends State<RadioForSheet> {
         });},
         onChange2: (value){setState(() {
           typeFor = 'Sell';
-        });});
+        });}, sizedHeight: 0,);
   }
 }
