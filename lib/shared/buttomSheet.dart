@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/screens/search_result_screen.dart';
+import 'package:graduation_project/screens/search_screen.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
 import 'package:graduation_project/shared/datePicker.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
@@ -120,7 +120,7 @@ void bottomSheet(BuildContext context) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SearchResult()));
+                                  builder: (context) => SearchScreen()));
                         },
                       ),
                     ],

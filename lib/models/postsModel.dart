@@ -4,7 +4,7 @@ class PostModel {
   final String date;
   final String ImgUrl;
   final String title;
-  final int price;
+  final double price;
   final String size;
   final bool isFav;
   final String type;

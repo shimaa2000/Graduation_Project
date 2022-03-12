@@ -7,7 +7,7 @@ class CardWidget extends StatelessWidget {
   final String date;
   final String imgUrl;
   final String title;
-  final int price;
+  final double price;
   final String size;
   final bool isFav;
   final double width;

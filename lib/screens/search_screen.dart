@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/shared/searchBox.dart';
+import 'package:graduation_project/shared/listView.dart';
 import 'package:graduation_project/shared/buttomSheet.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -21,22 +21,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Container(
-                child: SearchBox(searchController: searchController, enabled: true, icon: Icon(Icons.search), onTap: (){}, label: 'Search', padding: 10.0,margin: 0.0,
-                  hint: 'Search',
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      body: ListViewBuilderData(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepPurple,
         onPressed: () {

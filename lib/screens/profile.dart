@@ -58,7 +58,7 @@ class _ProfileState extends State<Profile> {
                       DetailsScreen.routeName,
                       arguments: i + 1,
                     );
-                    index = i;
+                    id = i;
                   },
                   onExpandClicked: () {
                     Navigator.pushNamed(context, UserAds.routeName);

@@ -27,7 +27,7 @@ class UserAds extends StatelessWidget {
                         DetailsScreen.routeName,
                         arguments: data.id,
                       );
-                      index = data.id - 1;
+                      id = data.id - 1;
                     },
                     child: Column(
                       children: [
@@ -56,7 +56,7 @@ class UserAds extends StatelessWidget {
                         DetailsScreen.routeName,
                         arguments: data.id,
                       );
-                      index = data.id - 1;
+                      id = data.id - 1;
                     },
                     child: Column(
                       children: [

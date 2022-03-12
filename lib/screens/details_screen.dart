@@ -11,15 +11,15 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DetailsWidget(
-        type: DUMMY_DATA[index].type,
-        size: DUMMY_DATA[index].size,
-        title: DUMMY_DATA[index].title,
-        price: DUMMY_DATA[index].price.toString(),
-        gender: DUMMY_DATA[index].gender,
-        date: DUMMY_DATA[index].date,
-        description: DUMMY_DATA[index].description,
-        height: DUMMY_DATA[index].height,
-        width: DUMMY_DATA[index].width,
-        imageUrl: DUMMY_DATA[index].ImgUrl);
+        type: DUMMY_DATA[id].type,
+        size: DUMMY_DATA[id].size,
+        title: DUMMY_DATA[id].title,
+        price: DUMMY_DATA[id].price.toString(),
+        gender: DUMMY_DATA[id].gender,
+        date: DUMMY_DATA[id].date,
+        description: DUMMY_DATA[id].description,
+        height: DUMMY_DATA[id].height,
+        width: DUMMY_DATA[id].width,
+        imageUrl: DUMMY_DATA[id].ImgUrl);
   }
 }
