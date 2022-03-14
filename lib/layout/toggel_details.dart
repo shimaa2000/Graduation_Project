@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/screens/confirmOrder.dart';
 import 'package:graduation_project/shared/bottomForDetails.dart';
 import 'package:graduation_project/shared/circular_container.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
-//import 'package:path/path.dart';
+import 'package:path/path.dart';
 
 class ToggleDetails {
   static Widget item(
@@ -19,6 +20,7 @@ class ToggleDetails {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,9 +53,7 @@ class ToggleDetails {
                   ),
                 ],
               ),
-              SizedBox(
-                width: MediaQuery.of(ctx).size.width / 2.5,
-              ),
+
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -91,7 +91,7 @@ class ToggleDetails {
           ),
           DefaultButton(
               onPressedFun: () {
-                bottomForDetails(ctx);
+                Navigator.pushNamed(ctx, ConfirmOrder.routeName);
               },
               text: 'Order'),
         ],

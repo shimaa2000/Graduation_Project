@@ -57,9 +57,9 @@ class TopAdCard extends StatelessWidget {
                                 color: Colors.black),
                           ),
                           Text(
-                            price.toString(),
+                            '\$${price.toString()}',
                             style: TextStyle(
-                                color: Colors.deepPurple,
+                                color: Colors.redAccent,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold),
                           ),

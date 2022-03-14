@@ -28,7 +28,7 @@ class _ProfileState extends State<Profile> {
         backgroundColor: Colors.deepPurple,
         centerTitle: true,
       ),
-      drawer: DrawerWidget(),
+      // drawer: DrawerWidget(),
       body: SingleChildScrollView(
         child: Center(
           child: Column(

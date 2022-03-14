@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/layout/topAdCard.dart';
 import 'package:graduation_project/screens/account_verification.dart';
 import 'package:graduation_project/screens/add%20post%202.dart';
 import 'package:graduation_project/screens/add_post.dart';
+import 'package:graduation_project/screens/confirmOrder.dart';
 import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/edit_post.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
+import 'package:graduation_project/screens/favourite_Rent.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/screens/login_screen.dart';
 import 'package:graduation_project/screens/new_password_screeen.dart';
@@ -15,6 +18,7 @@ import 'package:graduation_project/screens/sign_up.dart';
 import 'package:graduation_project/screens/splash_screen.dart';
 import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/screens/user_ads_screen.dart';
+import 'package:graduation_project/shared/listView.dart';
 
 import 'models/user_model.dart';
 
@@ -58,9 +62,9 @@ class MyApp extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 45,
                     fontWeight: FontWeight.bold),
-            headline5: TextStyle(
-                color: Colors.black,
-                fontSize: 21,
+                headline5: TextStyle(
+                  color: Colors.black,
+                  fontSize: 21,
                 ),
               ),
           elevatedButtonTheme: ElevatedButtonThemeData(
@@ -76,18 +80,19 @@ class MyApp extends StatelessWidget {
         NewPassword.routeName: (context) => NewPassword(),
         HomeScreen.routeName: (context) => HomeScreen(),
         DetailsScreen.routeName: (context) => DetailsScreen(),
-        SignUp.routeName :(context)=>SignUp(),
-        Profile.routeName :(context)=>Profile(),
-        EditProfile.routeName :(context)=>EditProfile(),
-        StartApp.routeName:(context)=>StartApp(),
-        NotificationScreen.routeName:(context)=>NotificationScreen(),
-        AddPost.routeName:(context)=>AddPost(),
-        AddPost2.routeName:(context)=>AddPost2(),
-        EditPost.routeName:(context)=>EditPost(),
-        UserAds.routeName:(context)=>UserAds(),
+        SignUp.routeName: (context) => SignUp(),
+        Profile.routeName: (context) => Profile(),
+        EditProfile.routeName: (context) => EditProfile(),
+        StartApp.routeName: (context) => StartApp(),
+        NotificationScreen.routeName: (context) => NotificationScreen(),
+        AddPost.routeName: (context) => AddPost(),
+        AddPost2.routeName: (context) => AddPost2(),
+        EditPost.routeName: (context) => EditPost(),
+        UserAds.routeName: (context) => UserAds(),
+        ConfirmOrder.routeName: (context) => ConfirmOrder(),
+        Favourite_Rent.routeName: (context) => Favourite_Rent(),
 
       },
-      // home: SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

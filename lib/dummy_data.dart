@@ -61,7 +61,7 @@ const DUMMY_DATA = const [
     description:
     "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
     width: '',
-    gender: '',
+    gender: 'Female',
     height: '',
   ),
   PostModel(
@@ -72,7 +72,7 @@ const DUMMY_DATA = const [
     title: '',
     price: 120,
     size: 'L',
-    gender: 'female',
+    gender: 'Female',
     type: '',
     description:
     "Simple gold dress with an extension and hand embroidery and connected belt in the same colour. ps. the dress' shoes are available.",
@@ -86,7 +86,7 @@ const DUMMY_DATA = const [
     ImgUrl: 'images/photo.jpg',
     title: 'For rent',
     price: 330,
-    gender: '',
+    gender: 'Male',
     size: 'xL',
     type: '',
     description:
@@ -101,7 +101,7 @@ const DUMMY_DATA = const [
     ImgUrl: 'images/download.jpg',
     title: 'For rent',
     price: 500,
-    gender: '',
+    gender: 'Female',
     type: '',
     size: 'L',
     description:
@@ -116,7 +116,7 @@ const DUMMY_DATA = const [
     ImgUrl: 'images/photo.jpg',
     title: 'For rent',
     price: 550,
-    gender: '',
+    gender: 'Male',
     type: '',
     size: 'M',
     description:
@@ -131,7 +131,7 @@ const DUMMY_DATA = const [
     ImgUrl: 'images/sad.png',
     title: 'For rent',
     price: 150,
-    gender: '',
+    gender: 'Male',
     size: 'L',
     type: '',
     description:

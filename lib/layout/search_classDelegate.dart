@@ -34,7 +34,7 @@ class Search extends SearchDelegate {
     );
   }
 
-  final List<String> listExample;
+  final List <String>listExample;
   Search(this.listExample);
 
   List<String> recentList = ["Text 4", "Text 3"];
@@ -43,9 +43,8 @@ class Search extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     List<String> suggestionList = [];
     query.isEmpty
-        ? suggestionList = recentList //In the true case
+        ? suggestionList = recentList
         : suggestionList.addAll(listExample.where(
-      // In the false case
           (element) => element.contains(query),
     ));
 
