@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/layout/profile_followers.dart';
 import 'package:graduation_project/shared/alert.dart';
+import 'package:graduation_project/shared/alertForProfilePhoto.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 import 'package:graduation_project/shared/imagePicker.dart';
+String imgUrl='images/photourl.jpg';
 class ProfileContainer extends StatelessWidget {
   const ProfileContainer({Key? key}) : super(key: key);
 
@@ -34,16 +36,11 @@ class ProfileContainer extends StatelessWidget {
                 child: Column(
                   children: [
                     GestureDetector(
-                      onTap: () => Dialogs.yesAbortDialog(context,
-                          Text('Choose', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, ),textAlign: TextAlign.center,), 'Camera', 'Gallery', () {
-                            Images().uploadImageFromGallery();
-                          }, () {
-                            Images().uploadImageFromCamera();
-                          }, 'images/logo.png', 200, 200),
+                      onTap: () {Choose.ChooseDialog(context);},
                       child: CircleAvatar(
                         radius: 70.0,
-                        backgroundColor: Colors.grey,
-                      ),
+                       backgroundImage: AssetImage(imgUrl,) ,
+                       ),
                     ),
                     SizedBox(
                       height: 10.0,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/layout/card_widget.dart';
+import 'package:graduation_project/layout/topAdCard.dart';
 
 import '../dummy_data.dart';
 import 'details_screen.dart';
@@ -31,15 +31,7 @@ class UserAds extends StatelessWidget {
                     },
                     child: Column(
                       children: [
-                        CardWidget(
-                          name: 'You',
-                          date: data.date,
-                          imgUrl: data.ImgUrl,
-                          title: data.title,
-                          price: data.price,
-                          size: data.size,
-                          isFav: data.isFav,
-                        ),
+                       TopAdCard(imgUrl: data.ImgUrl, title:  data.title, price:  data.price)
                       ],
                     ),
                   ),
@@ -60,15 +52,7 @@ class UserAds extends StatelessWidget {
                     },
                     child: Column(
                       children: [
-                        CardWidget(
-                          name: 'You',
-                          date: data.date,
-                          imgUrl: data.ImgUrl,
-                          title: data.title,
-                          price: data.price,
-                          size: data.size,
-                          isFav: data.isFav,
-                        ),
+                        TopAdCard(imgUrl: data.ImgUrl, title:  data.title, price:  data.price)
                       ],
                     ),
                   ),

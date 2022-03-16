@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 class DefaultButton extends StatelessWidget {
   final Function onPressedFun;
   final String text;
-  const DefaultButton({
+  bool enable;
+   DefaultButton({
     Key? key,
+     this.enable=true,
     required this.onPressedFun,
     required this.text,
   }) : super(key: key);
@@ -15,6 +17,7 @@ class DefaultButton extends StatelessWidget {
     return Container(
       alignment: Alignment.bottomCenter,
       child: ElevatedButton(
+
         style: ElevatedButton.styleFrom(
           primary: Colors.deepPurple,
           minimumSize: Size(130, 50),
@@ -26,7 +29,7 @@ class DefaultButton extends StatelessWidget {
           text,
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
-        onPressed: onPressedFun as Function(),
+        onPressed: enable?onPressedFun as Function():null,
       ),
     );
   }

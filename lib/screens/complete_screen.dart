@@ -20,7 +20,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
   var fullNameController = TextEditingController();
   var addressController = TextEditingController();
   var phoneController = TextEditingController();
-  var dateController = TextEditingController();
+   TextEditingController dateController = TextEditingController();
 
   state1() {
     return setState(() {

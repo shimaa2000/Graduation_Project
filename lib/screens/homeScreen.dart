@@ -1,35 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/layout/category_shape_widget.dart';
-import 'package:graduation_project/layout/draweBody.dart';
-import 'package:graduation_project/layout/search_classDelegate.dart';
-import 'package:graduation_project/shared/listView.dart';
 import 'package:graduation_project/shared/listViewForTopAds.dart';
-import 'package:slide_drawer/slide_drawer.dart';
 
 int id = 0;
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const routeName = 'home_screen';
-  final List<String> list = List.generate(10, (id) => "Text $id");
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // leading: IconButton(
-        //   icon:(Icon(Icons.menu,)),
-        // onPressed: ()=>  SliderDrawer(),),
-        backgroundColor: Colors.deepPurple,
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              showSearch(context: context, delegate: Search(list));
-            },
-            icon: Icon(Icons.search),
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
+    return  SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -63,10 +49,8 @@ class HomeScreen extends StatelessWidget {
           CategoryShape(text1: 'Male', text2: 'Female',),
           ],
         ),
-      ),
-      drawer: Drawer(
-        child: DrawerBody(),
-      ),
+
+
     );
   }
 }

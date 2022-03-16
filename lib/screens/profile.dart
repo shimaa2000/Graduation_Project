@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/dummy_data.dart';
-import 'package:graduation_project/layout/drawer_widget.dart';
 import 'package:graduation_project/layout/profile_container.dart';
-import 'package:graduation_project/layout/profile_followers.dart';
-import 'package:graduation_project/screens/followers_screen.dart';
-import 'package:graduation_project/screens/following_screen.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/screens/user_ads_screen.dart';
-import 'package:graduation_project/shared/alert.dart';
 import 'package:graduation_project/shared/gird_image.dart';
-import 'package:graduation_project/shared/imagePicker.dart';
-import '../shared/defaultButton.dart';
 import 'details_screen.dart';
 
 class Profile extends StatefulWidget {
@@ -24,10 +17,10 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.deepPurple,
+      //   centerTitle: true,
+      // ),
       // drawer: DrawerWidget(),
       body: SingleChildScrollView(
         child: Center(

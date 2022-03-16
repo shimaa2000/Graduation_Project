@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/shared/fav_list.dart';
 import 'package:graduation_project/shared/listView.dart';
 
 class Favourite_Rent extends StatelessWidget {
@@ -13,7 +14,7 @@ class Favourite_Rent extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 30.0),
         child: Column(
           children: [
-            ListViewBuilderData(),
+            FavList(),
           ],
         ),
       )

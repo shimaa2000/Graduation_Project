@@ -48,13 +48,13 @@ const DUMMY_MY_POSTS=const[
   'images/download.jpg',
 ];
 
-const DUMMY_DATA = const [
+List<PostModel> DUMMY_DATA = [
   PostModel(
     id: 1,
     name: 'username1',
     date: '',
     ImgUrl: 'images/download.jpg',
-    title: 'For rent',
+    title: ' ',
     price: 150,
     size: 'L',
     type: '',

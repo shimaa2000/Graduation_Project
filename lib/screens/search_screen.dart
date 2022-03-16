@@ -3,6 +3,8 @@ import 'package:graduation_project/shared/listView.dart';
 import 'package:graduation_project/shared/buttomSheet.dart';
 
 class SearchScreen extends StatefulWidget {
+   String search;
+  SearchScreen({  this.search=''});
   @override
   State<SearchScreen> createState() => _SearchScreenState();
 }
@@ -21,7 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListViewBuilderData(),
+      body: ListViewBuilderData(search: widget.search,),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepPurple,
         onPressed: () {

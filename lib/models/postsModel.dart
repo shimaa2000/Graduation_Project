@@ -6,14 +6,14 @@ class PostModel {
   final String title;
   final double price;
   final String size;
-  final bool isFav;
+  bool isFav;
   final String type;
   final String gender;
   final String description;
   final String height;
   final String width;
 
-  const PostModel({
+  PostModel({
     required this.id,
     required this.name,
     required this.date,

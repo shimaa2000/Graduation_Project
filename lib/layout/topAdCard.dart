@@ -38,7 +38,7 @@ class TopAdCard extends StatelessWidget {
                   child: Column(
                     children: [
                       GestureDetector(
-                        onTap: () {showDialog(context: context, builder: (_)=>ImageDialog());},
+                        onTap: () {showDialog(context: context, builder: (_)=>ImageDialog(ImgUrl: imgUrl,));},
                           child: ImageContainerForTopAd(
                               height: 140,
                               width: 160,

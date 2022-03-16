@@ -3,7 +3,8 @@ import 'package:graduation_project/dummy_data.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 
 class ImageDialog extends StatelessWidget {
-  const ImageDialog({Key? key}) : super(key: key);
+ final String ImgUrl;
+  const ImageDialog({Key? key, required this.ImgUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class ImageDialog extends StatelessWidget {
       child: Hero(
         tag: 'preview',
         child: Image(
-          image: AssetImage(DUMMY_DATA[id].ImgUrl),
+          image: AssetImage(ImgUrl),
           fit: BoxFit.cover,
         ),
       )

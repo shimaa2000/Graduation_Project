@@ -19,15 +19,17 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
       centerTitle: true,),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          children: [
-            Prices(),
-            RadioCard(),
-            DefaultButton(onPressedFun: (){
-              Navigator.pushNamed(context, DetailsScreen.routeName);
-            }, text: 'Confirm'),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Prices(),
+              RadioCard(),
+              DefaultButton(onPressedFun: (){
+                Navigator.pushNamed(context, DetailsScreen.routeName);
+              }, text: 'Confirm'),
 
-          ],
+            ],
+          ),
         ),
       ),
     );
