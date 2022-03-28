@@ -18,7 +18,16 @@ class CompleteSignUpWidget extends StatefulWidget {
   final StatelessWidget button;
 
   CompleteSignUpWidget(
-      {Key? key, this.formKey, this.fullNameController, this.addressController, this.phoneController, required this.dateController, required this.genderVal, required this.function1, required this.function2, required this.button})
+      {Key? key,
+      this.formKey,
+      this.fullNameController,
+      this.addressController,
+      this.phoneController,
+      required this.dateController,
+      required this.genderVal,
+      required this.function1,
+      required this.function2,
+      required this.button})
       : super(key: key);
 
   @override
@@ -36,7 +45,11 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextSizedSignUp(sizedHeight: 0, text: 'Full Name', sizedWidth: 28,),
+            TextSizedSignUp(
+              sizedHeight: 0,
+              text: 'Full Name',
+              sizedWidth: 28,
+            ),
             BoxTextField(
               controller: widget.fullNameController,
               autofocus: true,
@@ -47,7 +60,11 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
               onTap: () {},
               validatorText: 'please enter full name',
             ),
-            TextSizedSignUp(sizedHeight: 10, text: 'Address', sizedWidth: 28,),
+            TextSizedSignUp(
+              sizedHeight: 10,
+              text: 'Address',
+              sizedWidth: 28,
+            ),
             BoxTextField(
               controller: widget.addressController,
               autofocus: true,
@@ -59,7 +76,10 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
               validatorText: 'please enter address',
             ),
             TextSizedSignUp(
-              sizedHeight: 10, text: 'Phone Number', sizedWidth: 28,),
+              sizedHeight: 10,
+              text: 'Phone Number',
+              sizedWidth: 28,
+            ),
             BoxTextField(
               controller: widget.phoneController,
               autofocus: true,
@@ -71,19 +91,23 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
               validatorText: 'please enter phone number',
             ),
             TextSizedSignUp(
-              sizedHeight: 10, text: 'Birth Date', sizedWidth: 28,),
+              sizedHeight: 10,
+              text: 'Birth Date',
+              sizedWidth: 28,
+            ),
             BoxTextField(
               controller: widget.dateController,
               autofocus: true,
               keyboardType: TextInputType.datetime,
               onTap: () {
                 setState(() {
-                  showDatePicker(context: context,
-                      initialDate: DateTime(1995,1),
-                      firstDate: DateTime(1995, 1),
-                      lastDate: DateTime(2020, 12)).then((value) =>
-                  widget.dateController.text =
-                  DateFormat.yMMMd().format(value!));
+                  showDatePicker(
+                          context: context,
+                          initialDate: DateTime(1995, 1),
+                          firstDate: DateTime(1995, 1),
+                          lastDate: DateTime(2020, 12))
+                      .then((value) => widget.dateController.text =
+                          DateFormat.yMMMd().format(value!));
                 });
               },
               icon: Icon(
@@ -91,7 +115,11 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
               ),
               validatorText: 'please pick date ',
             ),
-            TextSizedSignUp(sizedHeight: 10, text: 'Gender', sizedWidth: 30,),
+            TextSizedSignUp(
+              sizedHeight: 10,
+              text: 'Gender',
+              sizedWidth: 30,
+            ),
             RadioButtonClass(
               title1: 'Male',
               value1: 'Male',
@@ -100,7 +128,8 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
               groupValue: widget.genderVal,
               onChange1: (value) => widget.function1(value),
               onChange2: (value) => widget.function2(value),
-              sizedHeight: 55,),
+              sizedHeight: 55,
+            ),
             SizedBox(
               height: 10,
             ),

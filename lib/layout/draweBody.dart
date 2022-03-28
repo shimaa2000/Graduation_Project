@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/network/local/casheHelper.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/favourite_Rent.dart';
 import 'package:graduation_project/screens/get_started.dart';
@@ -77,8 +78,13 @@ class _DrawerBodyState extends State<DrawerBody> {
           ),
           InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => GetStarted()));
+                CashHelper.removeData(key: 'token').then((value) {
+                  if(value){
+                    Navigator.push(context,
+                         MaterialPageRoute(builder: (context) => GetStarted()));
+                  }
+                });
+
               },
               child: ListTile(
                 leading: Icon(Icons.subdirectory_arrow_left_outlined),

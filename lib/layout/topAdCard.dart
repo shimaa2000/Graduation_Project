@@ -31,18 +31,18 @@ class TopAdCard extends StatelessWidget {
                         spreadRadius: 0.5),
                   ],
                 ),
-                width: 160,
+                width: 170,
                 height: 200,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
                       GestureDetector(
-                        onTap: () {showDialog(context: context, builder: (_)=>ImageDialog(ImgUrl: imgUrl,));},
+                        onTap: () {showDialog(context: context, builder: (_)=>ImageDialog(ImgUrl: DUMMY_DATA[id].ImgUrl,));},
                           child: ImageContainerForTopAd(
                               height: 140,
                               width: 160,
-                              imgUrl:imgUrl)),
+                              imgUrl:DUMMY_DATA[id].ImgUrl)),
                       SizedBox(
                         height: 10.0,
                       ),
@@ -52,7 +52,6 @@ class TopAdCard extends StatelessWidget {
                           Text(
                             title,
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
                                 fontSize: 18,
                                 color: Colors.black),
                           ),

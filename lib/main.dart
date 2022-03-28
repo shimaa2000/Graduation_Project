@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/layout/topAdCard.dart';
+import 'package:graduation_project/network/cubit/appCubit.dart';
+import 'package:graduation_project/network/cubit/blocObserver.dart';
+import 'package:graduation_project/network/cubit/loginCubit.dart';
+import 'package:graduation_project/network/local/casheHelper.dart';
 import 'package:graduation_project/screens/account_verification.dart';
 import 'package:graduation_project/screens/add%20post%202.dart';
 import 'package:graduation_project/screens/add_post.dart';
@@ -20,15 +25,20 @@ import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/screens/user_ads_screen.dart';
 import 'package:graduation_project/shared/listView.dart';
 
-import 'models/user_model.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  BlocOverrides.runZoned((){LoginCubit(); AppCubit();}, blocObserver: MyBlocObserver());
+  await CashHelper.init();
+
+  runApp(MyApp( ));
 }
 
 class MyApp extends StatelessWidget {
-  late User user;
+//  late User user;
   // This widget is the root of your application.
+  //final Widget start;
+  const MyApp({Key? key }):super (key:key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -2,6 +2,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/policies_screen.dart';
+import 'package:graduation_project/shared/chechBox.dart';
 
 class CheckBoxSign extends StatefulWidget {
   final StatefulWidget check;

@@ -108,12 +108,14 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+
                 children: [
-                  SizedBox(
-                    width: 15,
-                  ),
+                  // SizedBox(
+                  //   width: 15,
+                  // ),
                   Column(
-                      children: [
+                  children: [
                         Text(
                             widget.title,
                             style: Theme.of(context).textTheme.headline1),
@@ -128,7 +130,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                               Text(
                                   'EGP',
                                   style: Theme.of(context).textTheme.bodyText1)])]),
-                  SizedBox(width: MediaQuery.of(context).size.width*(2.5/7),),
+                 // SizedBox(width: MediaQuery.of(context).size.width*(2.5/7),),
                   new StarRating(
                     rating: rating,
                     onRatingChanged: (rating) => setState(() => this.rating = rating), color: Colors.deepPurple,

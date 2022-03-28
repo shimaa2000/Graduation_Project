@@ -26,8 +26,6 @@ class RadioButtonClass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final bool isSelected = widget.value1 == widget.groupValue;
-
     return Container(
       child: Row(
         children: [
@@ -37,6 +35,7 @@ class RadioButtonClass extends StatelessWidget {
               Container(
                   width: 25,
                   child: Radio(
+                    activeColor: Colors.deepPurple,
                     value: value1,
                     groupValue: groupValue,
                     onChanged: (dynamic d) => onChange1(d),
@@ -56,6 +55,7 @@ class RadioButtonClass extends StatelessWidget {
               Container(
                 width: 25,
                 child: Radio(
+                  activeColor: Colors.deepPurple,
                   value: value2,
                   groupValue: groupValue,
                   onChanged: (dynamic d) => onChange2(d),

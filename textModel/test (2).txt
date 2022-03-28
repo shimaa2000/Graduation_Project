@@ -1,0 +1,39 @@
+=>signup request (post method):
+{
+    "userName":"hossam Ahmed",
+    "email":"hoso@google.com",
+    "password":"test333",
+    "gender":"male",
+    "birthday":"1995-12-17",
+    "phoneNumber":"01002533847",
+    "address":"Tamlay minouf"
+
+}
+
+=>signup respose // userID
+{
+    "user": "6230c7e8964dff6154a3093f"
+}
+
+=> request to get user by ID (get method)
+url for example like that =>localhost:3000/api/user/6230c7e8964dff6154a3093f
+
+{
+    "_id": "6230c7e8964dff6154a3093f",
+    "userName": "hossam Ahmed",
+    "email": "hoso@google.com",
+    "password": "$2b$10$QT5bVtkIx75ULY6D01RqiuB9o7Aq3byjjFT0a9ekNDf/9aIXwEnjC",
+    "gender": "male",
+    "birthday": "1995-12-17T00:00:00.000Z",
+    "phoneNumber": [
+        "01002533847"
+    ],
+    "address": [
+        "Tamlay minouf"
+    ],
+    "image": "uploads\\defualtProfile_Img.png",
+    "products": [],
+    "createdAt": "2022-03-15T17:07:52.307Z",
+    "updatedAt": "2022-03-15T17:07:52.307Z",
+    "__v": 0
+}

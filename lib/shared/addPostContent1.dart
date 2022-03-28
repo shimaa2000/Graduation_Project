@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AddPostRow extends StatelessWidget {
-  // const AddPostRow({Key? key,required this.text, required this.controller ,  this.validText = 'Fill this Field' , required this.icon}) : super(key: key);
-  // final String text;
-  //  final String validText;
-  //  final Icon icon;
-  //  final  TextEditingController controller;
-  final titleController = TextEditingController();
-  final descController = TextEditingController();
-  final colorController = TextEditingController();
-  final sizeController = TextEditingController();
-  final typeController = TextEditingController();
+
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController descController = TextEditingController();
+  final  TextEditingController colorController = TextEditingController();
+  final TextEditingController sizeController = TextEditingController();
+  final TextEditingController typeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

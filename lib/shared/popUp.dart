@@ -3,9 +3,8 @@ import 'package:graduation_project/dummy_data.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 
 class ImageDialog extends StatelessWidget {
- final String ImgUrl;
   const ImageDialog({Key? key, required this.ImgUrl}) : super(key: key);
-
+ final String ImgUrl;
   @override
   Widget build(BuildContext context) {
     return Dialog(

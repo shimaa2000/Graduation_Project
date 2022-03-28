@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-              height: 10.0,
+              height: 25.0,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),

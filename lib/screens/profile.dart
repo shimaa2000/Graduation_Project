@@ -17,11 +17,6 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.deepPurple,
-      //   centerTitle: true,
-      // ),
-      // drawer: DrawerWidget(),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
