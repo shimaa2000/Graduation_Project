@@ -31,13 +31,13 @@ class _CompleteScreenState extends State<CompleteScreen> {
 
   state1() {
     return setState(() {
-      genderVal = 'Male';
+      genderVal = 'male';
     });
   }
 
   var formKey = GlobalKey<FormState>();
   int val = 1;
-  String genderVal = 'Female';
+  String genderVal = 'female';
   String date = '${DateTime.now()}';
 
   @override
@@ -103,17 +103,17 @@ class _CompleteScreenState extends State<CompleteScreen> {
                             onPressedFun: () {
                               if (formKey.currentState!.validate()) {
                                 SignUpCubit.get(context).userSign(
-                                    userName: name,
+                                    userName: name!,
                                   fullName : fullNameController.text,
-                                    email: email,
-                                    password: pass,
+                                    email: email!,
+                                    password: pass!,
                                     gender: genderVal,
                                     birthday: dateController.text,
                                     phoneNumber: phoneController.text,
                                     address: addressController.text,
                                 );
                               }
-                              print(name+pass+email);
+                              print(name!+pass!+email!);
                               print(genderVal + dateController.text + phoneController.text +addressController.text+ fullNameController.text);
                             },
                             text: 'Sign up'),

@@ -18,9 +18,9 @@ class SignUp extends StatefulWidget {
   @override
   _SignUpState createState() => _SignUpState();
 }
-String name='';
-String email='';
-String pass='';
+String? name;
+String? email;
+String? pass;
 
 
 class _SignUpState extends State<SignUp> {
@@ -96,7 +96,7 @@ class _SignUpState extends State<SignUp> {
                         name=nameController.text;
                         email=emailController.text;
                         pass=passwordController.text;
-                        print(name + email+ pass);
+                        print(name! + email!+ pass!);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
