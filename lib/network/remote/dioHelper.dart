@@ -33,12 +33,19 @@ class DioHelper {
       'Content-Type': 'application/json',
       'Cookie': token,
     };
-
-    return dio.post(
-      url,
-     // queryParameters: query,
-      data: data,
-    );
+    try {
+      final response = await dio.post(
+        url,
+        // queryParameters: query,
+        data: data,
+      );
+      if (response.statusCode == 200) {
+        return response;
+      }
+      throw response.data ?? '';
+    } catch (e) {
+      throw e.toString();
+    }
   }
 
 }

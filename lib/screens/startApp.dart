@@ -44,21 +44,17 @@ class _StartAppState extends State<StartApp> {
               )
             ],
           ),
-          body: cubit.pages[cubit.currentIndex],
           bottomNavigationBar: ConvexAppBar(
-
             initialActiveIndex: 0,
             backgroundColor: Colors.deepPurple,
             onTap: (index) {
               cubit.changeBottomNavItem(index);
+              print(cubit.currentIndex);
+              print(cubit.pages[cubit.currentIndex].toString());
             },
-            items: [
-              TabItem(icon: Icons.home,),
-              TabItem(icon: Icons.add,),
-              TabItem(icon: Icons.notifications,),
-              TabItem(icon: Icons.person,),
-            ],
+            items: cubit.tabItems,
           ),
+          body: cubit.pages[cubit.currentIndex],
           drawer: Drawer(
             child: DrawerBody(),
           ),

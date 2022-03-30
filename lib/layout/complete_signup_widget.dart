@@ -122,9 +122,9 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
             ),
             RadioButtonClass(
               title1: 'Male',
-              value1: 'Male',
+              value1: 'male',
               title2: 'Female',
-              value2: 'Female',
+              value2: 'female',
               groupValue: widget.genderVal,
               onChange1: (value) => widget.function1(value),
               onChange2: (value) => widget.function2(value),

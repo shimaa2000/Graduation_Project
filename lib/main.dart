@@ -4,6 +4,7 @@ import 'package:graduation_project/layout/topAdCard.dart';
 import 'package:graduation_project/network/cubit/appCubit.dart';
 import 'package:graduation_project/network/cubit/blocObserver.dart';
 import 'package:graduation_project/network/cubit/loginCubit.dart';
+import 'package:graduation_project/network/cubit/signUpCubit.dart';
 import 'package:graduation_project/network/local/casheHelper.dart';
 import 'package:graduation_project/screens/account_verification.dart';
 import 'package:graduation_project/screens/add%20post%202.dart';
@@ -28,7 +29,7 @@ import 'package:graduation_project/shared/listView.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  BlocOverrides.runZoned((){LoginCubit(); AppCubit();}, blocObserver: MyBlocObserver());
+  BlocOverrides.runZoned((){LoginCubit();SignUpCubit(); AppCubit();}, blocObserver: MyBlocObserver());
   await CashHelper.init();
 
   runApp(MyApp( ));

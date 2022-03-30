@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:graduation_project/layout/complete_signup_widget.dart';
 import 'package:graduation_project/network/cubit/signUpCubit.dart';
 import 'package:graduation_project/network/cubit/signUpStates.dart';
+import 'package:graduation_project/screens/login_screen.dart';
 import 'package:graduation_project/screens/sign_up.dart';
 import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/shared/alert.dart';
@@ -83,12 +84,12 @@ class _CompleteScreenState extends State<CompleteScreen> {
                       genderVal: genderVal,
                       function1: (val) {
                         setState(() {
-                          genderVal = 'Male';
+                          genderVal = 'male';
                         });
                       },
                       function2: (val) {
                         setState(() {
-                          genderVal = 'Female';
+                          genderVal = 'female';
                         });
                       },
                       phoneController: phoneController,

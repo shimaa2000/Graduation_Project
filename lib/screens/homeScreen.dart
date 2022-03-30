@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  SingleChildScrollView(
+    return Scaffold (body:SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -51,6 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
 
-    );
+    ));
   }
 }
