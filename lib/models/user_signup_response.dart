@@ -1,6 +1,6 @@
 class UserResponse {
   String? user;
-  bool? status;
+  dynamic status;
   SignError? error;
   UserResponse({this.user, this.status, this.error});
 

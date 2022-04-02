@@ -39,7 +39,7 @@ class DioHelper {
         // queryParameters: query,
         data: data,
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode! == 200) {
         return response;
       }
       throw response.data ?? '';

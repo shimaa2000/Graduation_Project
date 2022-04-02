@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
-            if (state.loginResponse.status == true) {
+            if (state.loginResponse.status == 200) {
               print(state.loginResponse.user);
               CashHelper.saveData(key: 'token', value: state.loginResponse.user).then((value) {
                 Navigator.pushNamed(context, StartApp.routeName);

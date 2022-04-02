@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 
 class LoginResponse {
-  bool? status;
+  dynamic status;
   String? user;
   LoginError? error;
 

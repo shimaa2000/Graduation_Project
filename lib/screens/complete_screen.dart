@@ -47,7 +47,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
       child: BlocConsumer<SignUpCubit, SignUpStates>(
         listener: (context, state) {
           if (state is SignSuccessState) {
-            if (state.userResponse.status == true) {
+            if (state.userResponse.status == 200) {
               print(state.userResponse.user);
               Navigator.pushNamed(context, HomeScreen.routeName);
               print('success');
