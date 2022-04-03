@@ -47,23 +47,18 @@ class _CompleteScreenState extends State<CompleteScreen> {
       child: BlocConsumer<SignUpCubit, SignUpStates>(
         listener: (context, state) {
           if (state is SignSuccessState) {
-            if (state.userResponse.status == 200) {
-              print(state.userResponse.user);
-              Navigator.pushNamed(context, HomeScreen.routeName);
-              print('success');
-            } else {
-              print(state.userResponse.error?.errorMail);
-              print(state.userResponse.error?.errorPass);
-              Fluttertoast.showToast(
-                  msg:
-                      "Failed To register",
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 5,
-                  backgroundColor: Colors.white,
-                  textColor: Colors.red,
-                  fontSize: 16.0);
-            }
+            Navigator.pushNamed(context,StartApp.routeName);
+            print('success');
+          }
+          if (state is SignErrorState) {
+            Fluttertoast.showToast(
+                msg: state.error.errorMessage,
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 5,
+                backgroundColor: Colors.white,
+                textColor: Colors.red,
+                fontSize: 16.0);
           }
         },
         builder: (context, state) {
@@ -103,18 +98,22 @@ class _CompleteScreenState extends State<CompleteScreen> {
                             onPressedFun: () {
                               if (formKey.currentState!.validate()) {
                                 SignUpCubit.get(context).userSign(
-                                    userName: name!,
-                                  fullName : fullNameController.text,
-                                    email: email!,
-                                    password: pass!,
-                                    gender: genderVal,
-                                    birthday: dateController.text,
-                                    phoneNumber: phoneController.text,
-                                    address: addressController.text,
+                                  userName: name!,
+                                  fullName: fullNameController.text,
+                                  email: email!,
+                                  password: pass!,
+                                  gender: genderVal,
+                                  birthday: dateController.text,
+                                  phoneNumber: phoneController.text,
+                                  address: addressController.text,
                                 );
                               }
-                              print(name!+pass!+email!);
-                              print(genderVal + dateController.text + phoneController.text +addressController.text+ fullNameController.text);
+                              print(name! + pass! + email!);
+                              print(genderVal +
+                                  dateController.text +
+                                  phoneController.text +
+                                  addressController.text +
+                                  fullNameController.text);
                             },
                             text: 'Sign up'),
                         fallback: (context) => Center(

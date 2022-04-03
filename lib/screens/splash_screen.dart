@@ -1,6 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation_project/network/local/casheHelper.dart';
+import 'package:graduation_project/core/services/local/casheHelper.dart';
 import 'package:graduation_project/screens/startApp.dart';
 import '../screens/get_started.dart';
 import 'package:graduation_project/main.dart';
@@ -13,11 +13,12 @@ class SplashScreen extends StatelessWidget {
     Widget widget;
     String? token = CashHelper.getData(key: 'token');
 
-    if(token!= null){
-     // loginVar = true;
-     widget = StartApp();
-    }else {
-      widget = GetStarted();}
+    if (token != null) {
+      // loginVar = true;
+      widget = StartApp();
+    } else {
+      widget = GetStarted();
+    }
     return AnimatedSplashScreen(
       splash: Image.asset(
         'images/logo.png',
@@ -27,7 +28,7 @@ class SplashScreen extends StatelessWidget {
       splashTransition: SplashTransition.rotationTransition,
       backgroundColor: Colors.white,
       duration: 2000,
-      animationDuration: Duration(seconds: 1 ) ,
+      animationDuration: Duration(seconds: 1),
     );
   }
 }

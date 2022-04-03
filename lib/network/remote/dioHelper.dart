@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 
 class DioHelper {
+  static header() => {"Content-Type": "application/json"};
   static Dio dio = Dio();
   static init() {
     dio = Dio(
       BaseOptions(
           baseUrl: 'https://enigmatic-reaches-98451.herokuapp.com/api/',
+          headers: header(),
           receiveDataWhenStatusError: true),
     );
   }
@@ -39,13 +41,17 @@ class DioHelper {
         // queryParameters: query,
         data: data,
       );
-      if (response.statusCode! == 200) {
+      if (response.statusCode == 200) {
         return response;
       }
       throw response.data ?? '';
     } catch (e) {
-      throw e.toString();
+
+     throw e.toString();
     }
   }
 
 }
+
+
+//https://enigmatic-reaches-98451.herokuapp.com/api/

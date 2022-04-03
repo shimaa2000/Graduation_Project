@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/network/local/casheHelper.dart';
+import 'package:graduation_project/core/services/local/casheHelper.dart';
 import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/favourite_Rent.dart';
 import 'package:graduation_project/screens/get_started.dart';
@@ -23,8 +23,7 @@ class _DrawerBodyState extends State<DrawerBody> {
             onTap: () {
               Navigator.pushNamed(context, EditProfile.routeName);
             },
-            child: ListTile(
-                leading: Icon(Icons.edit), title: Text('Edit Profile')),
+            child: ListTile(leading: Icon(Icons.edit), title: Text('Edit Profile')),
           ),
           Divider(
             thickness: 1.0,
@@ -35,8 +34,7 @@ class _DrawerBodyState extends State<DrawerBody> {
             onTap: () {
               Navigator.pushNamed(context, Favourite_Rent.routeName);
             },
-            child: ListTile(
-                leading: Icon(Icons.favorite), title: Text('Favourite')),
+            child: ListTile(leading: Icon(Icons.favorite), title: Text('Favourite')),
           ),
           Divider(
             thickness: 1.0,
@@ -47,8 +45,7 @@ class _DrawerBodyState extends State<DrawerBody> {
             onTap: () {
               Navigator.pushNamed(context, Favourite_Rent.routeName);
             },
-            child: ListTile(
-                leading: Icon(Icons.border_all_sharp), title: Text('Rent')),
+            child: ListTile(leading: Icon(Icons.border_all_sharp), title: Text('Rent')),
           ),
           Divider(
             thickness: 1.0,
@@ -59,8 +56,7 @@ class _DrawerBodyState extends State<DrawerBody> {
             onTap: () {
               Navigator.pushNamed(context, Favourite_Rent.routeName);
             },
-            child: ListTile(
-                leading: Icon(Icons.ad_units_sharp), title: Text('Ads')),
+            child: ListTile(leading: Icon(Icons.ad_units_sharp), title: Text('Ads')),
           ),
           Divider(
             thickness: 1.0,
@@ -79,12 +75,10 @@ class _DrawerBodyState extends State<DrawerBody> {
           InkWell(
               onTap: () {
                 CashHelper.removeData(key: 'token').then((value) {
-                  if(value){
-                    Navigator.push(context,
-                         MaterialPageRoute(builder: (context) => GetStarted()));
+                  if (value) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => GetStarted()));
                   }
                 });
-
               },
               child: ListTile(
                 leading: Icon(Icons.subdirectory_arrow_left_outlined),

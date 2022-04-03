@@ -6,7 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:graduation_project/layout/text_sized_signUp.dart';
 import 'package:graduation_project/network/cubit/loginCubit.dart';
 import 'package:graduation_project/network/cubit/loginStates.dart';
-import 'package:graduation_project/network/local/casheHelper.dart';
+import 'package:graduation_project/core/services/local/casheHelper.dart';
 import '../screens/reset_password_screen.dart';
 import '../screens/startApp.dart';
 import '../shared/boxtextfield.dart';
@@ -26,24 +26,21 @@ class LoginScreen extends StatelessWidget {
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
-            if (state.loginResponse.status == 200) {
-              print(state.loginResponse.user);
-              CashHelper.saveData(key: 'token', value: state.loginResponse.user).then((value) {
-                Navigator.pushNamed(context, StartApp.routeName);
-              });
-            } else {
-              print(state.loginResponse.error!.errorMail);
-              print(state.loginResponse.error!.errorPass);
-              Fluttertoast.showToast(
-                  msg:
-                  "${state.loginResponse.error!.errorMail}  ${state.loginResponse.error!.errorPass}",
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 5,
-                  backgroundColor: Colors.white,
-                  textColor: Colors.red,
-                  fontSize: 16.0);
-            }
+            print(state.loginResponse.userId);
+            CashHelper.saveData(key: 'token', value: state.loginResponse.userId).then((value) {
+              Navigator.pushNamed(context, StartApp.routeName);
+            });
+          }
+
+          if (state is LoginErrorState) {
+            Fluttertoast.showToast(
+                msg: state.error.errorMessage,
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 5,
+                backgroundColor: Colors.white,
+                textColor: Colors.red,
+                fontSize: 16.0);
           }
         },
         builder: (context, state) {
@@ -101,14 +98,11 @@ class LoginScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 15),
                         child: TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(
-                                context, ResetPasswordScreen.routeName);
+                            Navigator.pushNamed(context, ResetPasswordScreen.routeName);
                           },
                           child: Text(
                             'Forget Password?',
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: Theme.of(context).primaryColor),
+                            style: TextStyle(fontSize: 15, color: Theme.of(context).primaryColor),
                           ),
                         ),
                       ),
@@ -118,8 +112,7 @@ class LoginScreen extends StatelessWidget {
                             onPressedFun: () {
                               if (formKey.currentState!.validate()) {
                                 LoginCubit.get(context).userLogin(
-                                    email: userController.text,
-                                    password: passController.text);
+                                    email: userController.text, password: passController.text);
                               }
                             },
                             text: 'Login'),

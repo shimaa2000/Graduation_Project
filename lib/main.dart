@@ -5,7 +5,7 @@ import 'package:graduation_project/network/cubit/appCubit.dart';
 import 'package:graduation_project/network/cubit/blocObserver.dart';
 import 'package:graduation_project/network/cubit/loginCubit.dart';
 import 'package:graduation_project/network/cubit/signUpCubit.dart';
-import 'package:graduation_project/network/local/casheHelper.dart';
+import 'package:graduation_project/core/services/local/casheHelper.dart';
 import 'package:graduation_project/screens/account_verification.dart';
 import 'package:graduation_project/screens/add%20post%202.dart';
 import 'package:graduation_project/screens/add_post.dart';
@@ -26,20 +26,23 @@ import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/screens/user_ads_screen.dart';
 import 'package:graduation_project/shared/listView.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  BlocOverrides.runZoned((){LoginCubit();SignUpCubit(); AppCubit();}, blocObserver: MyBlocObserver());
+  BlocOverrides.runZoned(() {
+    LoginCubit();
+    SignUpCubit();
+    AppCubit();
+  }, blocObserver: MyBlocObserver());
   await CashHelper.init();
 
-  runApp(MyApp( ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
 //  late User user;
   // This widget is the root of your application.
   //final Widget start;
-  const MyApp({Key? key }):super (key:key);
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,18 +64,9 @@ class MyApp extends StatelessWidget {
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
-                headline1: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold),
-                headline3: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-                headline4: TextStyle(
-                    color: Colors.white,
-                    fontSize: 45,
-                    fontWeight: FontWeight.bold),
+                headline1: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
+                headline3: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+                headline4: TextStyle(color: Colors.white, fontSize: 45, fontWeight: FontWeight.bold),
                 headline5: TextStyle(
                   color: Colors.black,
                   fontSize: 21,
@@ -102,7 +96,6 @@ class MyApp extends StatelessWidget {
         UserAds.routeName: (context) => UserAds(),
         ConfirmOrder.routeName: (context) => ConfirmOrder(),
         Favourite_Rent.routeName: (context) => Favourite_Rent(),
-
       },
       debugShowCheckedModeBanner: false,
     );

@@ -1,21 +1,19 @@
+import '../../core/services/api/errors/server_error.dart';
+import '../../models/auth_response.dart';
 
-import 'package:graduation_project/models/user_login_request.dart';
-import 'package:graduation_project/models/user_login_response.dart';
+abstract class LoginStates {}
 
-abstract class LoginStates{}
+class LoginInitialState extends LoginStates {}
 
-class LoginInitialState extends LoginStates{}
+class LoginLoadingState extends LoginStates {}
 
-class LoginLoadingState extends LoginStates{}
+class LoginSuccessState extends LoginStates {
+  final AuthResponse loginResponse;
 
-class LoginSuccessState extends LoginStates{
-  final LoginRequest loginRequest;
-  final LoginResponse loginResponse;
-
-  LoginSuccessState(this.loginRequest , this.loginResponse);
+  LoginSuccessState(this.loginResponse);
 }
 
-class LoginErrorState extends LoginStates{
-  final String error;
+class LoginErrorState extends LoginStates {
+  final ServerError error;
   LoginErrorState(this.error);
 }
