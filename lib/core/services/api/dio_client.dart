@@ -18,7 +18,7 @@ class DioClient {
   }) async {
     _dio.options.headers = {
       'Content-Type': 'application/json',
-      'Cookie': '$token',
+      'Cookie': 'jwt=$token',
     };
     try {
       final response = await _dio.put(
@@ -49,7 +49,7 @@ class DioClient {
   }) async {
     _dio.options.headers = {
       'Content-Type': 'application/json',
-      'Cookie': '$token',
+      'Cookie': 'jwt=$token',
     };
     try {
       final response = await _dio.get(url, queryParameters: query);
@@ -78,7 +78,7 @@ class DioClient {
   }) async {
     _dio.options.headers = {
       'Content-Type': 'application/json',
-      'Cookie': '$token',
+      'Cookie': 'jwt=$token',
     };
     try {
       final response = await _dio.post(

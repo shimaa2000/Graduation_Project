@@ -1,11 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:graduation_project/core/services/api/dio_client.dart';
-import 'package:graduation_project/core/services/api/errors/server_error.dart';
-import 'package:graduation_project/models/auth_response.dart';
-import 'package:graduation_project/models/user_data_model.dart';
-
+import '../core/services/api/dio_client.dart';
+import '../core/services/api/errors/server_error.dart';
+import '../models/auth_response.dart';
+import '../models/user_data_model.dart';
 import '../endPoints.dart';
-
 class AuthRepository {
   static String _token = '';
   static String? _userId;
