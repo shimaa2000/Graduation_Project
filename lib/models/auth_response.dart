@@ -4,20 +4,24 @@ import 'dart:convert';
 
 class AuthResponse {
   String? userId;
+  String? token;
 
   AuthResponse({
     this.userId,
+    this.token,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'userID': userId,
+      'token':token,
     };
   }
 
   factory AuthResponse.fromMap(Map<String, dynamic> map) {
     return AuthResponse(
       userId: map['userID'],
+      token: map['token'],
     );
   }
 

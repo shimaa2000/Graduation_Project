@@ -17,7 +17,7 @@ class ServerError {
 
   factory ServerError.fromMap(Map<String, dynamic> map) {
     return ServerError(
-      errors: Map<String, dynamic>.from(map['errors']),
+      errors: map['errors'],
     );
   }
 

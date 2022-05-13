@@ -6,6 +6,7 @@ import 'package:graduation_project/network/cubit/blocObserver.dart';
 import 'package:graduation_project/network/cubit/loginCubit.dart';
 import 'package:graduation_project/network/cubit/signUpCubit.dart';
 import 'package:graduation_project/core/services/local/casheHelper.dart';
+import 'package:graduation_project/network/cubit/user_data_cubit.dart';
 import 'package:graduation_project/screens/account_verification.dart';
 import 'package:graduation_project/screens/add%20post%202.dart';
 import 'package:graduation_project/screens/add_post.dart';
@@ -100,4 +101,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
     );
   }
+
+  static void navigateToReplace() {}
 }

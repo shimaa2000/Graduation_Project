@@ -6,7 +6,9 @@ import 'package:graduation_project/shared/defaultButton.dart';
 import 'package:graduation_project/shared/imagePicker.dart';
 String imgUrl='images/photourl.jpg';
 class ProfileContainer extends StatelessWidget {
-  const ProfileContainer({Key? key}) : super(key: key);
+ final String userName;
+ final String userAddress;
+  const ProfileContainer({Key? key,required this.userName, required this.userAddress,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,16 +48,18 @@ class ProfileContainer extends StatelessWidget {
                       height: 10.0,
                     ),
                     Text(
-                      'UserName',
+                      userName,
                       style: TextStyle(
                           fontSize: 26.0,
-                          fontWeight: FontWeight.bold),
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(
                       height: 8.0,
                     ),
                     Text(
-                      'Menofia, Egypt',
+                      userAddress,
                       style: TextStyle(
                           fontSize: 26.0,
                           fontWeight: FontWeight.w300,

@@ -7,11 +7,7 @@ import 'package:graduation_project/layout/search_classDelegate.dart';
 import 'package:graduation_project/models/postsModel.dart';
 import 'package:graduation_project/network/cubit/appCubit.dart';
 import 'package:graduation_project/network/cubit/appStates.dart';
-import 'package:graduation_project/screens/activity_taps.dart';
-import 'package:graduation_project/screens/add_post.dart';
-import 'package:graduation_project/screens/homeScreen.dart';
-import 'package:graduation_project/screens/notifications_screen.dart';
-import 'package:graduation_project/screens/profile.dart';
+import 'package:graduation_project/network/cubit/user_data_cubit.dart';
 class StartApp extends StatefulWidget {
   static const routeName='start_app';
   const StartApp({Key? key}) : super(key: key);
@@ -49,7 +45,7 @@ class _StartAppState extends State<StartApp> {
             backgroundColor: Colors.deepPurple,
             onTap: (index) {
               cubit.changeBottomNavItem(index);
-              print(cubit.currentIndex);
+                print(cubit.currentIndex);
               print(cubit.pages[cubit.currentIndex].toString());
             },
             items: cubit.tabItems,

@@ -10,16 +10,64 @@ class DioClient {
     ),
   );
 
-  static Future<Response> getData({
+  static Future<Either<ServerError, Response>> putData({
+    required String url,
+    required Map<String, dynamic> data,
+    Map<String, dynamic>? query,
+    String? token,
+  }) async {
+    _dio.options.headers = {
+      'Content-Type': 'application/json',
+      'Cookie': '$token',
+    };
+    try {
+      final response = await _dio.put(
+        url,
+        data: data,
+      );
+      return Right(response);
+    } on DioError catch (e) {
+      final serverError = ServerError.fromMap(
+        e.response?.data,
+      );
+      print(e.toString());
+      return Left(serverError);
+    } catch (e) {
+      Logging.logError(e.toString());
+      return Left(
+        ServerError(
+          errors: {"exception": "Something Went Wrong"},
+        ),
+      );
+    }
+  }
+
+  static Future<Either<ServerError, Response>> getData({
     required String url,
     Map<String, dynamic>? query,
     String? token,
   }) async {
     _dio.options.headers = {
       'Content-Type': 'application/json',
-      'Cookie': token,
+      'Cookie': '$token',
     };
-    return await _dio.get(url, queryParameters: query);
+    try {
+      final response = await _dio.get(url, queryParameters: query);
+      return Right(response);
+    } on DioError catch (e) {
+      final serverError = ServerError.fromMap(
+        e.response?.data,
+      );
+      print(e.toString());
+      return Left(serverError);
+    } catch (e) {
+      Logging.logError(e.toString());
+      return Left(
+        ServerError(
+          errors: {"exception": "Something Went Wrong"},
+        ),
+      );
+    }
   }
 
   static Future<Either<ServerError, Response>> postData({
@@ -30,20 +78,19 @@ class DioClient {
   }) async {
     _dio.options.headers = {
       'Content-Type': 'application/json',
-      'Cookie': token,
+      'Cookie': '$token',
     };
     try {
       final response = await _dio.post(
         url,
         data: data,
       );
-
       return Right(response);
     } on DioError catch (e) {
       final serverError = ServerError.fromMap(e.response?.data);
       return Left(serverError);
     } catch (e) {
-      Logger.logError(e.toString());
+      Logging.logError(e.toString());
       return Left(
         ServerError(
           errors: {"exception": "Something Went Wrong"},

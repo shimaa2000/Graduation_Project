@@ -3,13 +3,15 @@ import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/models/auth_response.dart';
 import 'package:graduation_project/network/cubit/signUpStates.dart';
 import 'package:graduation_project/core/services/api/dio_client.dart';
+import 'package:graduation_project/repository/auth_repository.dart';
 
 class SignUpCubit extends Cubit<SignUpStates> {
   SignUpCubit() : super(SignInitialState());
 
   static SignUpCubit get(context) => BlocProvider.of(context);
-
+  final authRepository = AuthRepository();
   AuthResponse? signResponse;
+
   void userSign({
     required String userName,
     required String fullName,
@@ -22,7 +24,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
   }) async {
     emit(SignLoadingState());
 
-    final response = await DioClient.postData(url: SIGN, data: {
+    final response = await authRepository.signUp({
       'userName': userName,
       'fullName': fullName,
       'email': email,
@@ -35,9 +37,8 @@ class SignUpCubit extends Cubit<SignUpStates> {
 
     response.fold(
       (error) => emit(SignErrorState(error)),
-      (body) {
-        signResponse = AuthResponse.fromMap(body.data);
-        emit(SignSuccessState(signResponse!));
+      (authResponse) {
+        emit(SignSuccessState(authResponse));
       },
     );
   }
