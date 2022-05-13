@@ -35,6 +35,7 @@ class AuthRepository {
     final response = await DioClient.putData(
       url: "$USERDATA$_userId",
       data: updateRequest,
+      token: _token,
     );
 
     return response.fold(
