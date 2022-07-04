@@ -8,75 +8,77 @@ class GetStarted extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'images/logo.png',
-              width: 270,
-              height: 270,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Welcome to Dressuit',
-              style: Theme.of(context).textTheme.headline1,
-            ),
-            SizedBox(
-              height: 7,
-            ),
-            Column(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
-              Text(
-                'Easily find clothes for your special occasion.',
-                style: Theme.of(context).textTheme.bodyText1,
-              ),Text(
-                'Our ambition is to make you feel confident',
-                style: Theme.of(context).textTheme.bodyText2,
-              ),Text(
-                ' and beautiful.',
-                style: Theme.of(context).textTheme.bodyText1,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'images/logo.png',
+                width: 270,
+                height: 270,
               ),
-            ],),
-            SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              width: 165,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, LoginScreen.routeName);
-                },
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Welcome to Dressuit',
+                style: Theme.of(context).textTheme.headline1,
+              ),
+              SizedBox(
+                height: 7,
+              ),
+              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
+                Text(
+                  'Easily find clothes for your special occasion.',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),Text(
+                  'Our ambition is to make you feel confident',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),Text(
+                  ' and beautiful.',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ],),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: 165,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, LoginScreen.routeName);
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        'Get Started   ',
+                        style: Theme.of(context).textTheme.bodyText2,
+                      ),
+                      Icon(Icons.arrow_forward),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 80.0),
                 child: Row(
                   children: [
                     Text(
-                      'Get Started   ',
-                      style: Theme.of(context).textTheme.bodyText2,
+                      "You don't have an account ?",
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
-                    Icon(Icons.arrow_forward),
+                    TextButton(onPressed: (){
+                      Navigator.of(context).pushNamed(SignUp.routeName);
+                    }, child: Text('Sign up ' ,style: TextStyle(fontSize: 15,color: Theme.of(context).primaryColor),))
                   ],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 80.0),
-              child: Row(
-                children: [
-                  Text(
-                    "You don't have an account ?",
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  TextButton(onPressed: (){
-                    Navigator.of(context).pushNamed(SignUp.routeName);
-                  }, child: Text('Sign up ' ,style: TextStyle(fontSize: 15,color: Theme.of(context).primaryColor),))
-                ],
-              ),
-            ),
-          ],
-        )),
+            ],
+          )),
+        ),
       ),
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/add%20post%202.dart';
 import 'package:graduation_project/screens/login_screen.dart';
@@ -19,6 +21,7 @@ class AddPost extends StatefulWidget {
 enum ImageSourceType { gallery, camera }
 
 class _AddPostState extends State<AddPost> {
+  File? f;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +50,7 @@ class _AddPostState extends State<AddPost> {
                               minimumSize: Size(double.infinity, 50),
                                 primary: Colors.white,elevation: 1.0),
                             onPressed: () {
-                              Alerts.photoDialog(context);
+                              //Alerts.photoDialog(context,);
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,

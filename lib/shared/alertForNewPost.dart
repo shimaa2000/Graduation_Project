@@ -1,13 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 import 'package:graduation_project/shared/imagePicker.dart';
 
-
 enum ChooseAction { Camera, Gallery }
+
+File? img;
+
 class Alerts {
+
   static Future<ChooseAction> photoDialog(
-      BuildContext context,
-      ) async {
+    BuildContext context,
+    void userUpdateUserData({File? f}),
+  ) async {
     final action = await showDialog(
         context: context,
         barrierDismissible: true,
@@ -16,7 +22,10 @@ class Alerts {
             child: AlertDialog(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20))),
-              content: Text('Choose From ?', style: TextStyle(fontSize: 24,fontWeight: FontWeight.w400),),
+              content: Text(
+                'Choose From ?',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+              ),
               actions: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -28,8 +37,17 @@ class Alerts {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextButton(
-                          onPressed: (){ Images().uploadImageFromCamera();},
-                          child: Text('Camera',
+                          onPressed: () async {
+                            final image =
+                                await Images().uploadImageFromCamera();
+                            if (image != null) {
+                              print(image.path);
+                              img = image;
+                              userUpdateUserData(f: image);
+                            }
+                          },
+                          child: Text(
+                            'Camera',
                           ),
                           style: TextButton.styleFrom(
                             side: BorderSide(
@@ -50,7 +68,9 @@ class Alerts {
                         ),
                         DefaultButton(
                           text: 'Gallery',
-                          onPressedFun: (){ Images().uploadImageFromGallery();},
+                          onPressedFun: () {
+                            Images().uploadImageFromGallery();
+                          },
                         ),
                       ],
                     ),

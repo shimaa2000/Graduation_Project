@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 class ServerError {
-  Map<String, dynamic> errors;
+  List<String> errors;
 
-  String get errorMessage => errors.values.join(",");
+  String get errorMessage => errors.join(",");
 
   ServerError({
     required this.errors,
@@ -16,8 +16,14 @@ class ServerError {
   }
 
   factory ServerError.fromMap(Map<String, dynamic> map) {
+    List<String> _errors = [];
+    if (map['errors'] is List) {
+      _errors = map['errors'];
+    } else if (map['errors'] is String) {
+      _errors = [map['errors']];
+    }
     return ServerError(
-      errors: map['errors'],
+      errors: _errors,
     );
   }
 

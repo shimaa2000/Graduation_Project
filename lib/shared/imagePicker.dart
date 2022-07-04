@@ -7,19 +7,23 @@ class Images {
   File? image;
   final imagePicker = ImagePicker();
 
-  uploadImageFromCamera() async {
-    var pickedImageFromCamera =
-    await imagePicker.pickImage(source: ImageSource.camera);
-    if (pickedImageFromCamera != null) {
-      image = File(pickedImageFromCamera.path);
-    } else {}
+  Future<File?> uploadImageFromCamera() async {
+    try {
+      var pickedImageFromCamera = await imagePicker.pickImage(source: ImageSource.camera);
+      if (pickedImageFromCamera != null) {
+        image = File(pickedImageFromCamera.path);
+        return image;
+      }
+      return null;
+    } catch (_) {
+      return null;
+    }
   }
 
   //Future<String> _execute(Function function) async { }
 
   uploadImageFromGallery() async {
-    var pickedImageFromGallery =
-    await imagePicker.pickImage(source: ImageSource.gallery);
+    var pickedImageFromGallery = await imagePicker.pickImage(source: ImageSource.gallery);
     if (pickedImageFromGallery != null) {
       image = File(pickedImageFromGallery.path);
     } else {}

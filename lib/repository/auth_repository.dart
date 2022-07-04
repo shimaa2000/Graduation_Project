@@ -1,15 +1,17 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:graduation_project/models/products.dart';
 import '../core/services/api/dio_client.dart';
 import '../core/services/api/errors/server_error.dart';
 import '../models/auth_response.dart';
 import '../models/user_data_model.dart';
 import '../endPoints.dart';
+
 class AuthRepository {
   static String _token = '';
   static String? _userId;
   //Login
-  Future<Either<ServerError, AuthResponse>> login(
-      Map<String, dynamic> loginRequest) async {
+  Future<Either<ServerError, AuthResponse>> login(Map<String, dynamic> loginRequest) async {
     final response = await DioClient.postData(
       url: LOGIN,
       data: loginRequest,
@@ -18,9 +20,10 @@ class AuthRepository {
     return response.fold(
       (error) => Left(error),
       (body) {
-        final AuthResponse authResponse=AuthResponse.fromMap(body.data);
-        _token=authResponse.token!;
-        _userId=authResponse.userId;
+        final AuthResponse authResponse = AuthResponse.fromMap(body.data);
+        _token = authResponse.token!;
+        TOKEN=_token;
+        _userId = authResponse.userId;
         print(_userId);
         return Right(authResponse);
       },
@@ -28,11 +31,10 @@ class AuthRepository {
   }
 
   //Update User Info
-  Future<Either<ServerError, UserData>> updateUserData(
-      Map<String, dynamic> updateRequest) async {
-    final response = await DioClient.putData(
+  Future<Either<ServerError, UserData>> updateUserData(FormData data) async {
+    final response = await DioClient.putFormData(
       url: "$USERDATA$_userId",
-      data: updateRequest,
+      data: data,
       token: _token,
     );
 
@@ -57,8 +59,7 @@ class AuthRepository {
   }
 
   //SignUP
-  Future<Either<ServerError, AuthResponse>> signUp(
-      Map<String, dynamic> signUpRequest) async {
+  Future<Either<ServerError, AuthResponse>> signUp(Map<String, dynamic> signUpRequest) async {
     final response = await DioClient.postData(
       url: SIGN,
       data: signUpRequest,
@@ -68,5 +69,13 @@ class AuthRepository {
       (error) => Left(error),
       (body) => Right(AuthResponse.fromMap(body.data)),
     );
+  }
+  Future<Either<ServerError, Products>> homeDataFun() async {
+    final response = await DioClient.getData(
+      url: HOME,
+      token: _token,
+    );
+    return response.fold((error) => Left(error),
+          (body) => Right(Products.fromMap(body.data)),);
   }
 }

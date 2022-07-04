@@ -2,7 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/core/services/local/casheHelper.dart';
 import 'package:graduation_project/network/cubit/appStates.dart';
+import 'package:graduation_project/repository/auth_repository.dart';
 import 'package:graduation_project/screens/add_post.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/screens/notifications_screen.dart';
@@ -40,4 +42,51 @@ class AppCubit extends Cubit<AppStates> {
     currentIndex = index;
     emit(AppChangeBottomNavStates());
   }
+  bool isDark = false;
+
+  void changeModeApp(){
+    isDark = !isDark;
+    CashHelper.saveData(key: 'isDark', value: isDark).then((value) => {
+      emit(AppModeState())
+    });
+
+  }
+
+  final authRepository = AuthRepository();
+  String _title='';
+  String _price ='';
+  int _length=0;
+  void getProductData() async {
+    emit(AppLoadingHomeState());
+    final response = await authRepository.homeDataFun();
+    response.fold(
+          (error) => emit(AppErrorHomeState(error)),
+          (response) {
+        setLength(response.homeProducts!.length);
+        setTitle(response.homeProducts![0].title!);
+        setPrice(response.homeProducts![0].price!);
+        emit(AppSuccessHomeState(response));
+      },
+    );
+  }
+  void setLength(int length){
+    _length = length;
+  }
+  getLength(){
+    return _length;
+  }
+  void setTitle(String title){
+    _title = title;
+  }
+  getTitle(){
+    return _title;
+  }
+  void setPrice(String price){
+    _price = price;
+  }
+  getPrice(){
+    return _price;
+  }
 }
+
+

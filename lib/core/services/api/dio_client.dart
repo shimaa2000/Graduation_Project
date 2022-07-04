@@ -18,7 +18,7 @@ class DioClient {
   }) async {
     _dio.options.headers = {
       'Content-Type': 'application/json',
-      'Cookie': 'jwt=$token',
+      'token': token,
     };
     try {
       final response = await _dio.put(
@@ -36,7 +36,38 @@ class DioClient {
       Logging.logError(e.toString());
       return Left(
         ServerError(
-          errors: {"exception": "Something Went Wrong"},
+          errors: ["Something Went Wrong"],
+        ),
+      );
+    }
+  }
+
+  static Future<Either<ServerError, Response>> putFormData({
+    required String url,
+    required FormData data,
+    Map<String, dynamic>? query,
+    String? token,
+  }) async {
+    _dio.options.headers = {
+      'token': token,
+    };
+    try {
+      final response = await _dio.put(
+        url,
+        data: data,
+      );
+      return Right(response);
+    } on DioError catch (e) {
+      final serverError = ServerError.fromMap(
+        e.response?.data,
+      );
+      print(e.toString());
+      return Left(serverError);
+    } catch (e) {
+      Logging.logError(e.toString());
+      return Left(
+        ServerError(
+          errors: ["Something Went Wrong"],
         ),
       );
     }
@@ -49,22 +80,27 @@ class DioClient {
   }) async {
     _dio.options.headers = {
       'Content-Type': 'application/json',
-      'Cookie': 'jwt=$token',
+      'token': token,
     };
     try {
       final response = await _dio.get(url, queryParameters: query);
       return Right(response);
     } on DioError catch (e) {
-      final serverError = ServerError.fromMap(
-        e.response?.data,
-      );
+      ServerError serverError;
+      if (e.response?.data is Map) {
+        serverError = ServerError.fromMap(
+          e.response?.data,
+        );
+      } else {
+        serverError = ServerError(errors: [e.response?.data ?? '']);
+      }
       print(e.toString());
       return Left(serverError);
     } catch (e) {
       Logging.logError(e.toString());
       return Left(
         ServerError(
-          errors: {"exception": "Something Went Wrong"},
+          errors: ["Something Went Wrong"],
         ),
       );
     }
@@ -78,7 +114,7 @@ class DioClient {
   }) async {
     _dio.options.headers = {
       'Content-Type': 'application/json',
-      'Cookie': 'jwt=$token',
+      'token': token,
     };
     try {
       final response = await _dio.post(
@@ -93,7 +129,7 @@ class DioClient {
       Logging.logError(e.toString());
       return Left(
         ServerError(
-          errors: {"exception": "Something Went Wrong"},
+          errors: ["Something Went Wrong"],
         ),
       );
     }

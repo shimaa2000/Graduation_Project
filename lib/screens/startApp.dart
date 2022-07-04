@@ -21,8 +21,7 @@ class _StartAppState extends State<StartApp> {
   Widget build(BuildContext context) {
     final List<PostModel> list = List.generate(DUMMY_DATA.length, (id) => DUMMY_DATA[id]);
 
-    return BlocProvider(create: (BuildContext context)=> AppCubit(),
-    child: BlocConsumer<AppCubit , AppStates>(
+    return BlocConsumer<AppCubit , AppStates>(
       listener:(context , state){} ,
       builder: (context , state){
         var cubit = AppCubit.get(context);
@@ -56,7 +55,7 @@ class _StartAppState extends State<StartApp> {
           ),
         );
       },
-    ),);
+    );
   }
 }
 

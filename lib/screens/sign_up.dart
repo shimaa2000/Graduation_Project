@@ -33,8 +33,7 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (BuildContext context)=> SignUpCubit(),
-    child: BlocConsumer<SignUpCubit , SignUpStates>(
+    return BlocConsumer<SignUpCubit , SignUpStates>(
       listener: (context , state){
         // if( state is SignSuccessState){
         //   if(state.userResponse.status == true){
@@ -145,7 +144,6 @@ class _SignUpState extends State<SignUp> {
           ),
         );
       },
-    ),
     );
   }
 }
