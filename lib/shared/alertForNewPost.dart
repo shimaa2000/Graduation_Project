@@ -12,7 +12,7 @@ class Alerts {
 
   static Future<ChooseAction> photoDialog(
     BuildContext context,
-    void userUpdateUserData({File? f}),
+    void Function({File? image}) userUpdateUserData,
   ) async {
     final action = await showDialog(
         context: context,
@@ -43,7 +43,7 @@ class Alerts {
                             if (image != null) {
                               print(image.path);
                               img = image;
-                              userUpdateUserData(f: image);
+                              userUpdateUserData(image: image);
                             }
                           },
                           child: Text(
