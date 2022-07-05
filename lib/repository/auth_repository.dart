@@ -76,6 +76,6 @@ class AuthRepository {
       token: _token,
     );
     return response.fold((error) => Left(error),
-          (body) => Right(Products.fromMap(body.data)),);
+          (body) => Right(Products.fromList(body.data)),);
   }
 }

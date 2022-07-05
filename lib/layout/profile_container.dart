@@ -38,7 +38,7 @@ class ProfileContainer extends StatelessWidget {
                 child: Column(
                   children: [
                     GestureDetector(
-                      onTap: () {Choose.ChooseDialog(context);},
+                      onTap: () {Choose.chooseDialog(context);},
                       child: CircleAvatar(
                         radius: 70.0,
                        backgroundImage: AssetImage(imgUrl,) ,

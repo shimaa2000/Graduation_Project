@@ -12,7 +12,7 @@ import 'package:graduation_project/shared/popUp.dart';
 enum Action { View, Change }
 
 class Choose {
-  static Future<Action> ChooseDialog(
+  static Future<Action> chooseDialog(
     BuildContext context,
   ) async {
     final action = await showDialog(

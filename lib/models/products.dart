@@ -1,27 +1,35 @@
 import 'dart:convert';
 
-class Products{
-  List<HomeProducts>? homeProducts;
+class Products {
+  List<dynamic>? homeProducts;
+
   Products({this.homeProducts});
-  factory Products.fromMap(Map<String, dynamic> map){
-    final List<HomeProducts> productList=[];
-    map['products'].forEach((element)=> productList.add(element));
-    return Products(
-        homeProducts :productList
-    );
+
+  factory Products.fromMap(Map<String, dynamic> map) {
+    final List<HomeProducts> productList = [];
+    map['products'].forEach((element) => productList.add(element));
+    return Products(homeProducts: productList);
   }
-  Map<String  , dynamic> toMap(){
-    return {
-      'products': homeProducts
-    };
+
+  Map<String, dynamic> toMap() {
+    return {'products': homeProducts};
   }
-  String toJson()=>json.encode(toMap());
-  factory Products.fromJson(String source)=> Products.fromMap(json.decode(source));
+
+  String toJson() => json.encode(toMap());
+
+  factory Products.fromList(List<dynamic> values){
+    return Products(homeProducts: values);
+  }
+  factory Products.fromJson(String source) {
+    List<dynamic> values;
+    values=json.decode(source);
+    return Products.fromList(values);
+  }
 }
 
 class HomeProducts {
   String? title;
-  String? price;
+  int price;
   String? description;
   Size? size;
   String? color;
@@ -29,16 +37,18 @@ class HomeProducts {
   String? publishDate;
   String? purpose;
   List<dynamic>? images = [];
+
   HomeProducts(
       {this.title,
-        this.size,
-        this.price,
-        this.images,
-        this.purpose,
-        this.color,
-        this.description,
-        this.type,
-        this.publishDate});
+      this.size,
+      this.price=0,
+      this.images,
+      this.purpose,
+      this.color,
+      this.description,
+      this.type,
+      this.publishDate});
+
   Map<String, dynamic> toMap() {
     return {
       'title': title,
@@ -52,32 +62,34 @@ class HomeProducts {
       'publishDate': publishDate,
     };
   }
+
   factory HomeProducts.fromMap(Map<String, dynamic> map) {
-    final List<dynamic> imageList = [];
-    map["images"].forEach((element) => imageList.add(element));
+    // final List<dynamic> imageList = [];
+    // map["images"].forEach((element) => imageList.add(element));
     return HomeProducts(
       title: map['title'],
       price: map['price'],
       description: map['description'],
-      size: map['size'],
+      size: Size.fromMap(map['size']),
       color: map['color'],
       type: map['type'],
       publishDate: map['publishDate'],
       purpose: map['purpose'],
-      images: imageList,
+      //images: imageList,
     );
   }
+
   String toJson() => json.encode(toMap());
 
   factory HomeProducts.fromJson(String source) =>
       HomeProducts.fromMap(json.decode(source));
-
-
 }
-class Size{
+
+class Size {
   String? name;
   int? height;
   int? width;
+
   Size({this.name, this.height, this.width});
 
   Map<String, dynamic> toMap() {

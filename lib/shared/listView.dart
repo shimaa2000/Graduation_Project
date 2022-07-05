@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/dummy_data.dart';
 import 'package:graduation_project/models/postsModel.dart';
+import 'package:graduation_project/network/cubit/appCubit.dart';
+import 'package:graduation_project/network/cubit/appStates.dart';
 import 'package:graduation_project/screens/details_screen.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 
@@ -20,17 +23,26 @@ class ListViewBuilderData extends StatefulWidget {
 class _ListViewBuilderDataState extends State<ListViewBuilderData> {
   Widget listFit(int index, {String search = ''}) {
     return DUMMY_DATA[index].name.contains(search)
-        ? FittedBox(
-            child: NewCardWidget(
-            name: DUMMY_DATA[index].name,
-            date: DUMMY_DATA[index].date,
-            isFav: fav_list.contains(DUMMY_DATA[index]) ? true : false,
-            imgUrl: DUMMY_DATA[index].ImgUrl,
-            title: DUMMY_DATA[index].title,
-            price: DUMMY_DATA[index].price,
-            size: DUMMY_DATA[index].size,
-            index: index,
-          ))
+        ? BlocProvider(
+            create: (BuildContext context) => AppCubit()..getProductData(),
+            child: BlocConsumer<AppCubit, AppStates>(
+              builder: (context, state) {
+                var cubit= AppCubit.get(context);
+                return FittedBox(
+                    child: NewCardWidget(
+                  name: DUMMY_DATA[index].name,
+                  date: DUMMY_DATA[index].date,
+                  isFav: fav_list.contains(DUMMY_DATA[index]) ? true : false,
+                  imgUrl: DUMMY_DATA[index].ImgUrl,
+                  title: DUMMY_DATA[index].title,
+                  price: cubit.getPrice().toDouble(),
+                  size: DUMMY_DATA[index].size,
+                  index: index,
+                ));
+              },
+              listener: (context, state) {},
+            ),
+          )
         : SizedBox(
             width: 500,
             height: 1,

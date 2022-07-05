@@ -3,6 +3,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/core/services/local/casheHelper.dart';
+import 'package:graduation_project/models/products.dart';
 import 'package:graduation_project/network/cubit/appStates.dart';
 import 'package:graduation_project/repository/auth_repository.dart';
 import 'package:graduation_project/screens/add_post.dart';
@@ -54,7 +55,7 @@ class AppCubit extends Cubit<AppStates> {
 
   final authRepository = AuthRepository();
   String _title='';
-  String _price ='';
+  int _price=0 ;
   int _length=0;
   void getProductData() async {
     emit(AppLoadingHomeState());
@@ -62,9 +63,10 @@ class AppCubit extends Cubit<AppStates> {
     response.fold(
           (error) => emit(AppErrorHomeState(error)),
           (response) {
-        setLength(response.homeProducts!.length);
-        setTitle(response.homeProducts![0].title!);
-        setPrice(response.homeProducts![0].price!);
+            HomeProducts value=HomeProducts.fromMap(response.homeProducts![0]);
+        //setLength(value.length);
+        setTitle(value.title!);
+        setPrice(value.price);
         emit(AppSuccessHomeState(response));
       },
     );
@@ -81,7 +83,7 @@ class AppCubit extends Cubit<AppStates> {
   getTitle(){
     return _title;
   }
-  void setPrice(String price){
+  void setPrice(int price){
     _price = price;
   }
   getPrice(){
