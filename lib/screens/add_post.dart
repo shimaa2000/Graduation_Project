@@ -25,7 +25,6 @@ class _AddPostState extends State<AddPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
         body: Padding(
             padding: EdgeInsets.symmetric(vertical: 15.0,horizontal: 50.0),
             child: Align(
@@ -50,7 +49,7 @@ class _AddPostState extends State<AddPost> {
                               minimumSize: Size(double.infinity, 50),
                                 primary: Colors.white,elevation: 1.0),
                             onPressed: () {
-                              //Alerts.photoDialog(context,);
+                             // Alerts.photoDialog(context,);
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,

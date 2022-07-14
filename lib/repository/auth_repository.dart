@@ -18,8 +18,8 @@ class AuthRepository {
     );
 
     return response.fold(
-      (error) => Left(error),
-      (body) {
+          (error) => Left(error),
+          (body) {
         final AuthResponse authResponse = AuthResponse.fromMap(body.data);
         _token = authResponse.token!;
         TOKEN=_token;
@@ -39,8 +39,8 @@ class AuthRepository {
     );
 
     return response.fold(
-      (error) => Left(error),
-      (body) {
+          (error) => Left(error),
+          (body) {
         return Right(UserData.fromMap(body.data));
       },
     );
@@ -53,8 +53,8 @@ class AuthRepository {
       token: _token,
     );
     return response.fold(
-      (error) => Left(error),
-      (body) => Right(UserData.fromMap(body.data)),
+          (error) => Left(error),
+          (body) => Right(UserData.fromMap(body.data)),
     );
   }
 
@@ -66,8 +66,8 @@ class AuthRepository {
     );
 
     return response.fold(
-      (error) => Left(error),
-      (body) => Right(AuthResponse.fromMap(body.data)),
+          (error) => Left(error),
+          (body) => Right(AuthResponse.fromMap(body.data)),
     );
   }
   Future<Either<ServerError, Products>> homeDataFun() async {

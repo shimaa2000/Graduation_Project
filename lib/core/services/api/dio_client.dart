@@ -58,14 +58,9 @@ class DioClient {
       );
       return Right(response);
     } on DioError catch (e) {
-      ServerError serverError;
-      if (e.response?.data is Map) {
-        serverError = ServerError.fromMap(
-          e.response?.data,
-        );
-      } else {
-        serverError = ServerError(errors: [e.response?.data ?? '']);
-      }
+      final serverError = ServerError.fromMap(
+        e.response?.data,
+      );
       print(e.toString());
       return Left(serverError);
     } catch (e) {

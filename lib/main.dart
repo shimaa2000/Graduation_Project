@@ -1,5 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:graduation_project/network/cubit/layoutCubit.dart';
+import 'package:graduation_project/themes.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/topAdCard.dart';
 import 'package:graduation_project/network/cubit/appCubit.dart';
 import 'package:graduation_project/network/cubit/appStates.dart';
@@ -31,13 +37,18 @@ import 'package:graduation_project/shared/listView.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   BlocOverrides.runZoned(() {
     LoginCubit();
     SignUpCubit();
     AppCubit();
   }, blocObserver: MyBlocObserver());
   await CashHelper.init();
-
+  await GetStorage.init();
+  final String defaultLocale = Platform.localeName.substring(0, 2);
+  defaultLang = defaultLocale;
+  lang = GetStorage().read('lang') ?? (defaultLang == 'ar' ? 'ar' : 'en');
+  isDark = GetStorage().read('isDarkMode')??false;
   runApp(MyApp());
 }
 
@@ -57,58 +68,63 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (BuildContext context) => SignUpCubit()),
         BlocProvider(create: (BuildContext context) => UserDataCubit()),
         BlocProvider(create: (BuildContext context) => UpdateUserDataCubit()),
+        BlocProvider(create: (BuildContext context) => LayoutCubit()),
+
       ],
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
-            theme: ThemeData(
-                primarySwatch: Colors.deepPurple,
-                accentColor: Color.fromRGBO(220, 129, 102, 0.9019607843137255),
-                canvasColor: Color.fromRGBO(255, 255, 255, 1),
-                textTheme: ThemeData.light().textTheme.copyWith(
-                      bodyText1: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      bodyText2: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                      headline2: TextStyle(
-                        fontSize: 50,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      headline1: TextStyle(
-                          color: Colors.black,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                      headline3: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
-                      headline4: TextStyle(
-                          color: Colors.white,
-                          fontSize: 45,
-                          fontWeight: FontWeight.bold),
-                      headline5: TextStyle(
-                        color: Colors.black,
-                        fontSize: 21,
-                      ),
-                    ),
-                backgroundColor: Colors.white,
-                elevatedButtonTheme: ElevatedButtonThemeData(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.deepPurple),
-                  ),
-                )),
-            darkTheme: ThemeData(backgroundColor: Colors.grey),
-            themeMode:
-                AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+            home: Directionality(
+              textDirection:
+                  languageFun(ar: TextDirection.rtl, en: TextDirection.ltr),
+              child: SplashScreen(),
+            ),
+            locale:  Locale(languageFun(ar: 'ar', en: 'en')),
+            // theme: ThemeData(
+            //     primarySwatch: Colors.deepPurple,
+            //     accentColor: Color.fromRGBO(220, 129, 102, 0.9019607843137255),
+            //     canvasColor: Color.fromRGBO(255, 255, 255, 1),
+            //     textTheme: ThemeData.light().textTheme.copyWith(
+            //           bodyText1: TextStyle(
+            //             color: Colors.black,
+            //             fontSize: 14,
+            //           ),
+            //           bodyText2: TextStyle(
+            //             color: Colors.white,
+            //             fontSize: 18,
+            //           ),
+            //           headline2: TextStyle(
+            //             fontSize: 50,
+            //             color: Colors.white,
+            //             fontWeight: FontWeight.bold,
+            //           ),
+            //           headline1: TextStyle(
+            //               color: Colors.black,
+            //               fontSize: 30,
+            //               fontWeight: FontWeight.bold),
+            //           headline3: TextStyle(
+            //               color: Colors.black,
+            //               fontSize: 25,
+            //               fontWeight: FontWeight.bold),
+            //           headline4: TextStyle(
+            //               color: Colors.white,
+            //               fontSize: 45,
+            //               fontWeight: FontWeight.bold),
+            //           headline5: TextStyle(
+            //             color: Colors.black,
+            //             fontSize: 21,
+            //           ),
+            //         ),
+            //     backgroundColor: Colors.white,
+            //
+            //     ),
+            // darkTheme: ThemeData(backgroundColor: Colors.grey),
+            darkTheme: dark,
+            theme: light,
+
+            themeMode: isDark? ThemeMode.light :ThemeMode.dark,
             routes: {
-              '/': (context) => SplashScreen(),
               LoginScreen.routeName: (context) => LoginScreen(),
               ResetPasswordScreen.routeName: (context) => ResetPasswordScreen(),
               AccountVerification.routeName: (context) => AccountVerification(),

@@ -9,6 +9,8 @@ class AppChangeBottomNavStates extends AppStates {}
 
 class AppModeState extends AppStates {}
 
+class AppChangeLanguageState extends AppStates {}
+
 class AppLoadingHomeState extends AppStates {}
 
 class AppSuccessHomeState extends AppStates {

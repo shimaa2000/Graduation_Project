@@ -13,8 +13,8 @@ enum Action { View, Change }
 
 class Choose {
   static Future<Action> chooseDialog(
-    BuildContext context,
-  ) async {
+      BuildContext context,
+      ) async {
     final action = await showDialog(
         context: context,
         barrierDismissible: true,
@@ -30,7 +30,7 @@ class Choose {
                     content: Text(
                       'You Want..',
                       style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+                      TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
                     ),
                     actions: [
                       Column(
@@ -63,7 +63,7 @@ class Choose {
                                   backgroundColor: Colors.white,
                                   shape: new RoundedRectangleBorder(
                                     borderRadius:
-                                        new BorderRadius.circular(30.0),
+                                    new BorderRadius.circular(30.0),
                                   ),
                                 ),
                               ),

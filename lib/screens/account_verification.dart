@@ -18,11 +18,14 @@ class AccountVerification extends StatefulWidget {
 class _AccountVerificationState extends State<AccountVerification> {
   @override
   Widget build(BuildContext context) {
-    bool _onEditing = true;
-    String _code;
+    bool onEditing = true;
+    String? code;
     String emojiUrl = 'images/smile.png';
     String smallText = 'Account';
     String bigText = 'Verification';
+    String fistLineAfterEmoji = 'Enter the verification code we just ';
+    String secondLine = 'send you on you email!';
+
     Widget inContainer = Column(
       children: [
         Container(
@@ -55,16 +58,17 @@ class _AccountVerificationState extends State<AccountVerification> {
                   color: Colors.blue[700]),
             ),
           ),
-          onCompleted: (String value) {
+          onCompleted: (String value){
             setState(() {
-              _code = value;
+              code = value;
             });
           },
-          onEditing: (bool value) {
+          onEditing:
+              (bool value) {
             setState(() {
-              _onEditing = value;
+              onEditing = value;
             });
-            if (!_onEditing) FocusScope.of(context).unfocus();
+            if (!onEditing) FocusScope.of(context).unfocus();
           },
         ),
         Expanded(
@@ -79,8 +83,7 @@ class _AccountVerificationState extends State<AccountVerification> {
         ),
       ],
     );
-    String fistLineAfterEmoji = 'Enter the verification code we just ';
-    String secondLine = 'send you on you email!';
+
 
     return SafeArea(
       child: PasswordResetWidget(

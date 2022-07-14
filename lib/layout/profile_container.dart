@@ -6,8 +6,8 @@ import 'package:graduation_project/shared/defaultButton.dart';
 import 'package:graduation_project/shared/imagePicker.dart';
 String imgUrl='images/photourl.jpg';
 class ProfileContainer extends StatelessWidget {
- final String userName;
- final String userAddress;
+  final String userName;
+  final String userAddress;
   const ProfileContainer({Key? key,required this.userName, required this.userAddress,}) : super(key: key);
 
   @override
@@ -41,8 +41,8 @@ class ProfileContainer extends StatelessWidget {
                       onTap: () {Choose.chooseDialog(context);},
                       child: CircleAvatar(
                         radius: 70.0,
-                       backgroundImage: AssetImage(imgUrl,) ,
-                       ),
+                        backgroundImage: AssetImage(imgUrl,) ,
+                      ),
                     ),
                     SizedBox(
                       height: 10.0,
@@ -50,9 +50,9 @@ class ProfileContainer extends StatelessWidget {
                     Text(
                       userName,
                       style: TextStyle(
-                          fontSize: 26.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                        fontSize: 26.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     SizedBox(

@@ -59,7 +59,7 @@ class _SignUpState extends State<SignUp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InterfaceImage(
-                    firstLabel: 'hello!',
+                    firstLabel: 'Hello There!',
                     secondLabel: 'Sign up',
                     forHeight: .38,
                     sizedHeight: 15,

@@ -24,7 +24,6 @@ class Dialogs {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20))),
 
-              //title: title,
               content: body,
               actions: [
                 Column(

@@ -17,18 +17,18 @@ class Products {
 
   String toJson() => json.encode(toMap());
 
-  factory Products.fromList(List<dynamic> values){
+  factory Products.fromList(List<dynamic> values) {
     return Products(homeProducts: values);
   }
   factory Products.fromJson(String source) {
     List<dynamic> values;
-    values=json.decode(source);
+    values = json.decode(source);
     return Products.fromList(values);
   }
 }
 
 class HomeProducts {
-  String? title;
+  String title;
   int price;
   String? description;
   Size? size;
@@ -36,18 +36,22 @@ class HomeProducts {
   String? type;
   String? publishDate;
   String? purpose;
+  User? user;
+//  Review? review;
   List<dynamic>? images = [];
 
   HomeProducts(
-      {this.title,
+      {this.title='',
       this.size,
-      this.price=0,
+      this.price = 0,
       this.images,
       this.purpose,
       this.color,
       this.description,
       this.type,
-      this.publishDate});
+      this.publishDate,
+     // this.review,
+      this.user});
 
   Map<String, dynamic> toMap() {
     return {
@@ -60,6 +64,8 @@ class HomeProducts {
       'description': description,
       'type': type,
       'publishDate': publishDate,
+      'user': user,
+     // 'reviews': review
     };
   }
 
@@ -67,16 +73,18 @@ class HomeProducts {
     // final List<dynamic> imageList = [];
     // map["images"].forEach((element) => imageList.add(element));
     return HomeProducts(
-      title: map['title'],
-      price: map['price'],
-      description: map['description'],
-      size: Size.fromMap(map['size']),
-      color: map['color'],
-      type: map['type'],
-      publishDate: map['publishDate'],
-      purpose: map['purpose'],
-      //images: imageList,
-    );
+        title: map['title'],
+        price: map['price'],
+        description: map['description'],
+        size: Size.fromMap(map['size']),
+        color: map['color'],
+        type: map['type'],
+        publishDate: map['publishDate'],
+        purpose: map['purpose'],
+        user:User.fromMap(map['user']) ,
+       // review: Review.fromMap(map['reviews']),
+        //images: imageList,
+        );
   }
 
   String toJson() => json.encode(toMap());
@@ -112,3 +120,55 @@ class Size {
 
   factory Size.fromJson(String source) => Size.fromMap(json.decode(source));
 }
+
+class User {
+  String? id;
+  String userName;
+  String? userImage;
+  User({this.userName='', this.id, this.userImage});
+  Map<String, dynamic> toMap() {
+    return {
+      '_id': id,
+      'userName': userName,
+      'image': userImage,
+    };
+  }
+
+  factory User.fromMap(Map<String, dynamic> map) {
+    return User(
+      id: map['_id'],
+      userName: map['userName'],
+      userImage: map['image'],
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory User.fromJson(String source) => User.fromMap(json.decode(source));
+}
+
+// class Review {
+//   String? id;
+//   String? content;
+//   User? userData;
+//   Review({this.id, this.content, this.userData});
+//   Map<String, dynamic> toMap() {
+//     return {
+//       '_id': id,
+//       'content': content,
+//       'user': userData,
+//     };
+//   }
+//
+//   factory Review.fromMap(Map<String, dynamic> map) {
+//     return Review(
+//       id: map['_id'],
+//       userData: User.fromMap(map['user']),
+//       content: map['content'],
+//     );
+//   }
+//
+//   String toJson() => json.encode(toMap());
+//
+//   factory Review.fromJson(String source) => Review.fromMap(json.decode(source));
+// }

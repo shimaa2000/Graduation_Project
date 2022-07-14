@@ -14,10 +14,11 @@ class GetStarted extends StatelessWidget {
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 60,),
               Image.asset(
                 'images/logo.png',
-                width: 270,
-                height: 270,
+                width: 300,
+                height: 300,
               ),
               SizedBox(
                 height: 10,
@@ -35,7 +36,7 @@ class GetStarted extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyText1,
                 ),Text(
                   'Our ambition is to make you feel confident',
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),Text(
                   ' and beautiful.',
                   style: Theme.of(context).textTheme.bodyText1,
@@ -48,15 +49,19 @@ class GetStarted extends StatelessWidget {
                 width: 165,
                 height: 50,
                 child: ElevatedButton(
+
                   onPressed: () {
                     Navigator.pushNamed(context, LoginScreen.routeName);
                   },
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Get Started   ',
+                        'Get Started',
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
+                      SizedBox(width: 10.0,),
                       Icon(Icons.arrow_forward),
                     ],
                   ),

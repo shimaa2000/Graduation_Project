@@ -12,7 +12,7 @@ class Alerts {
 
   static Future<ChooseAction> photoDialog(
     BuildContext context,
-    void Function({File? image}) userUpdateUserData,
+    void userUpdateUserData({File? image}),
   ) async {
     final action = await showDialog(
         context: context,

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../repository/auth_repository.dart';
@@ -24,4 +25,11 @@ class LoginCubit extends Cubit<LoginStates> {
       },
     );
   }
+
+
+  // for login screen
+  final loginUserController = TextEditingController();
+  final loginPassController = TextEditingController();
+  var loginFormKey = GlobalKey<FormState>();
+
 }

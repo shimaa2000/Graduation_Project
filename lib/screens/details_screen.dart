@@ -11,6 +11,7 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DetailsWidget(
+
         type: DUMMY_DATA[id].type,
         size: DUMMY_DATA[id].size,
         title: DUMMY_DATA[id].title,

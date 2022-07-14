@@ -21,7 +21,7 @@ class TopAdCard extends StatelessWidget {
           child:
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).backgroundColor,
                   //  border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
