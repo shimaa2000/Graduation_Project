@@ -17,11 +17,11 @@ class ServerError {
 
   factory ServerError.fromMap(Map<String, dynamic> map) {
     List<dynamic> _errors = [];
-    // if (map['errors'] is List) {
-    //   _errors = map['errors'];
-    // } else if (map['errors'] is String) {
-    //   _errors = [map['errors']];
-    // } else
+    if (map['msg'] is List) {
+      _errors = map['msg'];
+    } else if (map['msg'] is String) {
+      _errors = [map['msg']];
+    } else
       if (map['msg'] is Map) {
       _errors = (map['msg']).values.toList();
     }
