@@ -15,8 +15,7 @@ class ListViewBuilderData extends StatefulWidget {
   final String categories;
   String search;
 
-  ListViewBuilderData({Key? key, this.categories = 'all', this.search = ''})
-      : super(key: key);
+  ListViewBuilderData({Key? key, this.categories = 'all', this.search = ''}) : super(key: key);
 
   @override
   _ListViewBuilderDataState createState() => _ListViewBuilderDataState();
@@ -26,31 +25,31 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
   Widget listFit(int index, {String search = ''}) {
     return DUMMY_DATA[index].name.contains(search)
         ? BlocProvider(
-      create: (BuildContext context) => AppCubit()..getProductData(),
-      child: BlocConsumer<AppCubit, AppStates>(
-        builder: (context, state) {
-          var cubit= AppCubit.get(context);
-          cubit.setIndex(index);
-          //HomeProducts.fromMap(AppCubit.productList![0]).user!.userName
-          return FittedBox(
-              child: NewCardWidget(
-                name: cubit.getName(),
-                date:cubit.getPublishDate().toString(),
-                isFav: fav_list.contains(DUMMY_DATA[index]) ? true : false,
-                imgUrl: DUMMY_DATA[index].ImgUrl,
-                title: cubit.getTitle(),
-                price: cubit.getPrice().toDouble(),
-                size: cubit.getSize(),
-                index: index,
-              ));
-        },
-        listener: (context, state) {},
-      ),
-    )
+            create: (BuildContext context) => AppCubit()..getProductData(),
+            child: BlocConsumer<AppCubit, AppStates>(
+              builder: (context, state) {
+                var cubit = AppCubit.get(context);
+                cubit.setIndex(index);
+                //HomeProducts.fromMap(AppCubit.productList![0]).user!.userName
+                return FittedBox(
+                    child: NewCardWidget(
+                  name: cubit.getName(),
+                  date: cubit.getPublishDate().toString(),
+                  isFav: fav_list.contains(DUMMY_DATA[index]) ? true : false,
+                  imgUrl: DUMMY_DATA[index].ImgUrl,
+                  title: cubit.getTitle(),
+                  price: cubit.getPrice().toDouble(),
+                  size: cubit.getSize(),
+                  index: index,
+                ));
+              },
+              listener: (context, state) {},
+            ),
+          )
         : SizedBox(
-      width: 500,
-      height: 1,
-    );
+            width: 500,
+            height: 1,
+          );
   }
 
   final Stream<List<PostModel>> _posts = Stream<List<PostModel>>.fromIterable(
@@ -67,8 +66,7 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
           }
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
-              return const Text('Loading...',
-                  style: TextStyle(color: Colors.deepPurple));
+              return const Text('Loading...', style: TextStyle(color: Colors.deepPurple));
             default:
               if (!snapshot.hasData) {
                 return const Text(
@@ -94,11 +92,11 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
                       child: widget.categories == 'all'
                           ? listFit(index, search: widget.search)
                           : DUMMY_DATA[index].gender == widget.categories
-                          ? listFit(index)
-                          : SizedBox(
-                        width: 500,
-                        height: .5,
-                      ),
+                              ? listFit(index)
+                              : SizedBox(
+                                  width: 500,
+                                  height: .5,
+                                ),
                     );
                   });
           }

@@ -58,6 +58,12 @@ class DioClient {
       );
       return Right(response);
     } on DioError catch (e) {
+      if (e.response!.statusCode! > 500) {
+        return Left(ServerError(errors: ['Something went wrong']));
+      }
+      if (e.response?.data is String) {
+        return Left(ServerError(errors: [e.response?.data ?? '']));
+      }
       final serverError = ServerError.fromMap(
         e.response?.data,
       );

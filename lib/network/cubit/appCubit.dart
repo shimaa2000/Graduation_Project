@@ -17,12 +17,7 @@ class AppCubit extends Cubit<AppStates> {
   static AppCubit get(context) => BlocProvider.of(context);
 
   int currentIndex = 0;
-  List<Widget> pages = [
-    HomeScreen(),
-    AddPost(),
-    NotificationScreen(),
-    Profile()
-  ];
+  List<Widget> pages = [HomeScreen(), AddPost(), NotificationScreen(), Profile()];
   List<String> titles = ['', '', 'Notifications', ''];
   List<TabItem> tabItems = [
     TabItem(
@@ -46,8 +41,7 @@ class AppCubit extends Cubit<AppStates> {
 
   void changeModeApp() {
     isDark = !isDark;
-    CashHelper.saveData(key: 'isDark', value: isDark)
-        .then((value) => {emit(AppModeState())});
+    CashHelper.saveData(key: 'isDark', value: isDark).then((value) => {emit(AppModeState())});
   }
 
   void changeAppLanguage(String value) {

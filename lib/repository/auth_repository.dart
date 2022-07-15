@@ -18,11 +18,11 @@ class AuthRepository {
     );
 
     return response.fold(
-          (error) => Left(error),
-          (body) {
+      (error) => Left(error),
+      (body) {
         final AuthResponse authResponse = AuthResponse.fromMap(body.data);
         _token = authResponse.token!;
-        TOKEN=_token;
+        TOKEN = _token;
         _userId = authResponse.userId;
         print(_userId);
         return Right(authResponse);
@@ -39,8 +39,8 @@ class AuthRepository {
     );
 
     return response.fold(
-          (error) => Left(error),
-          (body) {
+      (error) => Left(error),
+      (body) {
         return Right(UserData.fromMap(body.data));
       },
     );
@@ -53,8 +53,8 @@ class AuthRepository {
       token: _token,
     );
     return response.fold(
-          (error) => Left(error),
-          (body) => Right(UserData.fromMap(body.data)),
+      (error) => Left(error),
+      (body) => Right(UserData.fromMap(body.data)),
     );
   }
 
@@ -66,16 +66,19 @@ class AuthRepository {
     );
 
     return response.fold(
-          (error) => Left(error),
-          (body) => Right(AuthResponse.fromMap(body.data)),
+      (error) => Left(error),
+      (body) => Right(AuthResponse.fromMap(body.data)),
     );
   }
+
   Future<Either<ServerError, Products>> homeDataFun() async {
     final response = await DioClient.getData(
       url: HOME,
       token: _token,
     );
-    return response.fold((error) => Left(error),
-          (body) => Right(Products.fromList(body.data)),);
+    return response.fold(
+      (error) => Left(error),
+      (body) => Right(Products.fromList(body.data)),
+    );
   }
 }

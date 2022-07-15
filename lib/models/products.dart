@@ -41,7 +41,7 @@ class HomeProducts {
   List<dynamic>? images = [];
 
   HomeProducts(
-      {this.title='',
+      {this.title = '',
       this.size,
       this.price = 0,
       this.images,
@@ -50,7 +50,7 @@ class HomeProducts {
       this.description,
       this.type,
       this.publishDate,
-     // this.review,
+      // this.review,
       this.user});
 
   Map<String, dynamic> toMap() {
@@ -65,32 +65,33 @@ class HomeProducts {
       'type': type,
       'publishDate': publishDate,
       'user': user,
-     // 'reviews': review
+      // 'reviews': review
     };
   }
 
   factory HomeProducts.fromMap(Map<String, dynamic> map) {
-    // final List<dynamic> imageList = [];
-    // map["images"].forEach((element) => imageList.add(element));
+    final List<dynamic> imageList = [];
+    if (map['images'] != null) {
+      map['images'].forEach((element) => imageList.add(element));
+    }
     return HomeProducts(
-        title: map['title'],
-        price: map['price'],
-        description: map['description'],
-        size: Size.fromMap(map['size']),
-        color: map['color'],
-        type: map['type'],
-        publishDate: map['publishDate'],
-        purpose: map['purpose'],
-        user:User.fromMap(map['user']) ,
-       // review: Review.fromMap(map['reviews']),
-        //images: imageList,
-        );
+      title: map['title'],
+      price: map['price'],
+      description: map['description'],
+      size: Size.fromMap(map['size']),
+      color: map['color'],
+      type: map['type'],
+      publishDate: map['publishDate'],
+      purpose: map['purpose'],
+      user: User.fromMap(map['user']),
+      // review: Review.fromMap(map['reviews']),
+      images: imageList,
+    );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory HomeProducts.fromJson(String source) =>
-      HomeProducts.fromMap(json.decode(source));
+  factory HomeProducts.fromJson(String source) => HomeProducts.fromMap(json.decode(source));
 }
 
 class Size {
@@ -125,7 +126,7 @@ class User {
   String? id;
   String userName;
   String? userImage;
-  User({this.userName='', this.id, this.userImage});
+  User({this.userName = '', this.id, this.userImage});
   Map<String, dynamic> toMap() {
     return {
       '_id': id,

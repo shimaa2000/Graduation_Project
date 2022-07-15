@@ -28,12 +28,14 @@ class UserData {
       this.email});
 
   factory UserData.fromMap(Map<String, dynamic> map) {
-    final List<dynamic> addressList  = [];
+    final List<dynamic> addressList = [];
     map['address'].forEach((element) => addressList.add(element));
-    final List<dynamic> phoneList  = [];
+    final List<dynamic> phoneList = [];
     map['phoneNumber'].forEach((element) => phoneList.add(element));
-    final List<UserProducts> productsList  = [];
-    map['products'].forEach((element) => productsList.add(element));
+    final List<UserProducts> productsList = [];
+    if (map['products'] != null) {
+      map['products'].forEach((element) => productsList.add(UserProducts.fromMap(element)));
+    }
     return UserData(
       id: map["id"],
       userName: map["userName"],
@@ -43,9 +45,9 @@ class UserData {
       email: map["email"],
       gender: map["gender"],
       image: map["image"],
-      address:addressList,
+      address: addressList,
       phoneNumber: phoneList,
-      userProducts:productsList,
+      userProducts: productsList,
     );
   }
 
@@ -66,12 +68,11 @@ class UserData {
 
   String toJson() => json.encode(toMap());
 
-  factory UserData.fromJson(String source) =>
-      UserData.fromMap(json.decode(source));
+  factory UserData.fromJson(String source) => UserData.fromMap(json.decode(source));
 }
 
-
-class UserProducts{
+class UserProducts {
+  String? id;
   String? title;
   String? price;
   String? description;
@@ -81,18 +82,22 @@ class UserProducts{
   String? publishDate;
   String? purpose;
   List<dynamic>? images = [];
-  UserProducts(
-      {this.title,
-        this.size,
-        this.price,
-        this.images,
-        this.purpose,
-        this.color,
-        this.description,
-        this.type,
-        this.publishDate});
+  UserProducts({
+    this.id,
+    this.title,
+    this.size,
+    this.price,
+    this.images,
+    this.purpose,
+    this.color,
+    this.description,
+    this.type,
+    this.publishDate,
+  });
+
   Map<String, dynamic> toMap() {
     return {
+      '_id': id,
       'title': title,
       'size': size,
       'price': price,
@@ -104,10 +109,14 @@ class UserProducts{
       'publishDate': publishDate,
     };
   }
+
   factory UserProducts.fromMap(Map<String, dynamic> map) {
     final List<dynamic> imageList = [];
-    map["images"].forEach((element) => imageList.add(element));
+    if (map['images'] != null) {
+      map['images'].forEach((element) => imageList.add(element));
+    }
     return UserProducts(
+      id: map['_id'],
       title: map['title'],
       price: map['price'],
       description: map['description'],
@@ -121,6 +130,5 @@ class UserProducts{
   }
   String toJson() => json.encode(toMap());
 
-  factory UserProducts.fromJson(String source) =>
-      UserProducts.fromMap(json.decode(source));
+  factory UserProducts.fromJson(String source) => UserProducts.fromMap(json.decode(source));
 }

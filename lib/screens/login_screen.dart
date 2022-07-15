@@ -1,14 +1,12 @@
 import 'package:conditional_builder_rec/conditional_builder_rec.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:graduation_project/layout/text_sized_signUp.dart';
-import 'package:graduation_project/network/cubit/appCubit.dart';
-import 'package:graduation_project/network/cubit/loginCubit.dart';
-import 'package:graduation_project/network/cubit/loginStates.dart';
-import 'package:graduation_project/core/services/local/casheHelper.dart';
-import '../endPoints.dart';
+
+import '../core/services/local/casheHelper.dart';
+import '../layout/text_sized_signUp.dart';
+import '../network/cubit/loginCubit.dart';
+import '../network/cubit/loginStates.dart';
 import '../screens/reset_password_screen.dart';
 import '../screens/startApp.dart';
 import '../shared/boxtextfield.dart';
@@ -20,6 +18,7 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final loginCubit = LoginCubit.get(context);
 
     return BlocConsumer<LoginCubit, LoginStates>(
       listener: (context, state) {
@@ -46,7 +45,7 @@ class LoginScreen extends StatelessWidget {
           body: SafeArea(
             child: SingleChildScrollView(
               child: Form(
-                key: LoginCubit().loginFormKey,
+                key: loginCubit.loginFormKey,
                 child: Column(
                   children: [
                     InterfaceImage(
@@ -66,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     BoxTextField(
                       onTap: () {},
-                      controller: LoginCubit().loginUserController,
+                      controller: loginCubit.emailController,
                       validatorText: 'please enter valid mail',
                       icon: Icon(
                         Icons.mail,
@@ -84,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                     BoxTextField(
                       onTap: () {},
                       obsecure: true,
-                      controller: LoginCubit().loginPassController,
+                      controller: loginCubit.passController,
                       validatorText: 'password is too short',
                       icon: Icon(
                         Icons.lock,
@@ -107,14 +106,13 @@ class LoginScreen extends StatelessWidget {
                     ConditionalBuilderRec(
                       condition: state is! LoginLoadingState,
                       builder: (context) => DefaultButton(
-                     //   btnColor: Theme.of(context).elevatedButtonTheme.style?.backgroundColor,
-                          onPressedFun: () {
-                            if (LoginCubit().loginFormKey.currentState!.validate()) {
-                              LoginCubit.get(context).userLogin(
-                                  email: LoginCubit().loginUserController.text, password: LoginCubit().loginPassController.text);
-                            }
-                          },
-                          text: 'Login'),
+                        onPressedFun: () {
+                          if (LoginCubit.get(context).loginFormKey.currentState!.validate()) {
+                            LoginCubit.get(context).userLogin();
+                          }
+                        },
+                        text: 'Login',
+                      ),
                       fallback: (context) => Center(
                         child: CircularProgressIndicator(
                           color: Colors.deepPurple,

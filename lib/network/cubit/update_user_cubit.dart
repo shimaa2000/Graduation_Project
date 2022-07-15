@@ -13,7 +13,7 @@ class UpdateUserDataCubit extends Cubit<UpdateUserDataStates> {
 
   static UpdateUserDataCubit get(context) => BlocProvider.of(context);
 
-  void userUpdateUserData( {File? image}) async {
+  void userUpdateUserData({File? image}) async {
     emit(UpdateUserDataLoadingState());
     final data = FormData();
     data.fields.addAll([
@@ -23,7 +23,10 @@ class UpdateUserDataCubit extends Cubit<UpdateUserDataStates> {
       MapEntry('fullName', ''),
     ]);
     if (image != null) {
-      data.files.add(MapEntry('profile', MultipartFile.fromString(image.path)));
+      final multipartImage = await MultipartFile.fromFile(image.path);
+      data.files.add(
+        MapEntry('profile', multipartImage),
+      );
     }
     final response = await authRepository.updateUserData(data);
     response.fold(

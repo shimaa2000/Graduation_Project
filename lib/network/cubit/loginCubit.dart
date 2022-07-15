@@ -11,11 +11,16 @@ class LoginCubit extends Cubit<LoginStates> {
 
   static LoginCubit get(context) => BlocProvider.of(context);
 
-  void userLogin({required String email, required String password}) async {
+  // for login screen
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+  final loginFormKey = GlobalKey<FormState>();
+
+  void userLogin() async {
     emit(LoginLoadingState());
     final response = await authRepository.login({
-      'email': email,
-      'password': password,
+      'email': emailController.text,
+      'password': passController.text,
     });
 
     response.fold(
@@ -25,11 +30,4 @@ class LoginCubit extends Cubit<LoginStates> {
       },
     );
   }
-
-
-  // for login screen
-  final loginUserController = TextEditingController();
-  final loginPassController = TextEditingController();
-  var loginFormKey = GlobalKey<FormState>();
-
 }

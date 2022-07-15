@@ -47,10 +47,8 @@ class _DetailsWidgetState extends State<DetailsWidget> {
   Widget build(BuildContext context) {
     double value = 3.5;
     List<Widget> toggle = [
-      ToggleDetails.item(
-              () {}, context, widget.type, widget.size, widget.gender, widget.date),
-      ToggleDetails.detail(
-          context, widget.description, widget.height, widget.width),
+      ToggleDetails.item(() {}, context, widget.type, widget.size, widget.gender, widget.date),
+      ToggleDetails.detail(context, widget.description, widget.height, widget.width),
       ToggleDetails.review(context)
     ];
     return Scaffold(
@@ -83,57 +81,51 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                     padding: EdgeInsets.all(30),
                     child: isFav
                         ? IconButton(
-                      onPressed: () {
-                        setState(() {
-                          isFav = !isFav;
-                        });
-                      },
-                      icon: Icon(Icons.favorite),
-                      iconSize: 35,
-                      color: Colors.deepPurple,
-                    )
+                            onPressed: () {
+                              setState(() {
+                                isFav = !isFav;
+                              });
+                            },
+                            icon: Icon(Icons.favorite),
+                            iconSize: 35,
+                            color: Colors.deepPurple,
+                          )
                         : IconButton(
-                      onPressed: () {
-                        setState(() {
-                          isFav = !isFav;
-                        });
-                      },
-                      icon: Icon(
-                        Icons.favorite_border,
-                      ),
-                      iconSize: 35,
-                      color: Colors.deepPurple,
-                    ),
+                            onPressed: () {
+                              setState(() {
+                                isFav = !isFav;
+                              });
+                            },
+                            icon: Icon(
+                              Icons.favorite_border,
+                            ),
+                            iconSize: 35,
+                            color: Colors.deepPurple,
+                          ),
                   ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-
                 children: [
                   // SizedBox(
                   //   width: 15,
                   // ),
-                  Column(
-                  children: [
-                        Text(
-                            widget.title,
-                            style: Theme.of(context).textTheme.headline1),
-                        Row(
-                            children: [
-                              Text(
-                                  widget.price,
-                                  style: Theme.of(context).textTheme.bodyText1),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                  'EGP',
-                                  style: Theme.of(context).textTheme.bodyText1)])]),
-                 // SizedBox(width: MediaQuery.of(context).size.width*(2.5/7),),
+                  Column(children: [
+                    Text(widget.title, style: Theme.of(context).textTheme.headline1),
+                    Row(children: [
+                      Text(widget.price, style: Theme.of(context).textTheme.bodyText1),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('EGP', style: Theme.of(context).textTheme.bodyText1)
+                    ])
+                  ]),
+                  // SizedBox(width: MediaQuery.of(context).size.width*(2.5/7),),
                   new StarRating(
                     rating: rating,
-                    onRatingChanged: (rating) => setState(() => this.rating = rating), color: Colors.deepPurple,
+                    onRatingChanged: (rating) => setState(() => this.rating = rating),
+                    color: Colors.deepPurple,
                   )
                 ],
               ),
