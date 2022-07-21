@@ -24,7 +24,7 @@ class ImageCard extends StatelessWidget {
               ),
             ],
             image: new DecorationImage(
-              image: AssetImage(imageUrl),
+              image: NetworkImage(imageUrl),
               fit: BoxFit.cover,
             ),
             border: Border.all(width: 2.5, color: Colors.transparent),

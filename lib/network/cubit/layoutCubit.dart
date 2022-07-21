@@ -19,14 +19,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
   String btmCardDialog =
       'Simple gold dress with extension and hand embroidery belt in the same colour.';
 
-// for edit profile content
-  var editProfileUserNameController = TextEditingController();
-  var editProfileEmailController = TextEditingController();
-  var editProfilePasswordController = TextEditingController();
-  var editProfileNewPasswordController = TextEditingController();
-  var editProfileAddressController = TextEditingController();
-  var editProfileConfirmPasswordController = TextEditingController();
-  var editProfileFormKey = GlobalKey<FormState>();
+
 
 // for radio card
   String groupValueAddress = 'current';
@@ -39,26 +32,11 @@ class LayoutCubit extends Cubit<LayoutStates> {
   String cashValuePay1 = 'cash';
   String onlineValuePay2 = 'online';
 
-//for new password screen
-  String passEmojiUrl = '';
-  String passSmallText = 'Reset';
-  String passBigText = 'Password';
-  String passFistLineAfterEmoji = 'You can have a new password';
-  String passSecondLine = 'for your account now!';
 
 // in container class
   final controller1 = TextEditingController();
   final controller2 = TextEditingController();
 
-  //for reset pass
-  final resetUserController = TextEditingController();
-
-  String resetEmojiUrl = 'images/sad.png';
-  String resetSmallText = 'Forget';
-  String resetBigText = 'Password?';
-  String resetFirstLineAfterEmoji =
-      'Enter your email associated with this account ';
-  String resetSecondLine = 'for password recovery!';
 
   //for add post content1
   final TextEditingController titleController = TextEditingController();

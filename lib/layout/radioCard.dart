@@ -23,32 +23,26 @@ class _RadioCardState extends State<RadioCard> {
         children: [
           SizedBox(height: 25,),
           Text('Delivery Address',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.w300),),
-          SizedBox(height: 10,),
-          RadioButtonHorizontal(value: layout.valueAdd1, groupValue: layout.groupValueAddress, text: 'Your Current Address', onChanged: (value){
-            setState(() {
-              layout.groupValueAddress = layout.cashValuePay1;
-            });
-          }),
-          RadioButtonHorizontal(value: layout.valueAdd2, groupValue: layout.groupValueAddress, text: 'Choose New Address', onChanged: (value){
-            setState(() {
-              layout.groupValueAddress = layout.valueAdd2;
-            });
-          }),
+          SizedBox(height:25,),
+          Row(children: [
+            SizedBox(width: 25.0,),
+
+            Icon(Icons.edit_location_outlined),
+            SizedBox(width: 25.0,),
+            Text('address', style: TextStyle(color: Colors.black),)
+          ],),
 
 
           SizedBox(height: 20,),
           Text('Contact Number',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.w300),),
           SizedBox(height: 10,),
-          RadioButtonHorizontal(value: layout.valueCon1, groupValue: layout.groupValueContact, text: '01009525463', onChanged: (value){
-            setState(() {
-              layout.groupValueAddress = layout.valueCon1;
-            });
-          }),
-          RadioButtonHorizontal(value: layout.valueCon2, groupValue: layout.groupValueContact, text: 'Choose New Contact Number', onChanged: (value){
-            setState(() {
-              layout.groupValueAddress = layout.valueCon2;
-            });
-          }),
+          Row(children: [
+            SizedBox(width: 25.0,),
+
+            Icon(Icons.phone_android),
+            SizedBox(width: 25.0,),
+            Text('01002597986', style: TextStyle(color: Colors.black),)
+          ],),
 
 
           SizedBox(height: 20,),

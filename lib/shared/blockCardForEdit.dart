@@ -5,14 +5,14 @@ class BlockCardForEdit extends StatelessWidget {
   final double padding;
   final double margin;
   final TextEditingController controller;
-  final String validatortxt;
+  final String validatorTxt;
   final Icon icon;
 
   BlockCardForEdit({ required this.text,
     this.padding = 0.0,
     this.margin = 0.0,
    required this.controller,
-     this.validatortxt = 'Fill this field',
+     this.validatorTxt = 'Fill this field',
     required this.icon,
   });
 
@@ -20,6 +20,7 @@ class BlockCardForEdit extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children:[Align(
         alignment: Alignment.bottomLeft,
         child: Text(
@@ -27,21 +28,17 @@ class BlockCardForEdit extends StatelessWidget {
           style: Theme.of(context).textTheme.headline5,
         ),
       ),
-        SizedBox(
-          //height: 5,
-        ),
         BoxTextField(
             padding: padding,
             margin: margin,
             controller: controller,
-            validatorText: validatortxt,
+            validatorText: validatorTxt,
             icon:icon,
             onTap: () {}),
         SizedBox(
           height: 20,
         ),
       ]
-
     );
   }
 

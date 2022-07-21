@@ -21,9 +21,10 @@ class DioClient {
       'token': token,
     };
     try {
-      final response = await _dio.put(
+      final response = await _dio.patch(
         url,
         data: data,
+        options: Options(followRedirects: false, validateStatus: (status) {return status! < 500;}),
       );
       return Right(response);
     } on DioError catch (e) {
@@ -52,7 +53,7 @@ class DioClient {
       'token': token,
     };
     try {
-      final response = await _dio.put(
+      final response = await _dio.patch(
         url,
         data: data,
       );

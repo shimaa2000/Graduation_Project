@@ -32,24 +32,29 @@ class PasswordResetWidget extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * .5,
                   width: MediaQuery.of(context).size.width,
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 75),
-                  child: Text(
-                    smallText,
-                    style: Theme.of(context).textTheme.headline3,
-                    textAlign: TextAlign.center,
-                  ),
+                Column(
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(right: 30, top: 100),
+                      child: Text(
+                        smallText,
+                        style: Theme.of(context).textTheme.headline2,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical:0),
+                      child: Text(
+                        bigText,
+                        style: Theme.of(context).textTheme.headline2,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 100),
-                  child: Text(
-                    bigText,
-                    style: Theme.of(context).textTheme.headline4,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+
               ],
             ),
             emojiUrl!=''?Image.asset(

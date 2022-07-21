@@ -10,6 +10,7 @@ class Prices extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<LayoutCubit, LayoutStates>(
         builder: (context, state) {
+          var layout = LayoutCubit.get(context);
           return Column(
             children: [
               SizedBox(
@@ -23,7 +24,7 @@ class Prices extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.black54),
                   ),
                   Text(
-                    'EGP ${LayoutCubit().price}',
+                    'EGP ${layout.price}',
                     style: TextStyle(fontSize: 16, color: Colors.black54),
                   ),
                 ],
@@ -39,7 +40,7 @@ class Prices extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.black54),
                   ),
                   Text(
-                    'EGP ${LayoutCubit().delivery}',
+                    'EGP ${layout.delivery}',
                     style: TextStyle(fontSize: 16, color: Colors.black54),
                   ),
                 ],
@@ -58,7 +59,7 @@ class Prices extends StatelessWidget {
                         fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    'EGP ${LayoutCubit().getTotal()}',
+                    'EGP ${layout.getTotal()}',
                     style: TextStyle(
                         fontSize: 22,
                         color: Colors.deepPurple,

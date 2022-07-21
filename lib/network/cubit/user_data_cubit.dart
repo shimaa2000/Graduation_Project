@@ -12,6 +12,9 @@ class UserDataCubit extends Cubit<UserDataStates> {
   static UserDataCubit get(context) => BlocProvider.of(context);
   String _userFullName='';
   String _userAddress='';
+  String? _image;
+  List<String>? productImages;
+  int length=0;
 
   final authRepository = AuthRepository();
 
@@ -21,6 +24,13 @@ class UserDataCubit extends Cubit<UserDataStates> {
     response.fold(
       (error) => emit(UserDataErrorState(error)),
       (response) {
+        setUserImage('$BASEURL/${response.image}');
+        length=response.userProducts!.length;
+        print(response.userProducts!.length);
+        for(int i=0;i<response.userProducts!.length;i++){
+          print('$BASEURL/${response.userProducts![i].images![0]}');
+          productImages?.add('$BASEURL/${response.userProducts![i].images![i]}');
+        }
         setUserAddress(response.address![0]);
         setUserName(response.fullName!);
         emit(UserDataSuccessState(response));
@@ -32,6 +42,12 @@ class UserDataCubit extends Cubit<UserDataStates> {
   }
   getUserName() {
     return _userFullName;
+  }
+  void setUserImage(String? imgUrl){
+    _image=imgUrl;
+  }
+  getUserImage() {
+    return _image;
   }
   void setUserAddress(String address){
     _userAddress=address;

@@ -17,17 +17,14 @@ class AppCubit extends Cubit<AppStates> {
   static AppCubit get(context) => BlocProvider.of(context);
 
   int currentIndex = 0;
-  List<Widget> pages = [HomeScreen(), AddPost(), NotificationScreen(), Profile()];
-  List<String> titles = ['', '', 'Notifications', ''];
+  List<Widget> pages = [HomeScreen(), AddPost(), Profile()];
+  List<String> titles = ['', '', ''];
   List<TabItem> tabItems = [
     TabItem(
       icon: Icons.home,
     ),
     TabItem(
       icon: Icons.add,
-    ),
-    TabItem(
-      icon: Icons.notifications,
     ),
     TabItem(
       icon: Icons.person,
@@ -57,7 +54,7 @@ class AppCubit extends Cubit<AppStates> {
   String _title = '';
   String _name = '';
   int _price = 0;
-
+  String _imgUrl='';
   int _length = 0;
   int _index = 0;
   String _publishDate = '';
@@ -76,9 +73,9 @@ class AppCubit extends Cubit<AppStates> {
         setLength(response.homeProducts!.length);
         setTitle(value!.title);
         setPrice(value!.price);
+        // setImgUrl('$BASEURL/${value!.images![getIndex()]}');
         setSize(value!.size!.name!);
         setName(value!.user!.userName);
-        setPublishDate(value!.publishDate!);
         setLength(response.homeProducts!.length);
         emit(AppSuccessHomeState(response));
       },
@@ -99,6 +96,13 @@ class AppCubit extends Cubit<AppStates> {
 
   getTitle() {
     return _title;
+  }
+  void setImgUrl(String url) {
+    _imgUrl = url;
+  }
+
+  getImgUrl() {
+    return _imgUrl;
   }
 
   void setPrice(int price) {

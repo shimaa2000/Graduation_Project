@@ -12,7 +12,7 @@ class Alerts {
 
   static Future<ChooseAction> photoDialog(
     BuildContext context,
-    void userUpdateUserData({File? image}),
+    Future userUpdateUserImage({File? image}),
   ) async {
     final action = await showDialog(
         context: context,
@@ -42,8 +42,7 @@ class Alerts {
                                 await Images().uploadImageFromCamera();
                             if (image != null) {
                               print(image.path);
-                              img = image;
-                              userUpdateUserData(image: image);
+                             await userUpdateUserImage(image: image);
                             }
                           },
                           child: Text(
@@ -68,8 +67,14 @@ class Alerts {
                         ),
                         DefaultButton(
                           text: 'Gallery',
-                          onPressedFun: () {
-                            Images().uploadImageFromGallery();
+                          onPressedFun: () async {
+                            final image =
+                            await Images().uploadImageFromGallery();
+                            if (image != null) {
+                              print(image.path);
+                              await userUpdateUserImage(image: image);
+                            }else
+                              print('xx${image?.path}');
                           },
                         ),
                       ],

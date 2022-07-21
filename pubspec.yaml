@@ -47,6 +47,8 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   get: ^4.6.1
   get_storage: ^2.0.3
+  webview_flutter: ^3.0.4
+  pin_code_fields: ^7.4.0
 
 
 dev_dependencies:

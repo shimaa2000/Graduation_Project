@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/layout/new_card_widget.dart';
 
-import '../dummy_data.dart';
 class FavList extends StatelessWidget {
   const FavList({Key? key}) : super(key: key);
 
@@ -24,7 +23,7 @@ class FavList extends StatelessWidget {
           isFav: true,
           name: fav_list[index].name,
           date: fav_list[index].date,
-          imgUrl: fav_list[index].ImgUrl,
+          imgUrl: 'https://media.istockphoto.com/vectors/dress-icon-vector-id507081676?k=20&m=507081676&s=612x612&w=0&h=k1p9VA6YqPIwMEyj290EMrI1EtHIz4EK8yLf9YV7_DM=',
           title: fav_list[index].title,
           price: fav_list[index].price,
           size: fav_list[index].size, index: index,)); },);

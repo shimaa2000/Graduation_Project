@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:graduation_project/dummy_data.dart';
 import 'package:graduation_project/layout/profile_container.dart';
 import 'package:graduation_project/network/cubit/user_data_cubit.dart';
@@ -8,39 +7,36 @@ import 'package:graduation_project/network/cubit/user_data_states.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/screens/user_ads_screen.dart';
 import 'package:graduation_project/shared/gird_image.dart';
-import '../endPoints.dart';
 import 'details_screen.dart';
 
-class Profile extends StatefulWidget {
+class Profile extends StatelessWidget {
   static const routeName = 'profile';
-
-  @override
-  _ProfileState createState() => _ProfileState();
-}
-
-class _ProfileState extends State<Profile> {
-  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => UserDataCubit()..getUserData(),
       child: BlocConsumer<UserDataCubit, UserDataStates>(
-          listener: (context, state) {
-          },
+          listener: (context, state) {},
           builder: (context, state) {
             var cubit = UserDataCubit.get(context);
             return Scaffold(
               body: SingleChildScrollView(
                 child: Center(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ProfileContainer(userName: cubit.getUserName(),userAddress: cubit.getUserAddress(),),
+                      ProfileContainer(
+                        userName: cubit.getUserName(),
+                        userAddress: cubit.getUserAddress(),
+                        imgUrl: cubit.getUserImage() ??
+                            'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg',
+                      ),
                       SizedBox(
                         height: 20.0,
                       ),
                       Text(
-                        'Top Ads',
+                        'User Ads',
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -52,9 +48,9 @@ class _ProfileState extends State<Profile> {
                       ),
                       Container(
                         width: 270,
-                        height: 250,
-                        child: PhotoGrid(
-                          imageUrls: DUMMY_MY_POSTS,
+                        height: 300,
+                        child:cubit.productImages==null? PhotoGrid(
+                          imageUrls: cubit.productImages??['https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'],
                           onImageClicked: (i) {
                             Navigator.of(context).pushNamed(
                               DetailsScreen.routeName,
@@ -65,8 +61,11 @@ class _ProfileState extends State<Profile> {
                           onExpandClicked: () {
                             Navigator.pushNamed(context, UserAds.routeName);
                           },
-                          maxImages: 4,
-                        ),
+                          maxImages: cubit.length==0?cubit.length>4? 4:1 :1,
+                        ):Text('no product available, please add some'),
+                      ),
+                      SizedBox(
+                        height: 50,
                       )
                     ],
                   ),

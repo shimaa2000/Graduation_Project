@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/layout/radioCard.dart';
 import 'package:graduation_project/screens/details_screen.dart';
+import 'package:graduation_project/screens/paybalScreen.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
 import 'package:graduation_project/shared/prices.dart';
 class ConfirmOrder extends StatefulWidget {
@@ -25,7 +26,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
               Prices(),
               RadioCard(),
               DefaultButton(onPressedFun: (){
-                Navigator.pushNamed(context, DetailsScreen.routeName);
+                Navigator.pushNamed(context, PaybalScreen.routeName);
               }, text: 'Confirm'),
 
             ],

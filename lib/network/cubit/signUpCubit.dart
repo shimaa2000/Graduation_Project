@@ -10,7 +10,6 @@ class SignUpCubit extends Cubit<SignUpStates> {
 
   static SignUpCubit get(context) => BlocProvider.of(context);
   final authRepository = AuthRepository();
-  AuthResponse? signResponse;
 
   void userSign({
     required String userName,

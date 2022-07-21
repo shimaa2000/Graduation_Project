@@ -2,7 +2,6 @@ import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import '../core/services/local/casheHelper.dart';
 import '../layout/text_sized_signUp.dart';
 import '../network/cubit/loginCubit.dart';
@@ -23,7 +22,8 @@ class LoginScreen extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginStates>(
       listener: (context, state) {
         if (state is LoginSuccessState) {
-          print(state.loginResponse.userId);
+          // print(state.loginResponse.userId);
+          CashHelper.saveData(key: 'id', value: state.loginResponse.userId);
           CashHelper.saveData(key: 'token', value: state.loginResponse.token).then((value) {
             Navigator.pushNamed(context, StartApp.routeName);
           });

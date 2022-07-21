@@ -29,13 +29,13 @@ class UserData {
 
   factory UserData.fromMap(Map<String, dynamic> map) {
     final List<dynamic> addressList = [];
-    map['address'].forEach((element) => addressList.add(element));
+    map['address']?.forEach((element) => addressList.add(element));
     final List<dynamic> phoneList = [];
-    map['phoneNumber'].forEach((element) => phoneList.add(element));
+    map['phoneNumber']?.forEach((element) => phoneList.add(element));
     final List<UserProducts> productsList = [];
-    if (map['products'] != null) {
-      map['products'].forEach((element) => productsList.add(UserProducts.fromMap(element)));
-    }
+    map['products']
+        ?.forEach((element) => productsList.add(UserProducts.fromMap(element)));
+
     return UserData(
       id: map["id"],
       userName: map["userName"],
@@ -68,7 +68,8 @@ class UserData {
 
   String toJson() => json.encode(toMap());
 
-  factory UserData.fromJson(String source) => UserData.fromMap(json.decode(source));
+  factory UserData.fromJson(String source) =>
+      UserData.fromMap(json.decode(source));
 }
 
 class UserProducts {
@@ -82,6 +83,7 @@ class UserProducts {
   String? publishDate;
   String? purpose;
   List<dynamic>? images = [];
+
   UserProducts({
     this.id,
     this.title,
@@ -128,7 +130,9 @@ class UserProducts {
       images: imageList,
     );
   }
+
   String toJson() => json.encode(toMap());
 
-  factory UserProducts.fromJson(String source) => UserProducts.fromMap(json.decode(source));
+  factory UserProducts.fromJson(String source) =>
+      UserProducts.fromMap(json.decode(source));
 }

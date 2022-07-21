@@ -1,14 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation_project/layout/profile_followers.dart';
-import 'package:graduation_project/shared/alert.dart';
 import 'package:graduation_project/shared/alertForProfilePhoto.dart';
-import 'package:graduation_project/shared/defaultButton.dart';
-import 'package:graduation_project/shared/imagePicker.dart';
-String imgUrl='images/photourl.jpg';
+
 class ProfileContainer extends StatelessWidget {
   final String userName;
   final String userAddress;
-  const ProfileContainer({Key? key,required this.userName, required this.userAddress,}) : super(key: key);
+  final String imgUrl;
+  const ProfileContainer({Key? key,required this.userName, required this.userAddress, required this.imgUrl,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +21,9 @@ class ProfileContainer extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(top: 80.0),
             child: Container(
+              padding: EdgeInsets.all(50),
               width: 320.0,
-              height: 440.0,
+              //height: 440.0,
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(.9),
                 borderRadius: BorderRadius.circular(16.0),
@@ -41,7 +40,7 @@ class ProfileContainer extends StatelessWidget {
                       onTap: () {Choose.chooseDialog(context);},
                       child: CircleAvatar(
                         radius: 70.0,
-                        backgroundImage: AssetImage(imgUrl,) ,
+                        backgroundImage: NetworkImage(imgUrl) ,
                       ),
                     ),
                     SizedBox(
@@ -65,23 +64,6 @@ class ProfileContainer extends StatelessWidget {
                           fontWeight: FontWeight.w300,
                           color: Colors.grey.shade400),
                     ),
-                    SizedBox(
-                      height: 16.0,
-                    ),
-                    ProfileFollowers(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment:
-                      MainAxisAlignment.spaceEvenly,
-                      children: [
-                        DefaultButton(
-                            onPressedFun: () {}, text: 'message'),
-                        DefaultButton(
-                            onPressedFun: () {}, text: 'follow'),
-                      ],
-                    )
                   ],
                 ),
               ),

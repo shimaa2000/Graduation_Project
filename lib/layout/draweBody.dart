@@ -37,6 +37,12 @@ class _DrawerBodyState extends State<DrawerBody> {
               height: 1.0,
               color: Colors.grey[200],
             ),
+            ListTile(leading: Icon(Icons.password), title: Text('Change password')),
+            Divider(
+              thickness: 1.0,
+              height: 1.0,
+              color: Colors.grey[200],
+            ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, Favourite_Rent.routeName);
@@ -93,17 +99,6 @@ class _DrawerBodyState extends State<DrawerBody> {
             //     LanguageAlert.Future(context);
             //   },
             // ),
-            DropdownButton(value: lang!,
-                underline: const Text(""),
-                icon: Icon(Icons.language,
-                  color: isDark?Colors.black87:Colors.white,),
-
-      items: [
-              DropdownMenuItem(child: Text('English'),value: 'en',),
-              DropdownMenuItem(child: Text('العربية'), value: 'ar',)
-            ], onChanged: (value){
-              AppCubit.get(context).changeAppLanguage(value.toString());
-            }),
             Divider(
               thickness: 1.0,
               height: 1.0,

@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_project/layout/profile_container.dart';
 import 'package:graduation_project/network/cubit/update_user_cubit.dart';
 import 'package:graduation_project/network/cubit/update_user_states.dart';
 import 'package:graduation_project/shared/alertForNewPost.dart';
@@ -13,8 +10,8 @@ enum Action { View, Change }
 
 class Choose {
   static Future<Action> chooseDialog(
-      BuildContext context,
-      ) async {
+    BuildContext context,
+  ) async {
     final action = await showDialog(
         context: context,
         barrierDismissible: true,
@@ -30,7 +27,7 @@ class Choose {
                     content: Text(
                       'You Want..',
                       style:
-                      TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
                     ),
                     actions: [
                       Column(
@@ -44,10 +41,10 @@ class Choose {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (_) =>
-                                          ImageDialog(ImgUrl: imgUrl));
+                                  //   showDialog(
+                                  //       context: context,
+                                  //      // builder: (_) =>
+                                  // ImageDialog(ImgUrl: ));
                                 },
                                 child: Text(
                                   'View',
@@ -63,7 +60,7 @@ class Choose {
                                   backgroundColor: Colors.white,
                                   shape: new RoundedRectangleBorder(
                                     borderRadius:
-                                    new BorderRadius.circular(30.0),
+                                        new BorderRadius.circular(30.0),
                                   ),
                                 ),
                               ),
@@ -72,9 +69,9 @@ class Choose {
                               ),
                               DefaultButton(
                                 text: 'Change',
-                                onPressedFun: () {
-                                  Alerts.photoDialog(
-                                      context, cubit.userUpdateUserData);
+                                onPressedFun: () async {
+                                  await Alerts.photoDialog(
+                                      context, cubit.userUpdateUserImage);
                                 },
                               ),
                             ],

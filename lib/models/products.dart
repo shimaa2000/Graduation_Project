@@ -30,12 +30,12 @@ class Products {
 class HomeProducts {
   String title;
   int price;
-  String? description;
+  //String? description;
   Size? size;
-  String? color;
-  String? type;
-  String? publishDate;
-  String? purpose;
+  //String? color;
+  //String? type;
+  // String? publishDate;
+  // String? purpose;
   User? user;
 //  Review? review;
   List<dynamic>? images = [];
@@ -45,11 +45,11 @@ class HomeProducts {
       this.size,
       this.price = 0,
       this.images,
-      this.purpose,
-      this.color,
-      this.description,
-      this.type,
-      this.publishDate,
+      // this.purpose,
+      // this.color,
+      // this.description,
+      // this.type,
+      // this.publishDate,
       // this.review,
       this.user});
 
@@ -59,11 +59,11 @@ class HomeProducts {
       'size': size,
       'price': price,
       'images': images,
-      'purpose': purpose,
-      'color': color,
-      'description': description,
-      'type': type,
-      'publishDate': publishDate,
+      // 'purpose': purpose,
+      // 'color': color,
+      // 'description': description,
+      // 'type': type,
+      // 'publishDate': publishDate,
       'user': user,
       // 'reviews': review
     };
@@ -77,12 +77,12 @@ class HomeProducts {
     return HomeProducts(
       title: map['title'],
       price: map['price'],
-      description: map['description'],
+      // description: map['description'],
       size: Size.fromMap(map['size']),
-      color: map['color'],
-      type: map['type'],
-      publishDate: map['publishDate'],
-      purpose: map['purpose'],
+      // color: map['color'],
+      // type: map['type'],
+      // publishDate: map['publishDate'],
+      // purpose: map['purpose'],
       user: User.fromMap(map['user']),
       // review: Review.fromMap(map['reviews']),
       images: imageList,

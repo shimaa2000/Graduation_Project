@@ -1,12 +1,11 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:graduation_project/network/cubit/layoutCubit.dart';
+import 'package:graduation_project/screens/paybalScreen.dart';
 import 'package:graduation_project/themes.dart';
 import 'package:graduation_project/endPoints.dart';
-import 'package:graduation_project/layout/topAdCard.dart';
 import 'package:graduation_project/network/cubit/appCubit.dart';
 import 'package:graduation_project/network/cubit/appStates.dart';
 import 'package:graduation_project/network/cubit/blocObserver.dart';
@@ -34,6 +33,8 @@ import 'package:graduation_project/screens/splash_screen.dart';
 import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/screens/user_ads_screen.dart';
 import 'package:graduation_project/shared/listView.dart';
+
+import 'network/cubit/resetCubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -66,10 +67,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(create: (BuildContext context) => LoginCubit()),
         BlocProvider(create: (BuildContext context) => SignUpCubit()),
-        BlocProvider(create: (BuildContext context) => UserDataCubit()),
+        BlocProvider(create: (BuildContext context)  => UserDataCubit()),
         BlocProvider(create: (BuildContext context) => UpdateUserDataCubit()),
         BlocProvider(create: (BuildContext context) => LayoutCubit()),
-
+        BlocProvider(create: (BuildContext context) => ResetCubit()),
       ],
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
@@ -142,6 +143,8 @@ class MyApp extends StatelessWidget {
               UserAds.routeName: (context) => UserAds(),
               ConfirmOrder.routeName: (context) => ConfirmOrder(),
               Favourite_Rent.routeName: (context) => Favourite_Rent(),
+              PaybalScreen.routeName: (context) => PaybalScreen(),
+
             },
             debugShowCheckedModeBanner: false,
           );

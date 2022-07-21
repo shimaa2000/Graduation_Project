@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/network/cubit/update_user_states.dart';
 
@@ -13,22 +14,37 @@ class UpdateUserDataCubit extends Cubit<UpdateUserDataStates> {
 
   static UpdateUserDataCubit get(context) => BlocProvider.of(context);
 
-  void userUpdateUserData({File? image}) async {
+  var editProfileUserNameController = TextEditingController();
+  var editProfileEmailController = TextEditingController();
+  var editProfileAddressController = TextEditingController();
+
+  void updateUserData() async {
+    emit(UpdateUserDataLoadingState());
+
+    final response = await authRepository.updateUserData({
+      'userName': editProfileUserNameController.text,
+      'address': editProfileAddressController.text,
+      'email': editProfileEmailController.text,
+    });
+
+    response.fold(
+      (error) => emit(UpdateUserDataErrorState(error)),
+      (response) {
+        emit(UpdateUserDataSuccessState(response));
+      },
+    );
+  }
+
+  Future userUpdateUserImage({File? image}) async {
     emit(UpdateUserDataLoadingState());
     final data = FormData();
-    data.fields.addAll([
-      MapEntry('userName', ''),
-      MapEntry('email', ''),
-      MapEntry('password', ''),
-      MapEntry('fullName', ''),
-    ]);
     if (image != null) {
       final multipartImage = await MultipartFile.fromFile(image.path);
       data.files.add(
         MapEntry('profile', multipartImage),
       );
     }
-    final response = await authRepository.updateUserData(data);
+    final response = await authRepository.updateUserImage(data);
     response.fold(
       (error) => emit(UpdateUserDataErrorState(error)),
       (authResponse) {

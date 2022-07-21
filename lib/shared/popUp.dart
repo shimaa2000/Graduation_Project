@@ -11,7 +11,7 @@ class ImageDialog extends StatelessWidget {
       child: Hero(
         tag: 'preview',
         child: Image(
-          image: AssetImage(ImgUrl),
+          image: NetworkImage(ImgUrl),
           fit: BoxFit.cover,
         ),
       )

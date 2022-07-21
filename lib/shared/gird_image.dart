@@ -61,7 +61,7 @@ class _PhotoGridState extends State<PhotoGrid> {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                Image.asset(imageUrl, fit: BoxFit.cover),
+               Image.network(imageUrl, fit: BoxFit.cover),
                 Positioned.fill(
                   child: Container(
                     alignment: Alignment.center,
