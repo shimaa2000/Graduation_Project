@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/text_sized_signUp.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
 import 'package:graduation_project/shared/datePicker.dart';
@@ -37,6 +38,8 @@ class CompleteSignUpWidget extends StatefulWidget {
 class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
   @override
   Widget build(BuildContext context) {
+    Color iLight = Colors.black87;
+    Color iDark = Colors.white70;
     return Container(
       alignment: Alignment.center,
       width: 320,
@@ -56,6 +59,7 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
               keyboardType: TextInputType.name,
               icon: Icon(
                 Icons.person,
+                  color: isDark ? iLight : iDark
               ),
               onTap: () {},
               validatorText: 'please enter full name',
@@ -72,6 +76,7 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
               keyboardType: TextInputType.streetAddress,
               icon: Icon(
                 Icons.home,
+                  color: isDark ? iLight : iDark
               ),
               validatorText: 'please enter address',
             ),
@@ -87,6 +92,7 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
               keyboardType: TextInputType.phone,
               icon: Icon(
                 Icons.phone,
+                  color: isDark ? iLight : iDark
               ),
               validatorText: 'please enter phone number',
             ),
@@ -112,6 +118,7 @@ class _CompleteSignUpWidgetState extends State<CompleteSignUpWidget> {
               },
               icon: Icon(
                 Icons.date_range,
+                  color: isDark ? iLight : iDark
               ),
               validatorText: 'please pick date ',
             ),

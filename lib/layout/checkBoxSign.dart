@@ -28,16 +28,14 @@ class _CheckBoxSignState extends State<CheckBoxSign> {
           widget.check,
           Text.rich(
             TextSpan(
-              text: 'accept',
-              style: TextStyle(
-                fontSize: 13,
-                color: Colors.black,
-              ),
+              text: 'accept ',
+              style: Theme.of(context).textTheme.bodyText1,
               children: [
+
                 TextSpan(
                     text: ' policies and terms',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: Colors.blueAccent[400],
                       fontWeight: FontWeight.bold,
                     ),

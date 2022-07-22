@@ -68,7 +68,7 @@ class GetStarted extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80.0),
+                padding: const EdgeInsets.symmetric(horizontal: 65.0),
                 child: Row(
                   children: [
                     Text(

@@ -2,6 +2,7 @@ import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/dummy_data.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/profile_container.dart';
 import 'package:graduation_project/network/cubit/user_data_cubit.dart';
 import 'package:graduation_project/network/cubit/user_data_states.dart';
@@ -39,7 +40,7 @@ class Profile extends StatelessWidget {
                       Text(
                         'User Ads',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: isDark ? Colors.black : Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 26.0,
                         ),
@@ -72,11 +73,12 @@ class Profile extends StatelessWidget {
                               : Text(
                                   'no product available, please add some...',
                                   style: Theme.of(context).textTheme.bodyText1,
+                                  textAlign: TextAlign.center,
                                 ),
                         ),
                         fallback: (context) => Center(
                           child: CircularProgressIndicator(
-                            color: Colors.deepPurple,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                       ),

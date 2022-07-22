@@ -54,7 +54,8 @@ class AppCubit extends Cubit<AppStates> {
   String _title = '';
   String _name = '';
   int _price = 0;
-  String _imgUrl='';
+  String? _imgUrl;
+  List<String> pImages=[];
   int _length = 0;
   int _index = 0;
   String _publishDate = '';
@@ -68,12 +69,14 @@ class AppCubit extends Cubit<AppStates> {
     response.fold(
       (error) => emit(AppErrorHomeState(error)),
       (response) {
-        //productList=[...?response.homeProducts];
         value = Product.fromMap(response.homeProduct![getIndex()]);
         setLength(response.homeProduct!.length);
-        setTitle(value!.title);
-        setPrice(value!.price);
-        // setImgUrl('$BASEURL/${value!.images![getIndex()]}');
+        setTitle(value!.title!);
+        setPrice(value!.price!);
+        for(int i=0;i<value!.images!.length;i++){
+          pImages.add('$BASEURL/${value!.images![0]}');
+        }
+         setImgUrl('${pImages[0]}');
         setSize(value!.size!.name!);
         setName(value!.user!.userName);
         setLength(response.homeProduct!.length);

@@ -3,13 +3,12 @@ class UserMail {
 
   UserMail.fromJson(Map<String, dynamic> json) {
     userMail = json['email'];
-
   }
-
 }
 
 class ResetCodes {
   String? resetCode;
+
   ResetCodes.fromJson(Map<String, dynamic> json) {
     resetCode = json['resetCode'];
   }
@@ -17,7 +16,12 @@ class ResetCodes {
 
 class NewPass {
   String? newPassword;
-  NewPass.fromJson(Map<String, dynamic> json) {
-    newPassword = json['newPassword'];
+
+  NewPass({this.newPassword});
+
+  factory NewPass.fromMap(Map<String, dynamic> map) {
+    return NewPass(
+     newPassword: map['newPassword'],
+    );
   }
 }

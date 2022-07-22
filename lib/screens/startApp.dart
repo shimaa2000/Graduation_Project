@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/dummy_data.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/draweBody.dart';
 import 'package:graduation_project/layout/search_classDelegate.dart';
 import 'package:graduation_project/models/postsModel.dart';
@@ -27,10 +28,14 @@ class _StartAppState extends State<StartApp> {
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = AppCubit.get(context);
+        Color iLight = Colors.black87;
+        Color iDark = Colors.white;
         return Scaffold(
           appBar: AppBar(
+            iconTheme: IconThemeData(color: isDark ? iDark : iLight),
             systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent
+              statusBarColor: Colors.transparent,
+                  statusBarIconBrightness: isDark? Brightness.light: Brightness.dark
             ),
             title: Text(cubit.titles[cubit.currentIndex]),
             centerTitle: true,
@@ -40,13 +45,15 @@ class _StartAppState extends State<StartApp> {
                 onPressed: () {
                   showSearch(context: context, delegate: Search(list));
                 },
-                icon: Icon(Icons.search),
+                icon: Icon(Icons.search,   color: isDark ? iDark : iLight),
               )
             ],
           ),
           bottomNavigationBar: ConvexAppBar(
             initialActiveIndex: 0,
             backgroundColor: Theme.of(context).primaryColor,
+            color: isDark ? iDark : iLight,
+            activeColor:isDark ? iDark : iLight ,
             onTap: (index) {
               cubit.changeBottomNavItem(index);
               print(cubit.currentIndex);

@@ -136,7 +136,6 @@ class MyApp extends StatelessWidget {
               StartApp.routeName: (context) => StartApp(),
               NotificationScreen.routeName: (context) => NotificationScreen(),
               AddPost.routeName: (context) => AddPost(),
-              AddPost2.routeName: (context) => AddPost2(),
               EditPost.routeName: (context) => EditPost(),
               UserAds.routeName: (context) => UserAds(),
               ConfirmOrder.routeName: (context) => ConfirmOrder(),

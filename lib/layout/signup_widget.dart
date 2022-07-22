@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/text_sized_signUp.dart';
 import 'package:graduation_project/screens/login_screen.dart';
 import 'package:graduation_project/screens/policies_screen.dart';
@@ -24,6 +25,8 @@ class SignUpWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color iLight = Colors.black87;
+    Color iDark = Colors.white70;
     return Container(
       alignment: Alignment.center,
       width: 320,
@@ -40,6 +43,7 @@ class SignUpWidget extends StatelessWidget {
               onTap: () {},
               icon: Icon(
                 Icons.person,
+                  color: isDark ? iLight : iDark
               ),
               validatorText: 'please enter name',
             ),
@@ -51,6 +55,7 @@ class SignUpWidget extends StatelessWidget {
               onTap: () {},
               icon: Icon(
                 Icons.email,
+                  color: isDark ? iLight : iDark
               ),
               validatorText: 'please enter mail',
             ),
@@ -63,6 +68,7 @@ class SignUpWidget extends StatelessWidget {
               obsecure: true,
               icon: Icon(
                 Icons.lock,
+                  color: isDark ? iLight : iDark
               ),
               validatorText: 'please enter password',
             ),
@@ -75,6 +81,7 @@ class SignUpWidget extends StatelessWidget {
               obsecure: true,
               icon: Icon(
                 Icons.lock,
+                  color: isDark ? iLight : iDark
               ),
               validatorText: 'please confirm password',
             ),

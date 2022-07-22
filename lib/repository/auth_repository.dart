@@ -58,6 +58,7 @@ class AuthRepository {
     final response = await DioClient.postData(
       url: RESET,
       data: resetPass,
+      token: CashHelper.getData(key: 'token'),
     );
 
     return response.fold(
@@ -75,6 +76,7 @@ class AuthRepository {
     final response = await DioClient.postData(
       url: VERIFY,
       data: verifyCode,
+      token: CashHelper.getData(key: 'token'),
     );
 
     return response.fold(
@@ -92,13 +94,13 @@ class AuthRepository {
     final response = await DioClient.postData(
       url: NEWPASS,
       data: newPass,
+      token: CashHelper.getData(key: 'token'),
     );
 
     return response.fold(
       (error) => Left(error),
       (body) {
-        final NewPass newPass = NewPass.fromJson(body.data);
-        return Right(newPass);
+        return Right(NewPass.fromMap(body.data));
       },
     );
   }

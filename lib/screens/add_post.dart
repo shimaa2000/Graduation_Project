@@ -8,7 +8,9 @@ import '../shared/alertForNewPost.dart';
 
 class AddPost extends StatefulWidget {
   static const routeName = 'add_post';
-   AddPost({Key? key}) : super(key: key);
+
+  AddPost({Key? key}) : super(key: key);
+
   @override
   _AddPostState createState() => _AddPostState();
 }
@@ -16,36 +18,44 @@ class AddPost extends StatefulWidget {
 enum ImageSourceType { gallery, camera }
 
 class _AddPostState extends State<AddPost> {
-  File? f;
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController descController = TextEditingController();
+  final TextEditingController colorController = TextEditingController();
+  final TextEditingController sizeController = TextEditingController();
+  final TextEditingController typeController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-            padding: EdgeInsets.symmetric(vertical: 15.0,horizontal: 50.0),
+            padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
             child: Align(
               alignment: Alignment.topLeft,
               child: SingleChildScrollView(
-                child: Column(   crossAxisAlignment: CrossAxisAlignment.start,
-
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 15.0,
+                    AddPostRow(
+                      descController: descController,
+                      titleController: titleController,
+                      colorController: colorController,
+                      sizeController: sizeController,
+                      typeController: typeController,
                     ),
-                        Text(
-                          'Upload Photos',
-                          style: TextStyle(fontSize: 24, color: Colors.black),
-                        ),
-                    SizedBox(
-                      height: 15.0,
-                    ),
-
-                    AddPostRow(),
                     SizedBox(
                       height: 40.0,
                     ),
                     DefaultButton(
                         onPressedFun: () {
-                          Navigator.pushNamed(context, AddPost2.routeName);
+                          print(titleController.text + descController.text + sizeController.text);
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddPost2(
+                                    title: titleController.text,
+                                    description: descController.text,
+                                    sizeName: sizeController.text)),
+                          );
                         },
                         text: 'Next'),
                   ],

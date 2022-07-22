@@ -12,7 +12,6 @@ class PostAlerts {
 
   static Future<ChooseAction> photoDialog(
     BuildContext context,
-    Future addPost(File? image,),
   ) async {
     final action = await showDialog(
         context: context,
@@ -42,7 +41,7 @@ class PostAlerts {
                                 await Images().uploadImageFromCamera();
                             if (image != null) {
                               print(image.path);
-                             await addPost(image);
+                              img=image;
                             }
                           },
                           child: Text(
@@ -72,7 +71,7 @@ class PostAlerts {
                             await Images().uploadImageFromGallery();
                             if (image != null) {
                               print(image.path);
-                              await addPost(image);
+                              img=image;
                             }else
                               print('xx${image?.path}');
                           },

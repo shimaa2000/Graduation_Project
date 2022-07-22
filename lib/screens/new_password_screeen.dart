@@ -63,7 +63,7 @@ class NewPassword extends StatelessWidget {
                                 .newPassFormKey
                                 .currentState!
                                 .validate()) {
-                             reset.setNewPass();
+                             reset.setNewPass(reset.passController.text);
                               Dialogs.yesAbortDialog(
                                   context,
                                   Text('You can login to your account now!'),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/shared/alertForProfilePhoto.dart';
 
 class ProfileContainer extends StatelessWidget {
@@ -14,7 +15,7 @@ class ProfileContainer extends StatelessWidget {
         Container(
           width: double.infinity,
           height: 250.0,
-          color: Colors.deepPurple,
+          color: Theme.of(context).primaryColor,
         ),
         Center(
           child: Padding(
@@ -24,10 +25,10 @@ class ProfileContainer extends StatelessWidget {
               width: 320.0,
               //height: 440.0,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(.9),
+                color: isDark?Colors.white.withOpacity(.9): Colors.black45,
                 borderRadius: BorderRadius.circular(16.0),
                 border: Border.all(
-                  color: Colors.grey.shade500,
+                  color: Colors.grey.shade600,
                   width: 3.0,
                 ),
               ),
@@ -47,11 +48,7 @@ class ProfileContainer extends StatelessWidget {
                     ),
                     Text(
                       userName,
-                      style: TextStyle(
-                        fontSize: 26.0,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style:Theme.of(context).textTheme.headline1
                     ),
                     SizedBox(
                       height: 8.0,
@@ -61,7 +58,7 @@ class ProfileContainer extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 26.0,
                           fontWeight: FontWeight.w300,
-                          color: Colors.grey.shade400),
+                          color: isDark?Colors.grey:Colors.white70),
                     ),
                   ],
                 ),

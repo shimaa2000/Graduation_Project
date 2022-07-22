@@ -1,5 +1,5 @@
 const LOGIN = 'https://dressuit.herokuapp.com/api/user/login';
-const BASEURL = 'http://dressuit.herokuapp.com';
+const BASEURL = 'https://dressuit.herokuapp.com';
 const SIGN = 'https://dressuit.herokuapp.com/api/user/signup';
 const USERDATA='https://dressuit.herokuapp.com/api/user/';
 const PRODUCT ='https://dressuit.herokuapp.com/api/product';

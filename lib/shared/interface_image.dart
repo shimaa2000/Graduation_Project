@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/endPoints.dart';
 class InterfaceImage extends StatelessWidget {
   final String firstLabel;
   final String secondLabel;
@@ -11,8 +12,13 @@ class InterfaceImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Stack(
       children: [
-        Image.asset(
+        isDark? Image.asset(
           'images/background.png',
+          height: MediaQuery.of(context).size.height * forHeight,
+          width: MediaQuery.of(context).size.width,
+          fit: BoxFit.cover,
+        ):Image.asset(
+          'images/backgroundDark.png',
           height: MediaQuery.of(context).size.height * forHeight,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.cover,

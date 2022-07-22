@@ -2,6 +2,7 @@ import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/complete_signup_widget.dart';
 import 'package:graduation_project/network/cubit/signUpCubit.dart';
 import 'package:graduation_project/network/cubit/signUpStates.dart';
@@ -105,10 +106,11 @@ class _CompleteScreenState extends State<CompleteScreen> {
                                 addressController.text +
                                 fullNameController.text);
                           },
-                          text: 'Sign up'),
+                          text: 'Sign up',
+                      txtColor: isDark? Colors.white: Colors.black,),
                       fallback: (context) => Center(
                         child: CircularProgressIndicator(
-                          color: Colors.deepPurple,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     ),
@@ -123,16 +125,3 @@ class _CompleteScreenState extends State<CompleteScreen> {
   }
 }
 
-//
-// Dialogs.yesAbortDialog(
-// context,
-// Text(
-// 'You have an account now!',
-// textAlign: TextAlign.center,
-// ),
-// 'Cancel',
-// 'Ok', () {
-// Navigator.pushNamed(context, HomeScreen.routeName);
-// }, () {
-// Navigator.of(context).pop(DialogAction.cancle);
-// }, 'images/check.svg', 200, 200);

@@ -39,11 +39,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
 
   //for add post content1
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController descController = TextEditingController();
-  final  TextEditingController colorController = TextEditingController();
-  final TextEditingController sizeController = TextEditingController();
-  final TextEditingController typeController = TextEditingController();
+
 
   // for prices in payment
   double price = DUMMY_DATA[id].price;

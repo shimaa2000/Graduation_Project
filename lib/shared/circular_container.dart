@@ -14,7 +14,7 @@ class CircularContainer extends StatelessWidget {
       margin: const EdgeInsets.all(15.0),
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-          border: Border.all(width: 2.5, color: Colors.deepPurple),
+          border: Border.all(width: 2.5, color: Theme.of(context).primaryColor),
           borderRadius: BorderRadius.circular(20)),
       child: child,);
   }

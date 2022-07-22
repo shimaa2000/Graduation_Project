@@ -37,7 +37,7 @@ class VerifyOnEditingSuccessState extends ResetStates{}
 class NewPassLoadingState extends ResetStates {}
 
 class NewPassSuccessState extends ResetStates {
-  final AuthResponse newPassResponse;
+  final NewPass newPassResponse;
 
   NewPassSuccessState(this.newPassResponse);
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/shared/form_builder.dart';
 import '../network/cubit/update_user_cubit.dart';

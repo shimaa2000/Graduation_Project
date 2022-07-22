@@ -35,13 +35,12 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
                   name: cubit.getName(),
                   date: cubit.getPublishDate().toString(),
                   isFav: fav_list.contains(DUMMY_DATA[index]) ? true : false,
-                  //imgUrl: cubit.getImgUrl(),
+                  imgUrl: cubit.getImgUrl() ??
+                      'https://media.istockphoto.com/vectors/dress-icon-vector-id507081676?k=20&m=507081676&s=612x612&w=0&h=k1p9VA6YqPIwMEyj290EMrI1EtHIz4EK8yLf9YV7_DM=',
                   title: cubit.getTitle(),
                   price: cubit.getPrice().toDouble(),
                   size: cubit.getSize(),
                   index: index,
-                  imgUrl:
-                      'https://media.istockphoto.com/vectors/dress-icon-vector-id507081676?k=20&m=507081676&s=612x612&w=0&h=k1p9VA6YqPIwMEyj290EMrI1EtHIz4EK8yLf9YV7_DM=',
                 ));
               },
               listener: (context, state) {},
@@ -65,39 +64,39 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
           builder: (context, state) {
             var listCubit = AppCubit.get(context);
             return ConditionalBuilderRec(
-                condition: state is! AppLoadingHomeState,
-                builder: (context)=>ListView.builder(
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-                itemCount: listCubit.getLength(),
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(
-                        DetailsScreen.routeName,
-                        arguments: DUMMY_DATA[index].id,
-                      );
-                      id = DUMMY_DATA[index].id - 1;
-                    },
-                    child: widget.categories == 'all'
-                        ? listFit(index, search: widget.search)
-                        : DUMMY_DATA[index].gender == widget.categories
-                            ? listFit(index)
-                            : SizedBox(
-                                width: 500,
-                                height: .5,
-                              ),
-                  );
-                }),
+              condition: state is! AppLoadingHomeState,
+              builder: (context) => ListView.builder(
+                  shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
+                  itemCount: listCubit.getLength(),
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          DetailsScreen.routeName,
+                          arguments: DUMMY_DATA[index].id,
+                        );
+                        id = DUMMY_DATA[index].id - 1;
+                      },
+                      child: widget.categories == 'all'
+                          ? listFit(index, search: widget.search)
+                          : DUMMY_DATA[index].gender == widget.categories
+                              ? listFit(index)
+                              : SizedBox(
+                                  width: 500,
+                                  height: .5,
+                                ),
+                    );
+                  }),
               fallback: (context) => Center(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: CircularProgressIndicator(
-                  color: Colors.deepPurple,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: CircularProgressIndicator(
+                    color: Colors.deepPurple,
+                  ),
                 ),
               ),
-            ),
             );
           },
           listener: (context, state) {},

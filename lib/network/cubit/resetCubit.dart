@@ -20,7 +20,6 @@ class ResetCubit extends Cubit<ResetStates> {
   final passConfirmController = TextEditingController();
 
   String? code;
-  String? newPass;
   final resetFormKey = GlobalKey<FormState>();
   final newPassFormKey = GlobalKey<FormState>();
 
@@ -63,20 +62,19 @@ class ResetCubit extends Cubit<ResetStates> {
   }
 
 //setting new pass
-  void setNewPass() async {
-    emit(VerifyLoadingState());
+  void setNewPass(String newPass) async {
+    emit(NewPassLoadingState());
     final response = await authRepository.newPass({
       'newPassword': newPass,
     });
 
     response.fold(
       (error) {
-        emit(VerifyErrorState(error));
-        print('error');
+        emit(NewPassErrorState(error));
+        print(error);
       },
-      (authResponse) {
-        emit(VerifySuccessState(authResponse));
-        print('done');
+      (response) {
+        emit(NewPassSuccessState(response));
       },
     );
   }

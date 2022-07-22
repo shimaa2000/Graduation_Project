@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/rating.dart';
 import 'package:graduation_project/layout/toggel_details.dart';
 
@@ -51,8 +52,12 @@ class _DetailsWidgetState extends State<DetailsWidget> {
       ToggleDetails.detail(context, widget.description, widget.height, widget.width),
       ToggleDetails.review(context)
     ];
+    Color iLight = Colors.black54;
+    Color iDark = Colors.white70;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: isDark? Colors.white: Colors.black),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -88,7 +93,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                             },
                             icon: Icon(Icons.favorite),
                             iconSize: 35,
-                            color: Colors.deepPurple,
+                            color: isDark? iLight: iDark,
                           )
                         : IconButton(
                             onPressed: () {
@@ -100,7 +105,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                               Icons.favorite_border,
                             ),
                             iconSize: 35,
-                            color: Colors.deepPurple,
+                      color: isDark? iLight: iDark,
                           ),
                   ),
                 ],
@@ -108,9 +113,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  // SizedBox(
-                  //   width: 15,
-                  // ),
+
                   Column(children: [
                     Text(widget.title, style: Theme.of(context).textTheme.headline1),
                     Row(children: [
@@ -125,7 +128,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                   new StarRating(
                     rating: rating,
                     onRatingChanged: (rating) => setState(() => this.rating = rating),
-                    color: Colors.deepPurple,
+                    color:Theme.of(context).primaryColor,
                   )
                 ],
               ),
@@ -133,7 +136,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                 margin: EdgeInsets.all(10),
                 width: double.infinity,
                 height: 1,
-                color: Colors.black26,
+                color: isDark? iLight: iDark,
               ),
               Row(
                 children: [
@@ -148,12 +151,12 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                               isActive3 = false;
                             });
                           },
-                          child: Text('Item')),
+                          child: Text('Item' , style: Theme.of(context).textTheme.bodyText1,)),
                       Container(
                         // margin: EdgeInsets.all(10),
                         width: MediaQuery.of(context).size.width / 4.5,
                         height: 2,
-                        color: isActive1 ? Colors.deepPurple : Colors.black26,
+                        color: isActive1 ? Theme.of(context).primaryColor : isDark? iLight: Colors.white38 ,
                       )
                     ],
                   ),
@@ -171,12 +174,12 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                               isActive3 = false;
                             });
                           },
-                          child: Text('Details')),
+                          child: Text('Details', style: Theme.of(context).textTheme.bodyText1,)),
                       Container(
                         // margin: EdgeInsets.all(10),
                         width: MediaQuery.of(context).size.width / 4.5,
                         height: 2,
-                        color: isActive2 ? Colors.deepPurple : Colors.black26,
+                        color: isActive2 ?Theme.of(context).primaryColor : isDark? iLight: Colors.white38 ,
                       )
                     ],
                   ),
@@ -194,12 +197,12 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                               isActive1 = false;
                             });
                           },
-                          child: Text('Review')),
+                          child: Text('Review', style: Theme.of(context).textTheme.bodyText1, )),
                       Container(
                         // margin: EdgeInsets.only(t5),
                         width: MediaQuery.of(context).size.width / 4.5,
                         height: 2,
-                        color: isActive3 ? Colors.deepPurple : Colors.black26,
+                        color: isActive3 ? Theme.of(context).primaryColor : isDark? iLight: Colors.white38  ,
                       ),
                     ],
                   ),

@@ -10,6 +10,7 @@ class BoxTextField extends StatelessWidget {
   final bool isMulti;
   final bool autofocus;
   final Icon icon;
+  final String hint;
   final bool enabled;
   final Function onTap;
   final double padding;
@@ -17,6 +18,7 @@ class BoxTextField extends StatelessWidget {
 
   const BoxTextField({
     Key? key,
+    this.hint='',
     required this.controller,
     required this.validatorText,
     this.keyboardType = TextInputType.text,
@@ -55,6 +57,7 @@ class BoxTextField extends StatelessWidget {
 cursorColor:  isDark?Colors.black54:Colors.grey[200],
         controller: controller,
         decoration: InputDecoration(
+          hintText: hint,
           fillColor: isDark? Colors.grey[200]: Colors.black54,
           prefixIcon: icon,
          focusedBorder: UnderlineInputBorder(borderSide: BorderSide( color:  isDark? Colors.black87: Colors.white70)),

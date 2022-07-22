@@ -1,8 +1,8 @@
-// ignore_for_file: must_be_immutable
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/checkBoxSign.dart';
 import 'package:graduation_project/layout/signup_widget.dart';
 import 'package:graduation_project/network/cubit/signUpCubit.dart';
@@ -18,10 +18,10 @@ class SignUp extends StatefulWidget {
   @override
   _SignUpState createState() => _SignUpState();
 }
+
 String? name;
 String? email;
 String? pass;
-
 
 class _SignUpState extends State<SignUp> {
   var nameController = TextEditingController();
@@ -33,25 +33,9 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignUpCubit , SignUpStates>(
-      listener: (context , state){
-        // if( state is SignSuccessState){
-        //   if(state.userResponse.status == true){
-        //     print(state.userResponse.user);
-        //     Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //         builder: (context) => CompleteScreen(),
-        //       ),
-        //     );
-        //   }else{
-        //     print( state.userResponse.error!.errorMail);
-        //     print( state.userResponse.error!.errorPass);
-        //
-        //   }
-        // }
-      },
-      builder: (context , state){
+    return BlocConsumer<SignUpCubit, SignUpStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
         return Scaffold(
           body: SafeArea(
             child: SingleChildScrollView(
@@ -76,7 +60,9 @@ class _SignUpState extends State<SignUp> {
                     padding: const EdgeInsets.only(left: 60.0),
                     child: CheckBoxSign(
                       check: Checkbox(
-                        activeColor: Colors.deepPurple,
+                        activeColor: Theme.of(context).primaryColor,
+                        checkColor: isDark? Colors.white : Colors.black,
+                        side: BorderSide(color: isDark? Colors.black54: Colors.white70),
                         value: agree,
                         onChanged: (value) {
                           setState(() {
@@ -86,27 +72,31 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5.0,),
+                  SizedBox(
+                    height: 5.0,
+                  ),
                   DefaultButton(
                     enable: agree,
+                    txtColor: isDark? Colors.white: Colors.black,
                     text: 'Next',
                     onPressedFun: () {
                       if (formKey.currentState!.validate()) {
-                        name=nameController.text;
-                        email=emailController.text;
-                        pass=passwordController.text;
-                        print(name! + email!+ pass!);
+                        name = nameController.text;
+                        email = emailController.text;
+                        pass = passwordController.text;
+                        print(name! + email! + pass!);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => CompleteScreen(),
                           ),
                         );
-
                       }
                     },
                   ),
-                  SizedBox(height: 5.0,),
+                  SizedBox(
+                    height: 5.0,
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0, bottom: 25.0),
                     child: Center(
@@ -115,23 +105,19 @@ class _SignUpState extends State<SignUp> {
                           children: [
                             TextSpan(
                               text: 'Already have account ? ',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.black,
-                              ),
+                              style: Theme.of(context).textTheme.bodyText1
                             ),
                             TextSpan(
                                 text: 'Login.',
                                 style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.deepPurple,
+                                  fontSize: 16,
+                                  color: Theme.of(context).primaryColor,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
                                     Navigator.of(context)
                                         .pushNamed(LoginScreen.routeName);
-
                                   }),
                           ],
                         ),
