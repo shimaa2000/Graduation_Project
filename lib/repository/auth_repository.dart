@@ -5,6 +5,7 @@ import 'package:graduation_project/models/products.dart';
 import '../core/services/api/dio_client.dart';
 import '../core/services/api/errors/server_error.dart';
 import '../models/auth_response.dart';
+import '../models/favouriteModel.dart';
 import '../models/restePassword.dart';
 import '../models/user_data_model.dart';
 import '../endPoints.dart';
@@ -12,8 +13,10 @@ import '../endPoints.dart';
 class AuthRepository {
   static String _token = '';
   static String? _userId;
+
   //Login
-  Future<Either<ServerError, AuthResponse>> login(Map<String, dynamic> loginRequest) async {
+  Future<Either<ServerError, AuthResponse>> login(
+      Map<String, dynamic> loginRequest) async {
     final response = await DioClient.postData(
       url: LOGIN,
       data: loginRequest,
@@ -31,8 +34,10 @@ class AuthRepository {
       },
     );
   }
+
   //edit profile
-  Future<Either<ServerError, UserData>> updateUserData(Map<String, dynamic> editProfile) async {
+  Future<Either<ServerError, UserData>> updateUserData(
+      Map<String, dynamic> editProfile) async {
     final response = await DioClient.putData(
       url: "$USERDATA${CashHelper.getData(key: 'id')}",
       data: editProfile,
@@ -40,61 +45,64 @@ class AuthRepository {
     );
 
     return response.fold(
-          (error) => Left(error),
-          (body) {
+      (error) => Left(error),
+      (body) {
         return Right(UserData.fromMap(body.data));
       },
     );
   }
 
-
   //mail reset password
-  Future<Either<ServerError, UserMail>> reset(Map<String, dynamic> resetPass) async {
+  Future<Either<ServerError, UserMail>> reset(
+      Map<String, dynamic> resetPass) async {
     final response = await DioClient.postData(
       url: RESET,
       data: resetPass,
     );
 
     return response.fold(
-          (error) => Left(error),
-          (body) {
+      (error) => Left(error),
+      (body) {
         final UserMail userMail = UserMail.fromJson(body.data);
         return Right(userMail);
       },
     );
   }
 
-
 // verify code
-  Future<Either<ServerError, ResetCodes>> verify(Map<String, dynamic> verifyCode) async {
+  Future<Either<ServerError, ResetCodes>> verify(
+      Map<String, dynamic> verifyCode) async {
     final response = await DioClient.postData(
       url: VERIFY,
       data: verifyCode,
     );
 
     return response.fold(
-          (error) => Left(error),
-          (body) {
+      (error) => Left(error),
+      (body) {
         final ResetCodes resetCode = ResetCodes.fromJson(body.data);
         return Right(resetCode);
       },
     );
   }
+
 // for new password
-  Future<Either<ServerError, NewPass>> newPass(Map<String, dynamic> newPass) async {
+  Future<Either<ServerError, NewPass>> newPass(
+      Map<String, dynamic> newPass) async {
     final response = await DioClient.postData(
       url: NEWPASS,
       data: newPass,
     );
 
     return response.fold(
-          (error) => Left(error),
-          (body) {
+      (error) => Left(error),
+      (body) {
         final NewPass newPass = NewPass.fromJson(body.data);
         return Right(newPass);
       },
     );
   }
+
   //Update User Image
   Future<Either<ServerError, UserData>> updateUserImage(FormData data) async {
     final response = await DioClient.putFormData(
@@ -107,6 +115,22 @@ class AuthRepository {
       (error) => Left(error),
       (body) {
         return Right(UserData.fromMap(body.data));
+      },
+    );
+  }
+
+  //post product
+  Future<Either<ServerError, Product>> postProduct(FormData data) async {
+    final response = await DioClient.postFormData(
+      url: "$PRODUCT",
+      data: data,
+      token: CashHelper.getData(key: 'token'),
+    );
+
+    return response.fold(
+      (error) => Left(error),
+      (body) {
+        return Right(Product.fromMap(body.data));
       },
     );
   }
@@ -124,7 +148,8 @@ class AuthRepository {
   }
 
   //SignUP
-  Future<Either<ServerError, AuthResponse>> signUp(Map<String, dynamic> signUpRequest) async {
+  Future<Either<ServerError, AuthResponse>> signUp(
+      Map<String, dynamic> signUpRequest) async {
     final response = await DioClient.postData(
       url: SIGN,
       data: signUpRequest,
@@ -135,10 +160,36 @@ class AuthRepository {
       (body) => Right(AuthResponse.fromMap(body.data)),
     );
   }
+  //for favourite get
+  Future<Either<ServerError, Favourite>> favItemsFun() async {
+    final response = await DioClient.getData(
+      url: FAV,
+      token: CashHelper.getData(key: 'token'),
+    );
+    return response.fold(
+          (error) => Left(error),
+          (body) => Right(Favourite.fromList(body.data)),
+    );
+  }
+
+  //for favourite post
+  Future<Either<ServerError, Favourite>> addFav(
+      Map<String ,dynamic> data) async {
+    final response = await DioClient.postData(
+      url: FAV,
+      data: data,
+      token: CashHelper.getData(key: 'token'),
+    );
+
+    return response.fold(
+          (error) => Left(error),
+          (body) => Right(Favourite.fromMap(body.data)),
+    );
+  }
 
   Future<Either<ServerError, Products>> homeDataFun() async {
     final response = await DioClient.getData(
-      url: HOME,
+      url: PRODUCT,
       token: CashHelper.getData(key: 'token'),
     );
     return response.fold(

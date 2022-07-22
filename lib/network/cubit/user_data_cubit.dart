@@ -13,7 +13,7 @@ class UserDataCubit extends Cubit<UserDataStates> {
   String _userFullName='';
   String _userAddress='';
   String? _image;
-  List<String>? productImages;
+  List<String> productImages=[];
   int length=0;
 
   final authRepository = AuthRepository();
@@ -25,14 +25,13 @@ class UserDataCubit extends Cubit<UserDataStates> {
       (error) => emit(UserDataErrorState(error)),
       (response) {
         setUserImage('$BASEURL/${response.image}');
-        length=response.userProducts!.length;
-        print(response.userProducts!.length);
+
         for(int i=0;i<response.userProducts!.length;i++){
-          print('$BASEURL/${response.userProducts![i].images![0]}');
-          productImages?.add('$BASEURL/${response.userProducts![i].images![i]}');
+          productImages.add('$BASEURL/${response.userProducts![i].images![0]}');
         }
+        length=productImages.length;
         setUserAddress(response.address![0]);
-        setUserName(response.fullName!);
+        setUserName(response.userName!);
         emit(UserDataSuccessState(response));
       },
     );

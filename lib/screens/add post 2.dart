@@ -45,6 +45,24 @@ class _AddPost2State extends State<AddPost2> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: Size(double.infinity, 50),
+                            primary: Colors.white,elevation: 1.0),
+                        onPressed: () {
+                          // PostAlerts.photoDialog(context,);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(Icons.upload_rounded,color: Colors.black54,),
+                            SizedBox(width: 100.0,),
+                            Text('Upload',style: TextStyle(color: Colors.black54),)
+                          ],
+                        )),
+                    SizedBox(
+                      height: 15.0,
+                    ),
                     Text("for Height",
                         style: Theme.of(context).textTheme.headline5),
                     SizedBox(

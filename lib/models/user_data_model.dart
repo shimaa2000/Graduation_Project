@@ -75,7 +75,7 @@ class UserData {
 class UserProducts {
   String? id;
   String? title;
-  String? price;
+  int? price;
   String? description;
   Size? size;
   String? color;
@@ -122,7 +122,7 @@ class UserProducts {
       title: map['title'],
       price: map['price'],
       description: map['description'],
-      size: map['size'],
+      size: map[Size.fromMap(map['size'])],
       color: map['color'],
       type: map['type'],
       publishDate: map['publishDate'],

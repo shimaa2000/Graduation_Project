@@ -20,7 +20,7 @@ class ImageContainer extends StatelessWidget {
       // margin: const EdgeInsets.all(15.0),
       padding: const EdgeInsets.all(3.0),
       decoration: BoxDecoration(
-          image: new DecorationImage(image:  AssetImage(
+          image: new DecorationImage(image:  NetworkImage(
             imgUrl,
           ),fit: BoxFit.cover,),
           border: Border.all(width: 2.5, color: Colors.black26),

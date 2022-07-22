@@ -8,12 +8,12 @@ enum ChooseAction { Camera, Gallery }
 
 File? img;
 
-class PostAlerts {
+class ProfileAlert {
 
   static Future<ChooseAction> photoDialog(
-    BuildContext context,
-    Future addPost(File? image,),
-  ) async {
+      BuildContext context,
+      Future userUpdateUserImage({File? image}),
+      ) async {
     final action = await showDialog(
         context: context,
         barrierDismissible: true,
@@ -39,10 +39,10 @@ class PostAlerts {
                         TextButton(
                           onPressed: () async {
                             final image =
-                                await Images().uploadImageFromCamera();
+                            await Images().uploadImageFromCamera();
                             if (image != null) {
                               print(image.path);
-                             await addPost(image);
+                              await userUpdateUserImage(image: image);
                             }
                           },
                           child: Text(
@@ -72,7 +72,7 @@ class PostAlerts {
                             await Images().uploadImageFromGallery();
                             if (image != null) {
                               print(image.path);
-                              await addPost(image);
+                              await userUpdateUserImage(image: image);
                             }else
                               print('xx${image?.path}');
                           },

@@ -59,7 +59,7 @@ class AppCubit extends Cubit<AppStates> {
   int _index = 0;
   String _publishDate = '';
   String _size = '';
-  HomeProducts? value;
+  Product? value;
   static List<dynamic>? productList;
 
   void getProductData() async {
@@ -69,14 +69,14 @@ class AppCubit extends Cubit<AppStates> {
       (error) => emit(AppErrorHomeState(error)),
       (response) {
         //productList=[...?response.homeProducts];
-        value = HomeProducts.fromMap(response.homeProducts![getIndex()]);
-        setLength(response.homeProducts!.length);
+        value = Product.fromMap(response.homeProduct![getIndex()]);
+        setLength(response.homeProduct!.length);
         setTitle(value!.title);
         setPrice(value!.price);
         // setImgUrl('$BASEURL/${value!.images![getIndex()]}');
         setSize(value!.size!.name!);
         setName(value!.user!.userName);
-        setLength(response.homeProducts!.length);
+        setLength(response.homeProduct!.length);
         emit(AppSuccessHomeState(response));
       },
     );

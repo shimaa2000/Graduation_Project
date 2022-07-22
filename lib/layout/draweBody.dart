@@ -22,7 +22,12 @@ class _DrawerBodyState extends State<DrawerBody> {
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(listener: (context , state){},
     builder: (context , state){
+      Color dark = Colors.white70;
+      Color light = Colors.black87;
+      Color iDark = Colors.white70;
+      Color iLight = Colors.black87;
       return Container(
+        color: Theme.of(context).backgroundColor,
         padding: EdgeInsets.only(top: 50),
         child: Column(
           children: [
@@ -30,55 +35,55 @@ class _DrawerBodyState extends State<DrawerBody> {
               onTap: () {
                 Navigator.pushNamed(context, EditProfile.routeName);
               },
-              child: ListTile(leading: Icon(Icons.edit), title: Text('Edit Profile')),
+              child: ListTile(leading: Icon(Icons.edit, color: isDark? iLight: iDark,), title: Text('Edit Profile')),
             ),
             Divider(
               thickness: 1.0,
               height: 1.0,
-              color: Colors.grey[200],
+              color: isDark?light:dark,
             ),
-            ListTile(leading: Icon(Icons.password), title: Text('Change password')),
+            ListTile(leading: Icon(Icons.password, color: isDark? iLight: iDark,), title: Text('Change password')),
             Divider(
               thickness: 1.0,
               height: 1.0,
-              color: Colors.grey[200],
+              color: isDark?light:dark,
             ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, Favourite_Rent.routeName);
               },
-              child: ListTile(leading: Icon(Icons.favorite), title: Text('Favourite')),
+              child: ListTile(leading: Icon(Icons.favorite, color: isDark? iLight: iDark,), title: Text('Favourite')),
             ),
             Divider(
               thickness: 1.0,
               height: 1.0,
-              color: Colors.grey[200],
+              color: isDark?light:dark,
             ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, Favourite_Rent.routeName);
               },
-              child: ListTile(leading: Icon(Icons.border_all_sharp), title: Text('Rent')),
+              child: ListTile(leading: Icon(Icons.border_all_sharp, color: isDark? iLight: iDark,), title: Text('Rent')),
             ),
             Divider(
               thickness: 1.0,
               height: 1.0,
-              color: Colors.grey[200],
+              color: isDark?light:dark,
             ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, Favourite_Rent.routeName);
               },
-              child: ListTile(leading: Icon(Icons.ad_units_sharp), title: Text('Ads')),
+              child: ListTile(leading: Icon(Icons.ad_units_sharp, color: isDark? iLight: iDark,), title: Text('Ads')),
             ),
             Divider(
               thickness: 1.0,
               height: 1.0,
-              color: Colors.grey[200],
+              color: isDark?light:dark,
             ),
             InkWell(
               child: ListTile(
-                leading: Icon(isDark? Icons.lightbulb :Icons.lightbulb_outline),
+                leading: Icon(Icons.lightbulb, color: isDark? iLight: iDark,),
                 title: Text('Dark Mode'),
               ),
               onTap: (){
@@ -88,7 +93,7 @@ class _DrawerBodyState extends State<DrawerBody> {
             Divider(
               thickness: 1.0,
               height: 1.0,
-              color: Colors.grey[200],
+              color: isDark?light:dark,
             ),
             // InkWell(
             //   child: ListTile(
@@ -99,11 +104,7 @@ class _DrawerBodyState extends State<DrawerBody> {
             //     LanguageAlert.Future(context);
             //   },
             // ),
-            Divider(
-              thickness: 1.0,
-              height: 1.0,
-              color: Colors.grey[200],
-            ),
+
             InkWell(
                 onTap: () {
                   CashHelper.removeData(key: 'token').then((value) {
@@ -113,7 +114,7 @@ class _DrawerBodyState extends State<DrawerBody> {
                   });
                 },
                 child: ListTile(
-                  leading: Icon(Icons.subdirectory_arrow_left_outlined),
+                  leading: Icon(Icons.subdirectory_arrow_left_outlined, color: isDark? iLight: iDark,),
                   title: Text('SignOut'),
                 )),
           ],

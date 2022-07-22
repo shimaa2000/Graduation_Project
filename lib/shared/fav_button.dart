@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/dummy_data.dart';
 import 'package:graduation_project/layout/new_card_widget.dart';
-import 'package:graduation_project/models/postsModel.dart';
-
 
 class FavoriteIcon extends StatefulWidget {
   bool isFav;
@@ -23,7 +21,7 @@ class _FavoriteIconState extends State<FavoriteIcon> {
           if (widget.isFav) {
             widget.isFav = false;
             fav_list.remove(fav_list[widget.index]);
-            // DUMMY_DATA[DUMMY_DATA.indexOf(fav_list[widget.index])].isFav=false;
+            
 
           } else {
             widget.isFav = true;

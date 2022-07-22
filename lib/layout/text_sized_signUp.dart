@@ -12,7 +12,7 @@ class TextSizedSignUp extends StatelessWidget {
         SizedBox(height: sizedHeight,),
         Row(children: [
           SizedBox(width: sizedWidth,),
-          Text(text,style: TextStyle(color: Colors.black),),
+          Text(text,style: Theme.of(context).textTheme.bodyText1,),
         ],),
       ],
     );

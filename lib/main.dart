@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:graduation_project/network/cubit/favCubit.dart';
 import 'package:graduation_project/network/cubit/layoutCubit.dart';
 import 'package:graduation_project/screens/paybalScreen.dart';
 import 'package:graduation_project/themes.dart';
@@ -32,8 +33,7 @@ import 'package:graduation_project/screens/sign_up.dart';
 import 'package:graduation_project/screens/splash_screen.dart';
 import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/screens/user_ads_screen.dart';
-import 'package:graduation_project/shared/listView.dart';
-
+import 'network/cubit/loginCubit.dart';
 import 'network/cubit/resetCubit.dart';
 
 void main() async {
@@ -54,9 +54,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-//  late User user;
-  // This widget is the root of your application.
-  //final Widget start;
+
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -65,12 +63,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => AppCubit()..changeModeApp(),
         ),
-        BlocProvider(create: (BuildContext context) => LoginCubit()),
         BlocProvider(create: (BuildContext context) => SignUpCubit()),
         BlocProvider(create: (BuildContext context)  => UserDataCubit()),
         BlocProvider(create: (BuildContext context) => UpdateUserDataCubit()),
         BlocProvider(create: (BuildContext context) => LayoutCubit()),
         BlocProvider(create: (BuildContext context) => ResetCubit()),
+        BlocProvider(create: (BuildContext context )=> FavCubit()),
       ],
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},

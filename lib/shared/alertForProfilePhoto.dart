@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/network/cubit/update_user_cubit.dart';
 import 'package:graduation_project/network/cubit/update_user_states.dart';
-import 'package:graduation_project/shared/alertForNewPost.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
-import 'package:graduation_project/shared/popUp.dart';
+
+
+import 'alertForProfile.dart';
 
 enum Action { View, Change }
 
@@ -70,7 +71,7 @@ class Choose {
                               DefaultButton(
                                 text: 'Change',
                                 onPressedFun: () async {
-                                  await Alerts.photoDialog(
+                                  await ProfileAlert.photoDialog(
                                       context, cubit.userUpdateUserImage);
                                 },
                               ),

@@ -1,3 +1,4 @@
+import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/dummy_data.dart';
@@ -46,23 +47,38 @@ class Profile extends StatelessWidget {
                       SizedBox(
                         height: 20.0,
                       ),
-                      Container(
-                        width: 270,
-                        height: 300,
-                        child:cubit.productImages==null? PhotoGrid(
-                          imageUrls: cubit.productImages??['https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'],
-                          onImageClicked: (i) {
-                            Navigator.of(context).pushNamed(
-                              DetailsScreen.routeName,
-                              arguments: i + 1,
-                            );
-                            id = i;
-                          },
-                          onExpandClicked: () {
-                            Navigator.pushNamed(context, UserAds.routeName);
-                          },
-                          maxImages: cubit.length==0?cubit.length>4? 4:1 :1,
-                        ):Text('no product available, please add some'),
+                      ConditionalBuilderRec(
+                        condition: state is! UserDataLoadingState,
+                        builder: (context) => Container(
+                          width: 270,
+                          height: 300,
+                          child: cubit.productImages.length != 0
+                              ? PhotoGrid(
+                                  imageUrls: cubit.productImages,
+                                  onImageClicked: (i) {
+                                    Navigator.of(context).pushNamed(
+                                      DetailsScreen.routeName,
+                                      arguments: i + 1,
+                                    );
+                                    id = i;
+                                  },
+                                  onExpandClicked: () {
+                                    Navigator.pushNamed(
+                                        context, UserAds.routeName);
+                                  },
+                                  maxImages:
+                                      cubit.length < 4 ? cubit.length : 4,
+                                )
+                              : Text(
+                                  'no product available, please add some...',
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),
+                        ),
+                        fallback: (context) => Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.deepPurple,
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 50,

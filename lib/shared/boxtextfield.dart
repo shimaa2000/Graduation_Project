@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/endPoints.dart';
 
 class BoxTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -44,20 +45,23 @@ class BoxTextField extends StatelessWidget {
         readOnly: readOnly,
         obscureText: obsecure,
         keyboardType: keyboardType,
+
         validator: (value) {
           if (value == null || value.isEmpty) {
             return validatorText;
           }
           return null;
         },
+cursorColor:  isDark?Colors.black54:Colors.grey[200],
         controller: controller,
         decoration: InputDecoration(
+          fillColor: isDark? Colors.grey[200]: Colors.black54,
           prefixIcon: icon,
-          labelStyle: TextStyle(fontSize: 15),
-          hintStyle: TextStyle(color: Colors.blueGrey, fontSize: 15),
+         focusedBorder: UnderlineInputBorder(borderSide: BorderSide( color:  isDark? Colors.black87: Colors.white70)),
+         enabledBorder: UnderlineInputBorder(borderSide: BorderSide( color:  isDark? Colors.black87: Colors.white70)),
           contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
         ),
-        style: TextStyle(fontSize: 18.0, height: 2.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, height: 2.0, color: isDark? Colors.black87: Colors.white70),
       ),
     );
   }
