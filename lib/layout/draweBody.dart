@@ -9,6 +9,7 @@ import 'package:graduation_project/screens/edit_profile.dart';
 import 'package:graduation_project/screens/favourite_Rent.dart';
 import 'package:graduation_project/screens/get_started.dart';
 import 'package:graduation_project/screens/profile.dart';
+import 'package:graduation_project/screens/user_ads_screen.dart';
 import 'package:graduation_project/shared/languageAlert.dart';
 
 class DrawerBody extends StatefulWidget {
@@ -96,14 +97,14 @@ class _DrawerBodyState extends State<DrawerBody> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, Favourite_Rent.routeName);
+                  Navigator.pushNamed(context, UserAds.routeName);
                 },
                 child: ListTile(
                     leading: Icon(
                       Icons.ad_units_sharp,
                       color: isDark ? iLight : iDark,
                     ),
-                    title: Text('Ads')),
+                    title: Text('User ads')),
               ),
               Divider(
                 thickness: 1.0,

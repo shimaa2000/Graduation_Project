@@ -11,7 +11,7 @@ class NewCardWidget extends StatefulWidget {
   final String date;
   final String imgUrl;
   final String title;
-  final double price;
+  final int price;
   final String size;
   bool isFav;
   final int index;

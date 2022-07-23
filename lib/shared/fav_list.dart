@@ -33,7 +33,7 @@ class FavList extends StatelessWidget {
                       date: '',
                       imgUrl: fav.value!.images![0],
                       title: fav.value!.title,
-                      price: double.parse(fav.value!.price) ,
+                      price: double.parse(fav.value!.price) as int,
                       size: fav.value!.size!.name,
                       index: fav.getIndex(),
                     ));

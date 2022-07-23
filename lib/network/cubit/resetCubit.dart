@@ -79,6 +79,24 @@ class ResetCubit extends Cubit<ResetStates> {
     );
   }
 
+  //setting new pass
+  void changePass(String current, String newPass) async {
+    emit(NewPassLoadingState());
+    final response = await authRepository.changePass({
+      "oldPassword": current,
+      'newPassword': newPass,
+    });
+
+    response.fold(
+      (error) {
+        emit(NewPassErrorState(error));
+      },
+      (response) {
+        emit(NewPassSuccessState(response));
+      },
+    );
+  }
+
   // for reset pass
   final resetUserController = TextEditingController();
 
@@ -106,12 +124,12 @@ class ResetCubit extends Cubit<ResetStates> {
   String verifyFirstLineAfterEmoji = 'Enter the verification code we just ';
   String verifySecondLine = 'send you on your email!';
   TextEditingController verifyTextEditingController = TextEditingController();
-  StreamController<ErrorAnimationType>? errorController=StreamController<ErrorAnimationType>();
-
+  StreamController<ErrorAnimationType>? errorController =
+      StreamController<ErrorAnimationType>();
 
   Future<void> onCompleting(String value) async {
     emit(VerifyLoadingState());
-    verifyCodeVar=value;
+    verifyCodeVar = value;
     print(verifyCodeVar);
     final response = await authRepository.verify({
       'resetCode': verifyCodeVar,
@@ -120,7 +138,7 @@ class ResetCubit extends Cubit<ResetStates> {
     response.fold(
       (error) {
         emit(VerifyErrorState(error));
-        throw(error);
+        throw (error);
       },
       (authResponse) {
         emit(VerifySuccessState(authResponse));
@@ -129,9 +147,10 @@ class ResetCubit extends Cubit<ResetStates> {
     );
   }
 
-  void verifyOnChange(String v){
-    verifyCodeVar=v;
+  void verifyOnChange(String v) {
+    verifyCodeVar = v;
   }
+
   void onEditing(bool value, BuildContext context) {
     verifyOnEditing = value;
 

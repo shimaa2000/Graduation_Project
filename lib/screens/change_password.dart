@@ -10,6 +10,7 @@ import 'package:graduation_project/shared/defaultButton.dart';
 
 class ChangePassword extends StatelessWidget {
   TextEditingController newPassController = TextEditingController();
+  TextEditingController currentPassController = TextEditingController();
   TextEditingController passController = TextEditingController();
   final changePassFormKey = GlobalKey<FormState>();
 
@@ -61,6 +62,13 @@ It's easy ,please fill the following fields.''',
                       height: MediaQuery.of(context).size.height * .02,
                     ),
                     BoxTextField(
+                        hint: 'Current password',
+                        controller: currentPassController,
+                        obsecure: true,
+                        validatorText: 'Please enter your new password',
+                        icon: Icon(Icons.lock),
+                        onTap: () {}),
+                    BoxTextField(
                         hint: 'New password',
                         controller: newPassController,
                         obsecure: true,
@@ -82,7 +90,7 @@ It's easy ,please fill the following fields.''',
                       onPressedFun: () {
                         if (changePassFormKey.currentState!.validate()) {
                           if (newPassController.text == passController.text) {
-                            cubit.setNewPass(newPassController.text);
+                            cubit.changePass(currentPassController.text,newPassController.text);
                             Fluttertoast.showToast(
                                 msg: 'Your password changed successfully.',
                                 toastLength: Toast.LENGTH_LONG,

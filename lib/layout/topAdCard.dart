@@ -8,7 +8,7 @@ import 'package:graduation_project/shared/popUp.dart';
 class TopAdCard extends StatelessWidget {
   final String imgUrl;
   final String title;
-  final double price;
+  final int price;
 
   const TopAdCard({Key? key, required this.imgUrl, required this.title, required this.price,}) : super(key: key);
 

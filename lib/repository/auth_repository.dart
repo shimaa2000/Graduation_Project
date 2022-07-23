@@ -105,6 +105,23 @@ class AuthRepository {
     );
   }
 
+  // for new password
+  Future<Either<ServerError, NewPass>> changePass(
+      Map<String, dynamic> newPass) async {
+    final response = await DioClient.postData(
+      url: CHANGEPASS,
+      data: newPass,
+      token: CashHelper.getData(key: 'token'),
+    );
+
+    return response.fold(
+      (error) => Left(error),
+      (body) {
+        return Right(NewPass.fromMap(body.data));
+      },
+    );
+  }
+
   //Update User Image
   Future<Either<ServerError, UserData>> updateUserImage(FormData data) async {
     final response = await DioClient.putFormData(

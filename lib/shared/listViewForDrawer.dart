@@ -29,7 +29,7 @@ class ListViewForDrawer extends StatelessWidget {
                     date: DUMMY_DATA[index].date,
                     imgUrl: DUMMY_DATA[index].ImgUrl,
                     title: DUMMY_DATA[index].title,
-                    price: DUMMY_DATA[index].price,
+                    price: DUMMY_DATA[index].price as int,
                     size: DUMMY_DATA[index].size, index: index,),),
             );
           }

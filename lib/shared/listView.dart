@@ -38,7 +38,7 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
                   imgUrl: cubit.getImgUrl() ??
                       'https://media.istockphoto.com/vectors/dress-icon-vector-id507081676?k=20&m=507081676&s=612x612&w=0&h=k1p9VA6YqPIwMEyj290EMrI1EtHIz4EK8yLf9YV7_DM=',
                   title: cubit.getTitle(),
-                  price: cubit.getPrice().toDouble(),
+                  price: cubit.getPrice(),
                   size: cubit.getSize(),
                   index: index,
                 ));
