@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:graduation_project/core/services/local/casheHelper.dart';
+import 'package:graduation_project/models/details_model.dart';
 import 'package:graduation_project/models/products.dart';
 import '../core/services/api/dio_client.dart';
 import '../core/services/api/errors/server_error.dart';
@@ -179,6 +180,7 @@ class AuthRepository {
       (body) => Right(AuthResponse.fromMap(body.data)),
     );
   }
+
   //for favourite get
   Future<Either<ServerError, Favourite>> favItemsFun() async {
     final response = await DioClient.getData(
@@ -186,14 +188,14 @@ class AuthRepository {
       token: CashHelper.getData(key: 'token'),
     );
     return response.fold(
-          (error) => Left(error),
-          (body) => Right(Favourite.fromList(body.data)),
+      (error) => Left(error),
+      (body) => Right(Favourite.fromMap(body.data)),
     );
   }
 
   //for favourite post
   Future<Either<ServerError, Favourite>> addFav(
-      Map<String ,dynamic> data) async {
+      Map<String, dynamic> data) async {
     final response = await DioClient.postData(
       url: FAV,
       data: data,
@@ -201,8 +203,8 @@ class AuthRepository {
     );
 
     return response.fold(
-          (error) => Left(error),
-          (body) => Right(Favourite.fromMap(body.data)),
+      (error) => Left(error),
+      (body) => Right(Favourite.fromMap(body.data)),
     );
   }
 
@@ -214,6 +216,19 @@ class AuthRepository {
     return response.fold(
       (error) => Left(error),
       (body) => Right(Products.fromList(body.data)),
+    );
+  }
+
+  Future<Either<ServerError, ProductDetails>> detailsFun(
+   String id,
+  ) async {
+    final response = await DioClient.getData(
+      url: '$PRODUCT/$id',
+      token: CashHelper.getData(key: 'token'),
+    );
+    return response.fold(
+      (error) => Left(error),
+      (body) => Right(ProductDetails.fromMap(body.data)),
     );
   }
 }

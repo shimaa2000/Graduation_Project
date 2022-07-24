@@ -57,6 +57,7 @@ class BoxTextField extends StatelessWidget {
 cursorColor:  isDark?Colors.black54:Colors.grey[200],
         controller: controller,
         decoration: InputDecoration(
+          hintStyle: TextStyle(color:isDark? Colors.grey: Colors.white70 ),
           hintText: hint,
           fillColor: isDark? Colors.grey[200]: Colors.black54,
           prefixIcon: icon,

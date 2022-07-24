@@ -30,41 +30,41 @@ class RadioButtonClass extends StatelessWidget {
       child: Row(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(width: sizedHeight,),
+              SizedBox(width: 70.0,),
               Container(
                   width: 25,
                   child: Radio(
-                    activeColor: Colors.deepPurple,
+                    activeColor:  Theme.of(context).primaryColor,
                     value: value1,
                     groupValue: groupValue,
                     onChanged: (dynamic d) => onChange1(d),
                   )),
               Text(
                 title1,
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ],
           ),
-          SizedBox(
-            width: 30,
-          ),
+          SizedBox(width: 50,),
           Row(
             textBaseline: TextBaseline.ideographic,
             children: [
               Container(
                 width: 25,
                 child: Radio(
-                  activeColor: Colors.deepPurple,
+                  activeColor: Theme.of(context).primaryColor,
+
                   value: value2,
                   groupValue: groupValue,
                   onChanged: (dynamic d) => onChange2(d),
                 ),
               ),
-              //  SizedBox(width: 10,),
+
               Text(
                 title2,
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ],
           ),

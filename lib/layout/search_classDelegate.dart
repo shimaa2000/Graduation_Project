@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/dummy_data.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/models/postsModel.dart';
 import 'package:graduation_project/screens/search_screen.dart';
 class Search extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
+
     return <Widget>[
       IconButton(
-        icon: Icon(Icons.close),
+        icon: Icon(Icons.close,color: isDark? Colors.grey: Colors.white70,),
         onPressed: () {
           query = "";
         },
@@ -18,7 +20,7 @@ class Search extends SearchDelegate {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: Icon(Icons.arrow_back,color: isDark? Colors.grey: Colors.white70,),
       onPressed: () {
         Navigator.pop(context);
       },
@@ -55,9 +57,9 @@ class Search extends SearchDelegate {
       itemBuilder: (context, index) {
         return ListTile(
           title: Text(
-            suggestionList[index].name,
+            suggestionList[index].name,style: Theme.of(context).textTheme.bodyText1,
           ),
-          leading: query.isEmpty ? Icon(Icons.access_time) : SizedBox(),
+          leading: query.isEmpty ? Icon(Icons.access_time,color: isDark? Colors.grey: Colors.white70,) : SizedBox(),
           onTap: (){
             selectedResult = suggestionList[index].name;
             showResults(context);

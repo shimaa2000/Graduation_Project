@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/layout/category_shape_widget.dart';
 import 'package:graduation_project/shared/listViewForTopAds.dart';
 
-int id = 0;
+int numId=0;
+String? id ;
 
 class HomeScreen extends StatefulWidget {
   static const routeName = 'home_screen';

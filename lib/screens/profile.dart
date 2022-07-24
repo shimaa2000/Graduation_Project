@@ -61,7 +61,7 @@ class Profile extends StatelessWidget {
                                       DetailsScreen.routeName,
                                       arguments: i + 1,
                                     );
-                                    id = i;
+                                    numId = i;
                                   },
                                   onExpandClicked: () {
                                     Navigator.pushNamed(

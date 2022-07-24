@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/network/cubit/resetCubit.dart';
 import 'package:graduation_project/network/cubit/resetStates.dart';
 import 'package:graduation_project/screens/startApp.dart';
@@ -16,10 +17,13 @@ class ChangePassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color iLight = Colors.black87;
+    Color iDark = Colors.white70;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(icon: Icon(Icons.arrow_back) , color: isDark? Colors.black54: Colors.white70,onPressed: (){ Navigator.pop(context);},),
       ),
       body: BlocProvider(
         create: (context) => ResetCubit(),
@@ -39,7 +43,7 @@ class ChangePassword extends StatelessWidget {
           var cubit = ResetCubit.get(context);
           return SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Form(
                 key: changePassFormKey,
                 child: Column(
@@ -49,14 +53,14 @@ class ChangePassword extends StatelessWidget {
                     SvgPicture.asset(
                       'images/forget_pass.svg',
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * .5,
+                      height: MediaQuery.of(context).size.height * .45,
                     ),
                     Text(
                       '''     Wanna change your password?
 It's easy ,please fill the following fields.''',
                       style: TextStyle(
                           fontSize: MediaQuery.of(context).size.height * .025,
-                          color: Colors.black),
+                          color: isDark? Colors.black87: Colors.white),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * .02,
@@ -66,26 +70,28 @@ It's easy ,please fill the following fields.''',
                         controller: currentPassController,
                         obsecure: true,
                         validatorText: 'Please enter your new password',
-                        icon: Icon(Icons.lock),
+                        icon: Icon(Icons.lock,color: isDark ? iLight : iDark,),
                         onTap: () {}),
                     BoxTextField(
                         hint: 'New password',
                         controller: newPassController,
                         obsecure: true,
                         validatorText: 'Please enter your new password',
-                        icon: Icon(Icons.lock),
+                        icon: Icon(Icons.lock,color: isDark ? iLight : iDark,),
                         onTap: () {}),
                     BoxTextField(
-                        hint: 'Re-Enter your password',
+                        hint: 'Confirm your password',
                         controller: passController,
                         obsecure: true,
                         validatorText: 'Please enter your new password',
-                        icon: Icon(Icons.lock),
+                        icon: Icon(Icons.lock,color: isDark ? iLight : iDark,),
                         onTap: () {}),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * .02,
                     ),
                     DefaultButton(
+
+                      txtColor: isDark? Colors.white: Colors.black,
                       text: 'Save',
                       onPressedFun: () {
                         if (changePassFormKey.currentState!.validate()) {

@@ -14,18 +14,18 @@ class Prices extends StatelessWidget {
           return Column(
             children: [
               SizedBox(
-                height: 20,
+                height: 40,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Subtotal',
-                    style: TextStyle(fontSize: 16, color: Colors.black54),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                   Text(
                     'EGP ${layout.price}',
-                    style: TextStyle(fontSize: 16, color: Colors.black54),
+                    style:Theme.of(context).textTheme.bodyText1,
                   ),
                 ],
               ),
@@ -37,11 +37,11 @@ class Prices extends StatelessWidget {
                 children: [
                   Text(
                     'Delivery Fee',
-                    style: TextStyle(fontSize: 16, color: Colors.black54),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                   Text(
                     'EGP ${layout.delivery}',
-                    style: TextStyle(fontSize: 16, color: Colors.black54),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ],
               ),
@@ -55,14 +55,14 @@ class Prices extends StatelessWidget {
                     'Total',
                     style: TextStyle(
                         fontSize: 22,
-                        color: Colors.deepPurple,
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.w500),
                   ),
                   Text(
                     'EGP ${layout.getTotal()}',
                     style: TextStyle(
                         fontSize: 22,
-                        color: Colors.deepPurple,
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.w500),
                   ),
                 ],

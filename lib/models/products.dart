@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-
 class Products {
   List<dynamic>? homeProduct;
 
@@ -21,6 +20,7 @@ class Products {
   factory Products.fromList(List<dynamic> values) {
     return Products(homeProduct: values);
   }
+
   factory Products.fromJson(String source) {
     List<dynamic> values;
     values = json.decode(source);
@@ -29,15 +29,18 @@ class Products {
 }
 
 class Product {
+  String? id;
   String? title;
   int? price;
   String? description;
   Size? size;
+
   //String? color;
   //String? type;
   // String? publishDate;
   // String? purpose;
   User? user;
+
 //  Review? review;
   List<dynamic>? images = [];
 
@@ -46,6 +49,7 @@ class Product {
       this.size,
       this.price = 0,
       this.images,
+      this.id,
       // this.purpose,
       // this.color,
       this.description,
@@ -59,6 +63,7 @@ class Product {
       'title': title,
       'size': size,
       'price': price,
+      'id': id,
       'images': images,
       // 'purpose': purpose,
       // 'color': color,
@@ -78,21 +83,18 @@ class Product {
     return Product(
       title: map['title'],
       price: map['price'],
+      id: map['_id'],
       description: map['description'],
       size: Size.fromMap(map['size']),
-      // color: map['color'],
-      // type: map['type'],
-      // publishDate: map['publishDate'],
-      // purpose: map['purpose'],
       user: User.fromMap(map['user']),
-      // review: Review.fromMap(map['reviews']),
       images: imageList,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Product.fromJson(String source) => Product.fromMap(json.decode(source));
+  factory Product.fromJson(String source) =>
+      Product.fromMap(json.decode(source));
 }
 
 class Size {
@@ -127,7 +129,9 @@ class User {
   String? id;
   String userName;
   String? userImage;
+
   User({this.userName = '', this.id, this.userImage});
+
   Map<String, dynamic> toMap() {
     return {
       '_id': id,
@@ -149,28 +153,4 @@ class User {
   factory User.fromJson(String source) => User.fromMap(json.decode(source));
 }
 
-// class Review {
-//   String? id;
-//   String? content;
-//   User? userData;
-//   Review({this.id, this.content, this.userData});
-//   Map<String, dynamic> toMap() {
-//     return {
-//       '_id': id,
-//       'content': content,
-//       'user': userData,
-//     };
-//   }
-//
-//   factory Review.fromMap(Map<String, dynamic> map) {
-//     return Review(
-//       id: map['_id'],
-//       userData: User.fromMap(map['user']),
-//       content: map['content'],
-//     );
-//   }
-//
-//   String toJson() => json.encode(toMap());
-//
-//   factory Review.fromJson(String source) => Review.fromMap(json.decode(source));
-// }
+

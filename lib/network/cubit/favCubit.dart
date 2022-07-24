@@ -19,23 +19,24 @@ class FavCubit extends Cubit<FavStates> {
   String _userName = '';
   String _image = '';
   FavouriteItems? value;
-  List<dynamic>? favouriteList;
   final authRepository = AuthRepository();
 
   //get
   void getFavouriteList() async {
-    emit(AppLoadingState());
+    emit(FavLoadingState());
     final response = await authRepository.favItemsFun();
     response.fold(
       (error) => emit(AppErrorState(error)),
       (response) {
-        value = FavouriteItems.fromMap(response.favourite![getIndex()]);
-        setLength(response.favourite!.length);
-        setTitle(value!.title);
-        setPrice(value!.price);
-        setImage('$BASEURL/${value!.images![0]}');
-        setSize(value!.size!.name);
-        setUserName(value!.user!.userName);
+        if (response.favourite!.length!= 0) {
+          value = FavouriteItems.fromMap(response.favourite![getIndex()]);
+          setLength(response.favourite!.length);
+          setTitle(value!.title);
+          setPrice(value!.price);
+          setImage('$BASEURL/${value!.images![0]}');
+          setSize(value!.size!.name);
+          setUserName(value!.user!.userName);
+        }
         emit(AppSuccessState(response));
       },
     );
@@ -98,7 +99,7 @@ class FavCubit extends Cubit<FavStates> {
   }
 
   void setFav(String? productId) async {
-    emit(AppLoadingState());
+    emit(FavLoadingState());
     final response = await authRepository.addFav({
       'productId': productId,
     });

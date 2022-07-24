@@ -50,7 +50,7 @@ class _AddPostState extends State<AddPost> {
                       txtColor: isDark? Colors.white: Colors.black,
                         onPressedFun: () {
                           print(titleController.text + descController.text + sizeController.text);
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => AddPost2(

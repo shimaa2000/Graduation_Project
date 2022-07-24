@@ -77,7 +77,9 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
                           DetailsScreen.routeName,
                           arguments: DUMMY_DATA[index].id,
                         );
-                        id = DUMMY_DATA[index].id - 1;
+                        numId = DUMMY_DATA[index].id - 1;
+                        id=listCubit.getId();
+                        print(id);
                       },
                       child: widget.categories == 'all'
                           ? listFit(index, search: widget.search,searchList: listCubit.getTitle())

@@ -18,9 +18,7 @@ class ListViewForDrawer extends StatelessWidget {
                 onTap: () {
               Navigator.of(context).pushNamed(
                 DetailsScreen.routeName,
-                arguments: DUMMY_DATA[index].id,
               );
-              id = DUMMY_DATA[index].id - 1;
             },
             child:
               FittedBox(

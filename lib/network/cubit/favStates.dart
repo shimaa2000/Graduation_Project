@@ -4,7 +4,7 @@ import '../../core/services/api/errors/server_error.dart';
 
 abstract class FavStates{}
 class AppInitialState extends FavStates{}
-class AppLoadingState extends FavStates{}
+class FavLoadingState extends FavStates{}
 class AppSuccessState extends FavStates{
   final Favourite response;
   AppSuccessState(this.response);

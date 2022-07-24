@@ -38,7 +38,8 @@ class AppCubit extends Cubit<AppStates> {
 
   void changeModeApp() {
     isDark = !isDark;
-    CashHelper.saveData(key: 'isDark', value: isDark).then((value) => {emit(AppModeState())});
+    CashHelper.saveData(key: 'isDark', value: isDark)
+        .then((value) => {emit(AppModeState())});
   }
 
   void changeAppLanguage(String value) {
@@ -55,13 +56,16 @@ class AppCubit extends Cubit<AppStates> {
   String _name = '';
   int _price = 0;
   String? _imgUrl;
-  List<String> pImages=[];
+  List<String> pImages = [];
   int _length = 0;
+  String? _id;
   int _index = 0;
   String _publishDate = '';
   String _size = '';
   Product? value;
-  static List<dynamic>? productList;
+  String? _description;
+  int? _height;
+  int? _width;
 
   void getProductData() async {
     emit(AppLoadingHomeState());
@@ -73,14 +77,37 @@ class AppCubit extends Cubit<AppStates> {
         setLength(response.homeProduct!.length);
         setTitle(value!.title!);
         setPrice(value!.price!);
-        for(int i=0;i<value!.images!.length;i++){
+        setId(value!.id!);
+        print(value!.id!);
+        for (int i = 0; i < value!.images!.length; i++) {
           pImages.add('$BASEURL/${value!.images![0]}');
         }
-         setImgUrl('${pImages[0]}');
+        setImgUrl('${pImages[0]}');
         setSize(value!.size!.name!);
         setName(value!.user!.userName);
         setLength(response.homeProduct!.length);
         emit(AppSuccessHomeState(response));
+      },
+    );
+  }
+
+  void getProductDetails(String id) async {
+    emit(AppLoadingHomeState());
+    final response = await authRepository.detailsFun(id);
+    response.fold(
+      (error) => emit(AppErrorHomeState(error)),
+      (response) {
+        setTitle(response.title!);
+        setPrice(response.price!);
+        setDescription(response.description!);
+        setImgUrl('$BASEURL/${response.images![0]}');
+        setSize(response.size!.name!);
+        setName(response.user!.userName);
+        setWidth(response.size!.width!);
+        //setHeight(response.size!.height!);
+        print(response.size!.height);
+        setPublishDate(response.publishDate!);
+        emit(DetailsSuccessState(response));
       },
     );
   }
@@ -93,6 +120,22 @@ class AppCubit extends Cubit<AppStates> {
     return _length;
   }
 
+  void setHeight(int height) {
+    _height = height;
+  }
+
+  getHeight() {
+    return _height;
+  }
+
+  void setWidth(int width) {
+    _width = width;
+  }
+
+  getWidth() {
+    return _width;
+  }
+
   void setTitle(String title) {
     _title = title;
   }
@@ -100,6 +143,15 @@ class AppCubit extends Cubit<AppStates> {
   getTitle() {
     return _title;
   }
+
+  void setId(String id) {
+    _id = id;
+  }
+
+  getId() {
+    return _id;
+  }
+
   void setImgUrl(String url) {
     _imgUrl = url;
   }
@@ -122,6 +174,14 @@ class AppCubit extends Cubit<AppStates> {
 
   getPublishDate() {
     return _publishDate;
+  }
+
+  void setDescription(String description) {
+    _description = description;
+  }
+
+  getDescription() {
+    return _description;
   }
 
   void setSize(String size) {

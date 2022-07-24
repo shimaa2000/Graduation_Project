@@ -2,10 +2,13 @@ import 'dart:convert';
 
 class Favourite {
   List<dynamic>? favourite;
+
   Favourite({this.favourite});
+
   factory Favourite.fromMap(Map<String, dynamic> map) {
     final List<FavouriteItems> favouriteList = [];
-    map['favourites'].forEach((element) => favouriteList.add(element));
+    if (map['favourites'] != null)
+      map['favourites'].forEach((element) => favouriteList.add(element));
     return Favourite(favourite: favouriteList);
   }
 
@@ -18,6 +21,7 @@ class Favourite {
   factory Favourite.fromList(List<dynamic> values) {
     return Favourite(favourite: values);
   }
+
   factory Favourite.fromJson(String source) {
     List<dynamic> values;
     values = json.decode(source);
@@ -31,8 +35,10 @@ class FavouriteItems {
   Size? size;
   List<String>? images;
   User? user;
+
   FavouriteItems(
       {this.title = '', this.price = '0', this.user, this.size, this.images});
+
   Map<String, dynamic> toMap() {
     return {
       'title': title,
@@ -67,7 +73,9 @@ class Size {
   String height;
   String width;
   String name;
+
   Size({this.height = '160', this.width = '60', this.name = 'small'});
+
   Map<String, dynamic> toMap() {
     return {
       'name': name,
@@ -91,13 +99,16 @@ class Size {
 
 class Images {
   String imgUrl;
+
   Images({this.imgUrl = ''});
 }
 
 class User {
   String userName;
   String profileImg;
+
   User({this.userName = 'Ahmed', this.profileImg = ''});
+
   Map<String, dynamic> toMap() {
     return {
       'userName': userName,

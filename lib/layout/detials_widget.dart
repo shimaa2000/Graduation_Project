@@ -76,7 +76,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(20),
                         ),
-                        child: Image.asset(
+                        child: Image.network(
                           widget.imageUrl,
                           fit: BoxFit.fitWidth,
                         )),

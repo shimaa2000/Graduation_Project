@@ -11,6 +11,7 @@ ThemeData dark = ThemeData(
     textTheme: TextTheme(
        // headlineSmall:TextStyle(color: Colors.white70),
 headline4: TextStyle(fontSize:22,color: Colors.white70),
+      headline3: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
       headline1: TextStyle( fontSize: 30, fontWeight: FontWeight.bold , color: Colors.white),
       headline2:  TextStyle( fontSize: 50, fontWeight: FontWeight.bold , color: Colors.black),
       bodyText1: TextStyle(color: Colors.white, fontSize: 16),
@@ -41,6 +42,7 @@ ThemeData light = ThemeData(
     ),
     textTheme: TextTheme(
       headline4: TextStyle(fontSize:22,color: Colors.black),
+      headline3: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
 
       headline1: TextStyle( fontSize: 30, fontWeight: FontWeight.bold , color: Colors.black),
       headline2:  TextStyle( fontSize: 50, fontWeight: FontWeight.bold , color: Colors.white),
