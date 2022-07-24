@@ -33,7 +33,7 @@ class _FavoriteIconState extends State<FavoriteIcon> {
       icon: widget.isFav
           ? Icon(Icons.favorite)
           : Icon(Icons.favorite_border),
-      color: Colors.deepPurple,
+      color: Theme.of(context).primaryColor,
     );
   }
 }

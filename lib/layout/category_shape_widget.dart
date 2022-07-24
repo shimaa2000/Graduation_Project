@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/shared/listView.dart';
 class CategoryShape extends StatefulWidget {
@@ -38,9 +39,9 @@ class _CategoryShapeState extends State<CategoryShape> {
                 decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.grey),
                     borderRadius: BorderRadius.circular(20),
-                    color: widget.clicked3?Colors.deepPurple:Colors.white
+                    color: widget.clicked3? Theme.of(context).primaryColor: isDark?Colors.white: Colors.grey.shade800
                 ),
-                child: Text('All',style: TextStyle(color: widget.clicked3?Colors.white:Colors.black),),
+                child: Text('All',style: TextStyle(color: isDark? widget.clicked3?Colors.white:Colors.black: widget.clicked3? Colors.black: Colors.white),),
               ),
             ),
             InkWell(
@@ -59,9 +60,8 @@ class _CategoryShapeState extends State<CategoryShape> {
                 decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.grey),
                     borderRadius: BorderRadius.circular(20),
-                    color: widget.clicked1?Colors.deepPurple:Colors.white
-                ),
-                child: Text(widget.text1,style: TextStyle(color:widget.clicked1?Colors.white:Colors.black),),
+                    color: widget.clicked1? Theme.of(context).primaryColor: isDark?Colors.white: Colors.grey.shade800                ),
+                child: Text(widget.text1,style: TextStyle(color: isDark? widget.clicked1?Colors.white:Colors.black: widget.clicked1? Colors.black: Colors.white),),
               ),
             ),
 
@@ -81,9 +81,8 @@ class _CategoryShapeState extends State<CategoryShape> {
                 decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.grey),
                     borderRadius: BorderRadius.circular(20),
-                    color: widget.clicked2?Colors.deepPurple:Colors.white
-                ),
-                child: Text(widget.text2,style: TextStyle(color: widget.clicked2?Colors.white:Colors.black),),
+                    color: widget.clicked2? Theme.of(context).primaryColor: isDark?Colors.white: Colors.grey.shade800                ),
+                child: Text(widget.text2,style: TextStyle(color: isDark? widget.clicked2?Colors.white:Colors.black: widget.clicked2? Colors.black: Colors.white),),
               ),
             ),
           ],

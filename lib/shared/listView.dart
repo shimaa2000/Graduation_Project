@@ -21,8 +21,8 @@ class ListViewBuilderData extends StatefulWidget {
 }
 
 class _ListViewBuilderDataState extends State<ListViewBuilderData> {
-  Widget listFit(int index, {String search = ''}) {
-    return DUMMY_DATA[index].name.contains(search)
+  Widget listFit(int index, {String search = '', String searchList=''}) {
+    return searchList.contains(search)
         ? BlocProvider(
             create: (BuildContext context) => AppCubit()..getProductData(),
             child: BlocConsumer<AppCubit, AppStates>(
@@ -80,7 +80,7 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
                         id = DUMMY_DATA[index].id - 1;
                       },
                       child: widget.categories == 'all'
-                          ? listFit(index, search: widget.search)
+                          ? listFit(index, search: widget.search,searchList: listCubit.getTitle())
                           : DUMMY_DATA[index].gender == widget.categories
                               ? listFit(index)
                               : SizedBox(

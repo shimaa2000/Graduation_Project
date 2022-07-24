@@ -35,8 +35,8 @@ class ResetCubit extends Cubit<ResetStates> {
         emit(ResetErrorState(error));
         print('error');
       },
-      (authResponse) {
-        emit(ResetSuccessState(authResponse));
+      (response) {
+        emit(ResetSuccessState(response));
         print('done');
       },
     );
@@ -54,8 +54,8 @@ class ResetCubit extends Cubit<ResetStates> {
         emit(VerifyErrorState(error));
         print('error');
       },
-      (authResponse) {
-        emit(VerifySuccessState(authResponse));
+      (response) {
+        emit(VerifySuccessState(response));
         print('done');
       },
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/image_card.dart';
 import 'package:graduation_project/models/postsModel.dart';
 import 'package:graduation_project/shared/fav_button.dart';
@@ -60,7 +61,7 @@ class _NewCardWidgetState extends State<NewCardWidget> {
                     offset: Offset(0, 3), // changes position of shadow
                   ),
                 ],
-                color: Colors.white,
+                color: isDark? Colors.white :Colors.grey.shade800,
                 border: Border.all(width: 1.5, color: Colors.transparent),
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(10),
@@ -76,18 +77,18 @@ class _NewCardWidgetState extends State<NewCardWidget> {
                     Text(
                       widget.title,
                       style: TextStyle(
-                          color: Colors.black,
+                          color: isDark? Colors.black: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.w500),
                     ),
                     Text(widget.name,
                         style: TextStyle(
-                            color: Colors.black26,
+                            color: isDark? Colors.black: Colors.white70,
                             fontSize: 18,
                             fontWeight: FontWeight.w500)),
                     Text('\$${widget.price}',
                         style: TextStyle(
-                            color: Colors.red,
+                            color:  isDark? Colors.red: Colors.red.shade300,
                             fontSize: 20,
                             fontWeight: FontWeight.w500)),
                     Row(
@@ -95,7 +96,7 @@ class _NewCardWidgetState extends State<NewCardWidget> {
                       children: [
                         Text(
                           widget.size,
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: isDark? Colors.black: Colors.white70, fontSize: 16),
                         ),
                         FavoriteIcon(index: widget.index, isFav: widget.isFav,)
                       ],

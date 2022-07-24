@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 'Top Ads',
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme.of(context).textTheme.headline1,
               ),
             ),
             SingleChildScrollView(
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Text(
               'Available Items',
-              style: Theme.of(context).textTheme.headline3,
+              style: Theme.of(context).textTheme.headline1,
             ),
             SizedBox(
               height: 10.0,

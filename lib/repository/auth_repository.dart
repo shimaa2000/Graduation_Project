@@ -105,7 +105,7 @@ class AuthRepository {
     );
   }
 
-  // for new password
+  // for change password
   Future<Either<ServerError, NewPass>> changePass(
       Map<String, dynamic> newPass) async {
     final response = await DioClient.postData(

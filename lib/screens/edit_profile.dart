@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/screens/startApp.dart';
 import 'package:graduation_project/shared/form_builder.dart';
 import '../network/cubit/update_user_cubit.dart';
@@ -12,8 +13,10 @@ class EditProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color iLight = Colors.black87;
+    Color iDark = Colors.white70;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar( iconTheme: IconThemeData(color: isDark? Colors.white: Colors.black ),),
       body: BlocConsumer<UpdateUserDataCubit, UpdateUserDataStates>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -31,16 +34,16 @@ class EditProfile extends StatelessWidget {
                           'Edit Profile',
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              color: Colors.black,
+                              color: isDark? Colors.black: Colors.white,
                               fontSize: 25),
                         )),
                     Container(
                       margin:
-                      EdgeInsets.symmetric(vertical: 80, horizontal: 50),
+                      EdgeInsets.symmetric(vertical: 70, horizontal: 50),
                       padding:
                       EdgeInsets.symmetric(horizontal: 35, vertical: 70),
                       decoration: BoxDecoration(
-                          color: Colors.deepPurple.shade400.withAlpha(20),
+                          color: isDark? Colors.deepPurple.shade400.withAlpha(20): Colors.grey.shade800,
                           borderRadius: BorderRadius.all(Radius.circular(25))),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,17 +52,17 @@ class EditProfile extends StatelessWidget {
                               text: 'Username',
                               controller:
                               editUserProfile.editProfileUserNameController,
-                              icon: Icon(Icons.person)),
+                              icon: Icon(Icons.person , color: isDark ? iLight : iDark, )),
                           BlockCardForEdit(
                               text: 'Email',
                               controller:
                               editUserProfile.editProfileEmailController,
-                              icon: Icon(Icons.email)),
+                              icon: Icon(Icons.email, color: isDark ? iLight : iDark,)),
                           BlockCardForEdit(
                               text: 'Address',
                               controller:
                               editUserProfile.editProfileAddressController,
-                              icon: Icon(Icons.home)),
+                              icon: Icon(Icons.home, color: isDark ? iLight : iDark,)),
                         ],
                       ),
                     ),
@@ -67,6 +70,7 @@ class EditProfile extends StatelessWidget {
                       height: 10,
                     ),
                     DefaultButton(
+                      txtColor: isDark? Colors.white: Colors.black,
                         onPressedFun: () {
                           // print(editUserProfile.editProfileUserNameController.text);
                           // print(editUserProfile.editProfileEmailController.text);
@@ -76,7 +80,7 @@ class EditProfile extends StatelessWidget {
                           }
                           Navigator.pushNamed(context, StartApp.routeName);
                         },
-                        text: 'Save')
+                        text: 'Save' )
                   ],
                 );
               },),

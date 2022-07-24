@@ -22,7 +22,7 @@ class ResetErrorState extends ResetStates {
 class VerifyLoadingState extends ResetStates {}
 
 class VerifySuccessState extends ResetStates {
-  final verifyResponse;
+  final ResetCodes verifyResponse;
 
   VerifySuccessState(this.verifyResponse);
 }
