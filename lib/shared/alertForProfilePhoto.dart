@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/network/cubit/update_user_cubit.dart';
 import 'package:graduation_project/network/cubit/update_user_states.dart';
 import 'package:graduation_project/shared/defaultButton.dart';
@@ -23,12 +24,14 @@ class Choose {
                 var cubit = UpdateUserDataCubit.get(context);
                 return Center(
                   child: AlertDialog(
+                    backgroundColor: isDark? Colors.white: Colors.black ,
+
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     content: Text(
                       'You Want..',
                       style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+                      Theme.of(context).textTheme.headline3,
                     ),
                     actions: [
                       Column(
@@ -42,23 +45,21 @@ class Choose {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  //   showDialog(
-                                  //       context: context,
-                                  //      // builder: (_) =>
-                                  // ImageDialog(ImgUrl: ));
+
                                 },
                                 child: Text(
                                   'View',
+                                  style: TextStyle(color: isDark? Colors.black: Colors.white),
                                 ),
                                 style: TextButton.styleFrom(
                                   side: BorderSide(
-                                      color: Colors.deepPurple,
+                                      color: Theme.of(context).primaryColor,
                                       width: 1,
                                       style: BorderStyle.solid),
                                   minimumSize: Size(130, 50),
                                   textStyle: TextStyle(
-                                      color: Colors.deepPurple, fontSize: 20),
-                                  backgroundColor: Colors.white,
+                                      color: Theme.of(context).primaryColor, fontSize: 20),
+                                  backgroundColor: isDark? Colors.white: Colors.black,
                                   shape: new RoundedRectangleBorder(
                                     borderRadius:
                                         new BorderRadius.circular(30.0),
@@ -69,6 +70,7 @@ class Choose {
                                 width: 20,
                               ),
                               DefaultButton(
+                                txtColor: isDark? Colors.white: Colors.black,
                                 text: 'Change',
                                 onPressedFun: () async {
                                   await ProfileAlert.photoDialog(

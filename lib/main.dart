@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:graduation_project/network/cubit/favCubit.dart';
 import 'package:graduation_project/network/cubit/layoutCubit.dart';
+import 'package:graduation_project/screens/orderedScreen.dart';
 import 'package:graduation_project/screens/paybalScreen.dart';
 import 'package:graduation_project/themes.dart';
 import 'package:graduation_project/endPoints.dart';
@@ -26,7 +27,6 @@ import 'package:graduation_project/screens/favourite_Rent.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
 import 'package:graduation_project/screens/login_screen.dart';
 import 'package:graduation_project/screens/new_password_screeen.dart';
-import 'package:graduation_project/screens/notifications_screen.dart';
 import 'package:graduation_project/screens/profile.dart';
 import 'package:graduation_project/screens/reset_password_screen.dart';
 import 'package:graduation_project/screens/sign_up.dart';
@@ -80,45 +80,6 @@ class MyApp extends StatelessWidget {
               child: SplashScreen(),
             ),
             locale:  Locale(languageFun(ar: 'ar', en: 'en')),
-            // theme: ThemeData(
-            //     primarySwatch: Colors.deepPurple,
-            //     accentColor: Color.fromRGBO(220, 129, 102, 0.9019607843137255),
-            //     canvasColor: Color.fromRGBO(255, 255, 255, 1),
-            //     textTheme: ThemeData.light().textTheme.copyWith(
-            //           bodyText1: TextStyle(
-            //             color: Colors.black,
-            //             fontSize: 14,
-            //           ),
-            //           bodyText2: TextStyle(
-            //             color: Colors.white,
-            //             fontSize: 18,
-            //           ),
-            //           headline2: TextStyle(
-            //             fontSize: 50,
-            //             color: Colors.white,
-            //             fontWeight: FontWeight.bold,
-            //           ),
-            //           headline1: TextStyle(
-            //               color: Colors.black,
-            //               fontSize: 30,
-            //               fontWeight: FontWeight.bold),
-            //           headline3: TextStyle(
-            //               color: Colors.black,
-            //               fontSize: 25,
-            //               fontWeight: FontWeight.bold),
-            //           headline4: TextStyle(
-            //               color: Colors.white,
-            //               fontSize: 45,
-            //               fontWeight: FontWeight.bold),
-            //           headline5: TextStyle(
-            //             color: Colors.black,
-            //             fontSize: 21,
-            //           ),
-            //         ),
-            //     backgroundColor: Colors.white,
-            //
-            //     ),
-            // darkTheme: ThemeData(backgroundColor: Colors.grey),
             darkTheme: dark,
             theme: light,
 
@@ -134,12 +95,12 @@ class MyApp extends StatelessWidget {
               Profile.routeName: (context) => Profile(),
               EditProfile.routeName: (context) => EditProfile(),
               StartApp.routeName: (context) => StartApp(),
-              NotificationScreen.routeName: (context) => NotificationScreen(),
               AddPost.routeName: (context) => AddPost(),
               EditPost.routeName: (context) => EditPost(),
               UserAds.routeName: (context) => UserAds(),
               ConfirmOrder.routeName: (context) => ConfirmOrder(),
               Favourite_Rent.routeName: (context) => Favourite_Rent(),
+              OrderedScreen.routeName: (context) => OrderedScreen(),
               PaybalScreen.routeName: (context) => PaybalScreen(),
 
             },

@@ -16,13 +16,13 @@ class ListViewForTopAds extends StatelessWidget {
             height: 220.0,
             child: ListView.builder(
               shrinkWrap: true,
-              itemCount: 4,
+              itemCount: DUMMY_DATA.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return TopAdCard(
-                  title: 'xxx',
-                  price: 0,
-                  imgUrl: 'https://media.istockphoto.com/vectors/dress-icon-vector-id507081676?k=20&m=507081676&s=612x612&w=0&h=k1p9VA6YqPIwMEyj290EMrI1EtHIz4EK8yLf9YV7_DM=',
+                  title: DUMMY_DATA[index].title,
+                  price: DUMMY_DATA[index].price,
+                  imgUrl: DUMMY_DATA[index].ImgUrl,
                 );
               },
             ),

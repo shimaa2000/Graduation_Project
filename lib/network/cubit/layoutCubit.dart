@@ -42,7 +42,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
 
   // for prices in payment
-  double price = DUMMY_DATA[numId].price;
+  int price = DUMMY_DATA[numId].price;
   double delivery = 50;
   double getTotal(){
     double total = price + delivery;

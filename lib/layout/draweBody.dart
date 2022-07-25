@@ -12,6 +12,8 @@ import 'package:graduation_project/screens/profile.dart';
 import 'package:graduation_project/screens/user_ads_screen.dart';
 import 'package:graduation_project/shared/languageAlert.dart';
 
+import '../screens/orderedScreen.dart';
+
 class DrawerBody extends StatefulWidget {
   const DrawerBody({Key? key}) : super(key: key);
 
@@ -81,7 +83,7 @@ class _DrawerBodyState extends State<DrawerBody> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, Favourite_Rent.routeName);
+                  Navigator.pushNamed(context, OrderedScreen.routeName);
                 },
                 child: ListTile(
                     leading: Icon(

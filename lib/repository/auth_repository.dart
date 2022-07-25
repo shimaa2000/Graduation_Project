@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:graduation_project/core/services/local/casheHelper.dart';
 import 'package:graduation_project/models/details_model.dart';
+import 'package:graduation_project/models/order_model.dart';
 import 'package:graduation_project/models/products.dart';
 import '../core/services/api/dio_client.dart';
 import '../core/services/api/errors/server_error.dart';
@@ -190,6 +191,17 @@ class AuthRepository {
     return response.fold(
       (error) => Left(error),
       (body) => Right(Favourite.fromMap(body.data)),
+    );
+  }
+
+  Future<Either<ServerError, Orders>> orderedAdsFun() async {
+    final response = await DioClient.getData(
+      url: ORDEREDADS,
+      token: CashHelper.getData(key: 'token'),
+    );
+    return response.fold(
+      (error) => Left(error),
+      (body) => Right(Orders.fromList(body.data)),
     );
   }
 

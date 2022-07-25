@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
 class PoliciesText extends StatelessWidget {
   final String hint;
@@ -15,7 +16,7 @@ class PoliciesText extends StatelessWidget {
       //  keyboardType: TextInputType.multiline,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: TextStyle(color: Colors.black, fontSize: 20  ),
+        hintStyle: TextStyle(color: isDark?Colors.black:Colors.white70, fontSize: 20  ),
         border: InputBorder.none,
       ),
     );

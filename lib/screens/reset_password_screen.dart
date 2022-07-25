@@ -1,6 +1,7 @@
 import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/password_reset_widget.dart';
 import 'package:graduation_project/network/cubit/layoutCubit.dart';
 import 'package:graduation_project/network/cubit/layoutStates.dart';
@@ -32,7 +33,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         validatorText: 'please enter mail',
                         icon: Icon(
                           Icons.email,
-                          color: Colors.black54,
+                          color: isDark? Colors.black:Colors.white,
                         ),
                       ),
                     ),
@@ -40,8 +41,10 @@ class ResetPasswordScreen extends StatelessWidget {
                       height: 60,
                     ),
                     ConditionalBuilderRec(
+
                       condition: state is! ResetLoadingState,
                       builder: (context) => DefaultButton(
+                        txtColor: isDark? Colors.white: Colors.black,
                         onPressedFun: () {
                           if (reset
                               .resetFormKey
@@ -56,7 +59,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       ),
                       fallback: (context) => Center(
                         child: CircularProgressIndicator(
-                          color: Colors.deepPurple,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     ),

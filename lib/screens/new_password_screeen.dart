@@ -1,6 +1,7 @@
 import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/password_reset_widget.dart';
 import 'package:graduation_project/network/cubit/layoutCubit.dart';
 import 'package:graduation_project/network/cubit/layoutStates.dart';
@@ -35,7 +36,7 @@ class NewPassword extends StatelessWidget {
                         validatorText: 'please enter password',
                         icon: Icon(
                           Icons.lock,
-                          color: Colors.black54,
+                          color:isDark? Colors.black: Colors.white,
                         ),
                       ),
                     ),
@@ -48,7 +49,7 @@ class NewPassword extends StatelessWidget {
                         validatorText: 'please confirm password',
                         icon: Icon(
                           Icons.lock,
-                          color: Colors.black54,
+                          color:isDark? Colors.black: Colors.white,
                         ),
                       ),
                     ),
@@ -58,6 +59,7 @@ class NewPassword extends StatelessWidget {
                     ConditionalBuilderRec(
                       condition: state is! NewPassLoadingState,
                       builder: (context) => DefaultButton(
+                        txtColor: isDark? Colors.white: Colors.black,
                           onPressedFun: () {
                             if (reset
                                 .newPassFormKey

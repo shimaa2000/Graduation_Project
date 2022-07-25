@@ -8,7 +8,6 @@ import 'package:graduation_project/network/cubit/appStates.dart';
 import 'package:graduation_project/repository/auth_repository.dart';
 import 'package:graduation_project/screens/add_post.dart';
 import 'package:graduation_project/screens/homeScreen.dart';
-import 'package:graduation_project/screens/notifications_screen.dart';
 import 'package:graduation_project/screens/profile.dart';
 
 class AppCubit extends Cubit<AppStates> {
@@ -65,8 +64,10 @@ class AppCubit extends Cubit<AppStates> {
   Product? value;
   String? _description;
   int? _height;
+  String? uId;
   int? _width;
-
+  String? _type;
+  List<String> ids=[];
   void getProductData() async {
     emit(AppLoadingHomeState());
     final response = await authRepository.homeDataFun();
@@ -77,8 +78,8 @@ class AppCubit extends Cubit<AppStates> {
         setLength(response.homeProduct!.length);
         setTitle(value!.title!);
         setPrice(value!.price!);
+        ids.add(value!.id!);
         setId(value!.id!);
-        print(value!.id!);
         for (int i = 0; i < value!.images!.length; i++) {
           pImages.add('$BASEURL/${value!.images![0]}');
         }
@@ -99,13 +100,14 @@ class AppCubit extends Cubit<AppStates> {
       (response) {
         setTitle(response.title!);
         setPrice(response.price!);
+        setUserId(response.user!.id!);
         setDescription(response.description!);
         setImgUrl('$BASEURL/${response.images![0]}');
         setSize(response.size!.name!);
         setName(response.user!.userName);
         setWidth(response.size!.width!);
+        setType(response.type!);
         //setHeight(response.size!.height!);
-        print(response.size!.height);
         setPublishDate(response.publishDate!);
         emit(DetailsSuccessState(response));
       },
@@ -118,6 +120,13 @@ class AppCubit extends Cubit<AppStates> {
 
   getLength() {
     return _length;
+  }
+  void setUserId(String id) {
+    uId = id;
+  }
+
+  getUserId() {
+    return uId;
   }
 
   void setHeight(int height) {
@@ -142,6 +151,13 @@ class AppCubit extends Cubit<AppStates> {
 
   getTitle() {
     return _title;
+  }
+  void setType(String type) {
+    _type = type;
+  }
+
+  getType() {
+    return _type;
   }
 
   void setId(String id) {

@@ -25,7 +25,7 @@ class DetailsScreen extends StatelessWidget {
           return  ConditionalBuilderRec(
               condition: state is! AppLoadingHomeState,
               builder: (context) =>DetailsWidget(
-              type: 'xxxxxxxx',
+              type: cubit.getType(),
               size: cubit.getSize(),
               title: cubit.getTitle(),
               price: cubit.getPrice().toString(),

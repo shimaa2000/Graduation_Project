@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/shared/boxtextfield.dart';
 
 class PasswordResetWidget extends StatelessWidget {
@@ -27,11 +28,15 @@ class PasswordResetWidget extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Image.asset(
-                  'images/background.png',
-                  height: MediaQuery.of(context).size.height * .5,
-                  width: MediaQuery.of(context).size.width,
-                ),
+               isDark?  Image.asset(
+                 'images/background.png',
+                 height: MediaQuery.of(context).size.height * .5,
+                 width: MediaQuery.of(context).size.width,
+               ): Image.asset(
+                 'images/backgroundDark.png',
+                 height: MediaQuery.of(context).size.height * .5,
+                 width: MediaQuery.of(context).size.width,
+               ),
                 Column(
                   children: [
                     Padding(
@@ -84,7 +89,7 @@ class PasswordResetWidget extends StatelessWidget {
               padding: const EdgeInsets.all(3.0),
               
               decoration:
-                  BoxDecoration(border: Border.all(width: 2.5,color: Colors.deepPurple),borderRadius: BorderRadius.circular(20)),
+                  BoxDecoration(border: Border.all(width: 2.5,color: Theme.of(context).primaryColor),borderRadius: BorderRadius.circular(20)),
               child: inContainer,
             ),
           ],

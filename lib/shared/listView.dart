@@ -34,7 +34,7 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
                     child: NewCardWidget(
                   name: cubit.getName(),
                   date: cubit.getPublishDate().toString(),
-                  isFav: fav_list.contains(DUMMY_DATA[index]) ? true : false,
+                  isFav: false,
                   imgUrl: cubit.getImgUrl() ??
                       'https://media.istockphoto.com/vectors/dress-icon-vector-id507081676?k=20&m=507081676&s=612x612&w=0&h=k1p9VA6YqPIwMEyj290EMrI1EtHIz4EK8yLf9YV7_DM=',
                   title: cubit.getTitle(),
@@ -77,8 +77,11 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
                           DetailsScreen.routeName,
                           arguments: DUMMY_DATA[index].id,
                         );
+                        listCubit.setIndex(index);
+                        print(listCubit.getIndex());
                         numId = DUMMY_DATA[index].id - 1;
-                        id=listCubit.getId();
+                        id=listCubit.value!.id;
+
                         print(id);
                       },
                       child: widget.categories == 'all'

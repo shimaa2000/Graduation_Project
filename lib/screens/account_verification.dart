@@ -2,6 +2,7 @@ import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/password_reset_widget.dart';
 import 'package:graduation_project/network/cubit/resetCubit.dart';
 import 'package:graduation_project/network/cubit/resetStates.dart';
@@ -11,32 +12,6 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 class AccountVerification extends StatelessWidget {
   static const routeName = 'account_verification';
-
-  //
-  //VerificationCode(
-  //                       textStyle:
-  //                           TextStyle(fontSize: 20.0, color: Colors.red[900]),
-  //                       keyboardType: TextInputType.number,
-  //                       underlineColor: Colors.amber,
-  //                       length: 6,
-  //                       cursorColor: Colors.blue,
-  //                       clearAll: Padding(
-  //                         padding: const EdgeInsets.all(8.0),
-  //                         child: Text(
-  //                           'clear all',
-  //                           style: TextStyle(
-  //                               fontSize: 14.0,
-  //                               decoration: TextDecoration.underline,
-  //                               color: Colors.blue[700]),
-  //                         ),
-  //                       ),
-  //                       onCompleted: (String value){
-  //                         reset.onCompleting(value);
-  //                       },
-  //                       onEditing: (bool value){
-  //                         reset.onEditing(value, context);
-  //                       },
-  //                     ),
 
   @override
   Widget build(BuildContext context) {
@@ -55,21 +30,21 @@ class AccountVerification extends StatelessWidget {
                         padding: EdgeInsets.all(10),
                         child: Text(
                           'Code',
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w300),
+                          style: Theme.of(context).textTheme.headline3,
                         )),
                     PinCodeTextField(
                       appContext: context,
                       pastedTextStyle: TextStyle(
-                        color: Colors.deepPurple,
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
                       length: 6,
                       obscureText: true,
                       obscuringCharacter: '*',
-                      obscuringWidget: const Icon(Icons.security),
+                      obscuringWidget:  Icon(
+                        Icons.security,
+                        color: isDark ? Colors.black : Colors.white,
+                      ),
                       blinkWhenObscuring: true,
                       animationType: AnimationType.fade,
                       validator: (v) {
@@ -80,23 +55,24 @@ class AccountVerification extends StatelessWidget {
                         }
                       },
                       pinTheme: PinTheme(
-                        inactiveFillColor: Colors.white,
+
+                        inactiveFillColor: isDark? Colors.white: Colors.black,
                         shape: PinCodeFieldShape.box,
-                        selectedFillColor: Colors.white,
+                        selectedFillColor:isDark? Colors.white: Colors.black,
                         borderRadius: BorderRadius.circular(5),
                         fieldHeight: 50,
                         fieldWidth: 40,
-                        activeFillColor: Colors.white,
+                        activeFillColor:isDark? Colors.white: Colors.black,
                       ),
 
-                      backgroundColor: Colors.white,
-                      cursorColor: Colors.black,
+                      backgroundColor: isDark? Colors.white: Colors.black,
+                      cursorColor:isDark? Colors.black: Colors.white,
                       animationDuration: const Duration(milliseconds: 300),
                       enableActiveFill: true,
                       errorAnimationController: reset.errorController,
                       controller: reset.verifyTextEditingController,
                       keyboardType: TextInputType.number,
-                      textStyle: TextStyle(color: Colors.black),
+                      textStyle: TextStyle(color: isDark? Colors.black: Colors.white),
                       boxShadows: const [
                         BoxShadow(
                           offset: Offset(0, 1),
@@ -116,7 +92,7 @@ class AccountVerification extends StatelessWidget {
                         reset.verifyOnChange(value);
                       },
                       beforeTextPaste: (text) {
-                        debugPrint("Allowing to paste $text");
+                        debugPrint("Allowing to paste $text",);
                         //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
                         //but you can show anything you want here, like your pop up saying wrong paste format or etc
                         return true;
@@ -128,6 +104,7 @@ class AccountVerification extends StatelessWidget {
                         child: ConditionalBuilderRec(
                           condition: state is! NewPassLoadingState,
                           builder: (context) => DefaultButton(
+                            txtColor: isDark? Colors.white: Colors.black,
                               onPressedFun: () {
                                 if (reset.verifyFormKey.currentState!
                                     .validate()) {
@@ -139,7 +116,7 @@ class AccountVerification extends StatelessWidget {
                               text: 'Verify'),
                           fallback: (context) => Center(
                             child: CircularProgressIndicator(
-                              color: Colors.deepPurple,
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
                         ),

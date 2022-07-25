@@ -4,13 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/layout/new_card_widget.dart';
-import 'package:graduation_project/layout/topAdCard.dart';
 import 'package:graduation_project/network/cubit/user_data_cubit.dart';
 import 'package:graduation_project/network/cubit/user_data_states.dart';
-
-import '../dummy_data.dart';
-import 'details_screen.dart';
-import 'homeScreen.dart';
 
 class UserAds extends StatelessWidget {
   static const routeName = 'user_ads';
