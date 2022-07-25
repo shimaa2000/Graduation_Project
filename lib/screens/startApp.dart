@@ -9,9 +9,11 @@ import 'package:graduation_project/layout/search_classDelegate.dart';
 import 'package:graduation_project/models/postsModel.dart';
 import 'package:graduation_project/network/cubit/appCubit.dart';
 import 'package:graduation_project/network/cubit/appStates.dart';
+import 'package:graduation_project/screens/search_screen.dart';
 
 class StartApp extends StatefulWidget {
   static const routeName = 'start_app';
+
   const StartApp({Key? key}) : super(key: key);
 
   @override
@@ -21,8 +23,6 @@ class StartApp extends StatefulWidget {
 class _StartAppState extends State<StartApp> {
   @override
   Widget build(BuildContext context) {
-    final List<PostModel> list =
-        List.generate(DUMMY_DATA.length, (id) => DUMMY_DATA[id]);
 
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
@@ -34,18 +34,32 @@ class _StartAppState extends State<StartApp> {
           appBar: AppBar(
             iconTheme: IconThemeData(color: isDark ? iDark : iLight),
             systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
-                  statusBarIconBrightness: isDark? Brightness.light: Brightness.dark
-            ),
+                statusBarColor: Colors.transparent,
+                statusBarIconBrightness:
+                    isDark ? Brightness.light : Brightness.dark),
             title: Text(cubit.titles[cubit.currentIndex]),
             centerTitle: true,
-          //  backgroundColor: Colors.deepPurple,
+            //  backgroundColor: Colors.deepPurple,
             actions: <Widget>[
               IconButton(
                 onPressed: () {
-                  showSearch(context: context, delegate: Search(list));
+                  List<String> searchTerms = [];
+                  List<String> idList = [];
+                  cubit.getProductData();
+                  for (int i = 0; i < cubit.product.length; i++) {
+                    searchTerms.add(cubit.product[i].title!);
+                    // print(searchTerms[i]);
+                  }
+                  for (int i = 0; i < cubit.product.length; i++) {
+                    idList.add(cubit.ids[i]);
+                    print(idList[i]);
+                  }
+                  showSearch(
+                      context: context,
+                      // delegate to customize the search bar
+                      delegate: CustomSearchDelegate(searchTerms: searchTerms,idList: idList));
                 },
-                icon: Icon(Icons.search,   color: isDark ? iDark : iLight),
+                icon: Icon(Icons.search, color: isDark ? iDark : iLight),
               )
             ],
           ),
@@ -53,7 +67,7 @@ class _StartAppState extends State<StartApp> {
             initialActiveIndex: 0,
             backgroundColor: Theme.of(context).primaryColor,
             color: isDark ? iDark : iLight,
-            activeColor:isDark ? iDark : iLight ,
+            activeColor: isDark ? iDark : iLight,
             onTap: (index) {
               cubit.changeBottomNavItem(index);
               print(cubit.currentIndex);

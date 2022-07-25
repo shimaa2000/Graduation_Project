@@ -152,7 +152,7 @@ class DioClient {
 
   static Future<Either<ServerError, Response>> postData({
     required String url,
-    required Map<String, dynamic> data,
+     Map<String, dynamic>? data,
     Map<String, dynamic>? query,
     String? token,
   }) async {

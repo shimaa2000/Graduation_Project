@@ -82,7 +82,7 @@ class AccountVerification extends StatelessWidget {
                       ],
                       onCompleted: (v) {
                         reset.onCompleting(v);
-                        debugPrint("Completed");
+                        debugPrint("Completed$v");
                       },
                       // onTap: () {
                       //   print("Pressed");
@@ -106,12 +106,8 @@ class AccountVerification extends StatelessWidget {
                           builder: (context) => DefaultButton(
                             txtColor: isDark? Colors.white: Colors.black,
                               onPressedFun: () {
-                                if (reset.verifyFormKey.currentState!
-                                    .validate()) {
-                                  reset.verifyCode();
                                   Navigator.pushNamed(
                                       context, NewPassword.routeName);
-                                }
                               },
                               text: 'Verify'),
                           fallback: (context) => Center(

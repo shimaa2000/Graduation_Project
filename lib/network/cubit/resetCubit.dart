@@ -1,8 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_project/network/cubit/loginStates.dart';
 import 'package:graduation_project/network/cubit/resetStates.dart';
 import 'package:graduation_project/repository/auth_repository.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -18,8 +16,6 @@ class ResetCubit extends Cubit<ResetStates> {
 
   final passController = TextEditingController();
   final passConfirmController = TextEditingController();
-
-  String? code;
   final resetFormKey = GlobalKey<FormState>();
   final newPassFormKey = GlobalKey<FormState>();
 
@@ -42,24 +38,6 @@ class ResetCubit extends Cubit<ResetStates> {
     );
   }
 
-// reset code
-  void verifyCode() async {
-    emit(VerifyLoadingState());
-    final response = await authRepository.verify({
-      'resetCode': code,
-    });
-
-    response.fold(
-      (error) {
-        emit(VerifyErrorState(error));
-        print('error');
-      },
-      (response) {
-        emit(VerifySuccessState(response));
-        print('done');
-      },
-    );
-  }
 
 //setting new pass
   void setNewPass(String newPass) async {

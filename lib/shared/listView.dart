@@ -80,9 +80,7 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
                         listCubit.setIndex(index);
                         print(listCubit.getIndex());
                         numId = DUMMY_DATA[index].id - 1;
-                        id=listCubit.value!.id;
-
-                        print(id);
+                        id=listCubit.ids[index];
                       },
                       child: widget.categories == 'all'
                           ? listFit(index, search: widget.search,searchList: listCubit.getTitle())

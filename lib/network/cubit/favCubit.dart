@@ -5,6 +5,7 @@ import 'package:graduation_project/endPoints.dart';
 import 'package:graduation_project/models/favouriteModel.dart';
 import 'package:graduation_project/network/cubit/favStates.dart';
 import 'package:graduation_project/repository/auth_repository.dart';
+import 'package:graduation_project/screens/homeScreen.dart';
 
 class FavCubit extends Cubit<FavStates> {
   FavCubit() : super(AppInitialState());
@@ -28,7 +29,7 @@ class FavCubit extends Cubit<FavStates> {
     response.fold(
       (error) => emit(AppErrorState(error)),
       (response) {
-        if (response.favourite!.length!= 0) {
+        if (response.favourite!.length != 0) {
           value = FavouriteItems.fromMap(response.favourite![getIndex()]);
           setLength(response.favourite!.length);
           setTitle(value!.title);
@@ -100,10 +101,9 @@ class FavCubit extends Cubit<FavStates> {
 
   void setFav(String? productId) async {
     emit(FavLoadingState());
-    final response = await authRepository.addFav({
-      'productId': productId,
-    });
-    response.fold((error) => emit(AppErrorState(error)), (authResponse) {
+    final response = await authRepository.addFav(productId!);
+    response.fold((error) => emit(AppErrorState(error)),
+    (authResponse) {
       emit(AppSuccessState(authResponse));
     });
   }

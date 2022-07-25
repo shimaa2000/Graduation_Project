@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/dummy_data.dart';
 import 'package:graduation_project/layout/new_card_widget.dart';
+import 'package:graduation_project/network/cubit/favCubit.dart';
+import 'package:graduation_project/network/cubit/favStates.dart';
+
+import '../screens/homeScreen.dart';
 
 class FavoriteIcon extends StatefulWidget {
   bool isFav;
@@ -15,25 +20,27 @@ class FavoriteIcon extends StatefulWidget {
 class _FavoriteIconState extends State<FavoriteIcon> {
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        setState(() {
-          if (widget.isFav) {
-            widget.isFav = false;
-            fav_list.remove(fav_list[widget.index]);
-            
-
-          } else {
-            widget.isFav = true;
-            fav_list.add(DUMMY_DATA[widget.index]);
-            DUMMY_DATA[widget.index].isFav=true;
-          }
-        });
+    return BlocProvider(create: (BuildContext context)=> FavCubit(),child: BlocConsumer<FavCubit , FavStates>(
+      listener: (context, state){},
+      builder: (context , state){
+        return IconButton(
+          onPressed: () {
+            setState(() {
+              if (widget.isFav) {
+                widget.isFav = false;
+              } else {
+                widget.isFav = true;
+                FavCubit.get(context).setFav(id!);
+              }
+            });
+          },
+          icon: widget.isFav
+              ? Icon(Icons.favorite)
+              : Icon(Icons.favorite_border),
+          color: Theme.of(context).primaryColor,
+        );
       },
-      icon: widget.isFav
-          ? Icon(Icons.favorite)
-          : Icon(Icons.favorite_border),
-      color: Theme.of(context).primaryColor,
-    );
+    ),);
+
   }
 }

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:graduation_project/core/services/local/casheHelper.dart';
 import 'package:graduation_project/models/details_model.dart';
+import 'package:graduation_project/models/editPostModel.dart';
 import 'package:graduation_project/models/order_model.dart';
 import 'package:graduation_project/models/products.dart';
 import '../core/services/api/dio_client.dart';
@@ -50,6 +51,23 @@ class AuthRepository {
       (error) => Left(error),
       (body) {
         return Right(UserData.fromMap(body.data));
+      },
+    );
+  }
+
+//edit post
+  Future<Either<ServerError, EditPost>> updatePostData(
+      Map<String, dynamic> editPost, String id) async {
+    final response = await DioClient.putData(
+      url: "$PRODUCT/$id",
+      data: editPost,
+      token: CashHelper.getData(key: 'token'),
+    );
+
+    return response.fold(
+      (error) => Left(error),
+      (body) {
+        return Right(EditPost.fromMap(body.data));
       },
     );
   }
@@ -207,10 +225,9 @@ class AuthRepository {
 
   //for favourite post
   Future<Either<ServerError, Favourite>> addFav(
-      Map<String, dynamic> data) async {
+    String id) async {
     final response = await DioClient.postData(
-      url: FAV,
-      data: data,
+      url: "$FAV/$id",
       token: CashHelper.getData(key: 'token'),
     );
 
@@ -232,7 +249,7 @@ class AuthRepository {
   }
 
   Future<Either<ServerError, ProductDetails>> detailsFun(
-   String id,
+    String id,
   ) async {
     final response = await DioClient.getData(
       url: '$PRODUCT/$id',

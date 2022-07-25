@@ -67,18 +67,24 @@ class AppCubit extends Cubit<AppStates> {
   String? uId;
   int? _width;
   String? _type;
+  List<Product> product=[];
   List<String> ids=[];
+
   void getProductData() async {
     emit(AppLoadingHomeState());
     final response = await authRepository.homeDataFun();
     response.fold(
       (error) => emit(AppErrorHomeState(error)),
       (response) {
+        for(int i=0;i<response.homeProduct!.length;i++)
+          {
+            product.add(Product.fromMap(response.homeProduct![i]));
+            ids.add(product[i].id!);
+          }
         value = Product.fromMap(response.homeProduct![getIndex()]);
         setLength(response.homeProduct!.length);
         setTitle(value!.title!);
         setPrice(value!.price!);
-        ids.add(value!.id!);
         setId(value!.id!);
         for (int i = 0; i < value!.images!.length; i++) {
           pImages.add('$BASEURL/${value!.images![0]}');
@@ -222,5 +228,21 @@ class AppCubit extends Cubit<AppStates> {
 
   getIndex() {
     return _index;
+  }
+
+  final Title = TextEditingController();
+  final Description = TextEditingController();
+  final Price = TextEditingController();
+//edit post
+  void editPostFun(String id) async {
+    emit(AppLoadingHomeState());
+    final response = await authRepository.updatePostData(
+        {'title': Title.text, 'description': Description.text, 'price': Price.text}, id);
+    response.fold(
+          (error) => emit(AppErrorHomeState(error)),
+          (response) {
+        emit(SuccessHomeState(response));
+      },
+    );
   }
 }

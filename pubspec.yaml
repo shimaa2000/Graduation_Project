@@ -49,6 +49,7 @@ dependencies:
   get_storage: ^2.0.3
   webview_flutter: ^3.0.4
   pin_code_fields: ^7.4.0
+  search_page: ^2.0.0+1
 
 
 dev_dependencies:

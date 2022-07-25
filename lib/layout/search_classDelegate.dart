@@ -1,71 +1,96 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/dummy_data.dart';
-import 'package:graduation_project/endPoints.dart';
-import 'package:graduation_project/models/postsModel.dart';
-import 'package:graduation_project/screens/search_screen.dart';
-class Search extends SearchDelegate {
-  @override
-  List<Widget> buildActions(BuildContext context) {
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/network/cubit/appCubit.dart';
+import 'package:graduation_project/network/cubit/appStates.dart';
+import 'package:graduation_project/screens/details_screen.dart';
 
-    return <Widget>[
+import '../screens/homeScreen.dart';
+class CustomSearchDelegate extends SearchDelegate {
+  // Demo list to show querying
+  List<String> searchTerms;
+  List<String> idList;
+  int idSearch=0;
+  CustomSearchDelegate({required this.searchTerms, required this.idList});
+
+  // first overwrite to
+  // clear the search text
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
       IconButton(
-        icon: Icon(Icons.close,color: isDark? Colors.grey: Colors.white70,),
         onPressed: () {
-          query = "";
+          query = '';
         },
+        icon: Icon(Icons.clear),
       ),
     ];
   }
 
+  // second overwrite to pop out of search menu
   @override
-  Widget buildLeading(BuildContext context) {
+  Widget? buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back,color: isDark? Colors.grey: Colors.white70,),
-      onPressed: () {
-        Navigator.pop(context);
-      },
+        onPressed: () {
+          close(context, null);
+        },
+        icon: Icon(Icons.arrow_back),
     );
   }
 
-  String selectedResult = "";
-
+  // third overwrite to show query result
   @override
   Widget buildResults(BuildContext context) {
-    return Container(
-      child: Center(
-        child: SearchScreen(search: selectedResult,),
-      ),
-    );
-  }
-
-  final List <PostModel>listExample;
-  Search(this.listExample);
-
-  List<PostModel> recentList = [DUMMY_DATA[0],DUMMY_DATA[1]];
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    List<PostModel> suggestionList = [];
-    query.isEmpty
-        ? suggestionList = recentList
-        : suggestionList.addAll(listExample.where(
-          (element) => element.name.contains(query),
-    ));
-
+    // addProducts(context)
+    List<String> matchQuery = [];
+    for (var fruit in searchTerms) {
+      if (fruit.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(fruit);
+      }
+    }
     return ListView.builder(
-      itemCount: suggestionList.length,
+      itemCount: matchQuery.length,
       itemBuilder: (context, index) {
+        var result = matchQuery[index];
         return ListTile(
-          title: Text(
-            suggestionList[index].name,style: Theme.of(context).textTheme.bodyText1,
-          ),
-          leading: query.isEmpty ? Icon(Icons.access_time,color: isDark? Colors.grey: Colors.white70,) : SizedBox(),
-          onTap: (){
-            selectedResult = suggestionList[index].name;
-            showResults(context);
-          },
+          title: Text(result),
         );
       },
     );
+  }
+
+  // last overwrite to show the
+  // querying process at the runtime
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var fruit in searchTerms) {
+      if (fruit.toLowerCase().contains(query.toLowerCase())) {
+        idSearch =searchTerms.indexOf(fruit);
+        matchQuery.add(fruit);
+      }
+    }
+    return BlocProvider(
+      create:(context)=>AppCubit(),
+      child:BlocConsumer<AppCubit,AppStates>(
+        listener: (context, state) {
+        },
+      builder: (context, state) {
+          return ListView.builder(
+            itemCount: matchQuery.length,
+            itemBuilder: (context, index) {
+              var result = matchQuery[index];
+              var cubit=AppCubit.get(context);
+              return InkWell(
+                onTap: (){
+                  id= cubit.ids[idSearch];
+                  Navigator.pushNamed(context, DetailsScreen.routeName);
+                },
+                child: ListTile(
+                  title: Text(result),
+                ),
+              );});
+            },
+          ),
+      ) ;
   }
 }

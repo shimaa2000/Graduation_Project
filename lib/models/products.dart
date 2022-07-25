@@ -31,36 +31,30 @@ class Products {
 class Product {
   String? id;
   String? title;
+  String? gender;
   int? price;
   String? description;
   Size? size;
-
-  //String? color;
-  //String? type;
-  // String? publishDate;
-  // String? purpose;
   User? user;
-
-//  Review? review;
   List<dynamic>? images = [];
+  bool? fav;
 
   Product(
       {this.title = '',
+      this.fav,
       this.size,
       this.price = 0,
       this.images,
       this.id,
-      // this.purpose,
-      // this.color,
+        this.gender,
       this.description,
-      // this.type,
-      // this.publishDate,
-      // this.review,
       this.user});
 
   Map<String, dynamic> toMap() {
     return {
+      'gender':gender,
       'title': title,
+      'fav': fav,
       'size': size,
       'price': price,
       'id': id,
@@ -81,8 +75,10 @@ class Product {
       map['images'].forEach((element) => imageList.add(element));
     }
     return Product(
+      gender: map['gender'],
       title: map['title'],
       price: map['price'],
+      fav: map['fav'],
       id: map['_id'],
       description: map['description'],
       size: Size.fromMap(map['size']),
@@ -152,5 +148,3 @@ class User {
 
   factory User.fromJson(String source) => User.fromMap(json.decode(source));
 }
-
-
