@@ -67,8 +67,13 @@ class AppCubit extends Cubit<AppStates> {
   String? uId;
   int? _width;
   String? _type;
-  List<Product> product=[];
-  List<String> ids=[];
+  List<Product> product = [];
+  List<String> ids = [];
+  String? _gender;
+  bool fav = false;
+  List<Product> maleList = [];
+  List<Product> femaleList = [];
+
 
   void getProductData() async {
     emit(AppLoadingHomeState());
@@ -76,13 +81,22 @@ class AppCubit extends Cubit<AppStates> {
     response.fold(
       (error) => emit(AppErrorHomeState(error)),
       (response) {
-        for(int i=0;i<response.homeProduct!.length;i++)
-          {
-            product.add(Product.fromMap(response.homeProduct![i]));
-            ids.add(product[i].id!);
-          }
+        for (int i = 0; i < response.homeProduct!.length; i++) {
+          product.add(Product.fromMap(response.homeProduct![i]));
+          ids.add(product[i].id!);
+        }
         value = Product.fromMap(response.homeProduct![getIndex()]);
         setLength(response.homeProduct!.length);
+        setGender(value!.gender!);
+        fav = value!.fav!;
+        for (int i = 0; i < response.homeProduct!.length; i++) {
+          if (Product.fromMap(response.homeProduct![i]).gender == 'male')
+            maleList.add(Product.fromMap(response.homeProduct![i]));
+        }
+        for (int i = 0; i < response.homeProduct!.length; i++) {
+          if (Product.fromMap(response.homeProduct![i]).gender == 'female')
+            femaleList.add(Product.fromMap(response.homeProduct![i]));
+        }
         setTitle(value!.title!);
         setPrice(value!.price!);
         setId(value!.id!);
@@ -127,12 +141,21 @@ class AppCubit extends Cubit<AppStates> {
   getLength() {
     return _length;
   }
+
   void setUserId(String id) {
     uId = id;
   }
 
   getUserId() {
     return uId;
+  }
+
+  void setGender(String gender) {
+    _gender = gender;
+  }
+
+  getGender() {
+    return _gender;
   }
 
   void setHeight(int height) {
@@ -158,6 +181,7 @@ class AppCubit extends Cubit<AppStates> {
   getTitle() {
     return _title;
   }
+
   void setType(String type) {
     _type = type;
   }
@@ -233,14 +257,18 @@ class AppCubit extends Cubit<AppStates> {
   final Title = TextEditingController();
   final Description = TextEditingController();
   final Price = TextEditingController();
+
 //edit post
   void editPostFun(String id) async {
     emit(AppLoadingHomeState());
-    final response = await authRepository.updatePostData(
-        {'title': Title.text, 'description': Description.text, 'price': Price.text}, id);
+    final response = await authRepository.updatePostData({
+      'title': Title.text,
+      'description': Description.text,
+      'price': Price.text
+    }, id);
     response.fold(
-          (error) => emit(AppErrorHomeState(error)),
-          (response) {
+      (error) => emit(AppErrorHomeState(error)),
+      (response) {
         emit(SuccessHomeState(response));
       },
     );

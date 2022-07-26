@@ -22,8 +22,7 @@ class ListViewBuilderData extends StatefulWidget {
 
 class _ListViewBuilderDataState extends State<ListViewBuilderData> {
   Widget listFit(int index, {String search = '', String searchList=''}) {
-    return searchList.contains(search)
-        ? BlocProvider(
+    return  BlocProvider(
             create: (BuildContext context) => AppCubit()..getProductData(),
             child: BlocConsumer<AppCubit, AppStates>(
               builder: (context, state) {
@@ -34,7 +33,7 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
                     child: NewCardWidget(
                   name: cubit.getName(),
                   date: cubit.getPublishDate().toString(),
-                  isFav: false,
+                  isFav: cubit.fav,
                   imgUrl: cubit.getImgUrl() ??
                       'https://media.istockphoto.com/vectors/dress-icon-vector-id507081676?k=20&m=507081676&s=612x612&w=0&h=k1p9VA6YqPIwMEyj290EMrI1EtHIz4EK8yLf9YV7_DM=',
                   title: cubit.getTitle(),
@@ -45,16 +44,8 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
               },
               listener: (context, state) {},
             ),
-          )
-        : SizedBox(
-            width: 500,
-            height: 1,
           );
   }
-
-  final Stream<List<PostModel>> _posts = Stream<List<PostModel>>.fromIterable(
-    <List<PostModel>>[List.generate(DUMMY_DATA.length, (id) => DUMMY_DATA[id])],
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -82,14 +73,8 @@ class _ListViewBuilderDataState extends State<ListViewBuilderData> {
                         numId = DUMMY_DATA[index].id - 1;
                         id=listCubit.ids[index];
                       },
-                      child: widget.categories == 'all'
-                          ? listFit(index, search: widget.search,searchList: listCubit.getTitle())
-                          : DUMMY_DATA[index].gender == widget.categories
-                              ? listFit(index)
-                              : SizedBox(
-                                  width: 500,
-                                  height: .5,
-                                ),
+                      child: listFit(index, search: widget.search,searchList: listCubit.getTitle())
+
                     );
                   }),
               fallback: (context) => Center(

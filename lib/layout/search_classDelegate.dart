@@ -79,10 +79,9 @@ class CustomSearchDelegate extends SearchDelegate {
             itemCount: matchQuery.length,
             itemBuilder: (context, index) {
               var result = matchQuery[index];
-              var cubit=AppCubit.get(context);
               return InkWell(
                 onTap: (){
-                  id= cubit.ids[idSearch];
+                  id= idList[idSearch];
                   Navigator.pushNamed(context, DetailsScreen.routeName);
                 },
                 child: ListTile(
